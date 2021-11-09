@@ -6,6 +6,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route("/overview")
+def home():
+    return render_template('overview.html')
+
 @app.route("/about-us")
 def aboutus():
     return render_template('aboutus.html')
