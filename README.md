@@ -12,7 +12,7 @@ http://aventer.themezinho.net/?storefront=envato-elements
 For illustrations-
 https://thedesignproject.co/
 
-Login, signup, redaction - riya
-home, extraction, about-us - purvi
-summarization, overview - sagar - refer https://www.tex-ai.com/text-analytics/
-faqs, contact us, classification - akhil
+Login, signup, redaction - riya <br>
+home, extraction, about-us - purvi <br>
+summarization, overview - sagar - refer https://www.tex-ai.com/text-analytics/<br>
+faqs, contact us, classification - akhil <br>
