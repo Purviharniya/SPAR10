@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect
 
-# from PIL import Image
-
 app = Flask(__name__)
-
 
 @app.route("/")
 def home():
@@ -13,7 +10,7 @@ def home():
 def aboutus():
     return render_template('aboutus.html')
 
-@app.route("/contact")
+@app.route("/contact-us")
 def contact():
     return render_template('contactus.html')
 
