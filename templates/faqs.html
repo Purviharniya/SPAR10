@@ -1,6 +1,52 @@
 {% extends 'main.html' %}
 {% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/faq.css">
 
 <!-- add the content here -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="../static/assets/faq.svg" width="110%">
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <h1 style="margin-top: 1rem;">Frequently Asked Questions</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center" style="margin-top: 2rem;">
+        <h3>We have curated a few questions which may be on your mind.</h3>
+    </div>
+
+    <div class="row d-flex justify-content-center align-items-center mt-2">
+        <button type="button" class="dbutton btn" style="border-radius:2rem;padding: 1rem 1rem;"><strong>Download PDF - FAQ's</strong></button>
+    </div>
+
+    <div class="row" style="margin-top: 2rem;">    
+        <div class="accordionMenu w-100">
+            <input type="radio" name="question" id="acc1">
+            <label for="acc1">Can SPAR10 be customized according to my requirements?</label>
+            <div class="content">
+                <div class="inner">
+                    SPAR10 is a bouquet of solutions. As the use-cases of table extraction, summarization, classification and redaction have many variants required by the users, the base variant of the modules works for a specific set of inputs. The good news is SPAR10 can be customized to the requirements of the users.
+                </div>
+            </div>
+            <input type="radio" name="question" id="acc2">
+            <label for="acc2" class="mt-2">Are the solutions domain-specific?</label>
+            <div class="content">
+                <div class="inner">
+                    The solutions are not domain-specific, it can cut across all domains such as Banking, Retail, E-commerce, Manufacturing, Education, Healthcare and Lifesciences. The most important things to be taken care are the formats of input, output and the training data for some modules. Otherwise, the solutions work for any domain if enough training data for summarization and classification are inputted.
+                </div>
+            </div>
+            <!-- 3rd menu -->
+            <input type="radio" name="question" id="acc3">
+            <label for="acc3" class="mt-2">Can SPAR10 extract data from an image?</label>
+            <div class="content">
+                <div class="inner">
+                    Yes, tables from images can be extracted from images of different formats like jpeg, png, tiff and more. SPAR10 also works in the cases where the pdfs and documents have embedded images. This is one of the distinguishable features. SPAR10 combines DL, OCR and popular table extraction methods to create a robust product.
+                </div>
+            </div>
+        </div>
+            
+    </div>
+</div>
 
 {% endblock %}

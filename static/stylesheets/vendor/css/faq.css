@@ -1,0 +1,77 @@
+.dbutton {
+    border: 1px solid black;
+    color: black;
+    font-size: 1.1rem;
+  }
+  
+  .dbutton:hover {
+    border: 1px white;
+    color: white;
+    background: rgb(23, 142, 197);
+  }
+
+.accordionMenu{
+    margin: 0 auto;
+}
+.accordionMenu input[type=radio]{
+    display: none;
+}
+.accordionMenu label{
+    display: block;
+    padding:  15px 25px 15px 10px;
+    background: rgb(108,99,255);
+    font-size: 1.5rem;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.accordionMenu label::after{
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    border-color: transparent transparent transparent #ffffff;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    z-index: 10;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition:all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.accordionMenu .content{
+    max-height: 0;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+}
+.accordionMenu .content .inner{
+    font-size: 1.2rem;
+    color: black;
+    line-height: 1.5;
+    background: white;
+    padding: 20px 10px;
+}
+
+.accordionMenu input[type=radio]:checked + label:after{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.accordionMenu input[type=radio]:checked + label + .content{
+    max-height: 2000px;
+    height: auto;
+}
