@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SPAR10</title>
 
     <link href="{{ url_for('static', filename='stylesheets/vendor/fontawesome-free/css/all.min.css') }}"
         rel="stylesheet" type="text/css">
@@ -19,6 +19,8 @@
     <!-- bootstrap -->
     <link href="{{ url_for('static', filename='stylesheets/vendor/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <link href="{{ url_for('static', filename='stylesheets/vendor/css/index.css') }}" rel="stylesheet">
+
     <!-- ADD ALL THE CSS FILES FOR SEPARATE PAGES HERE -->
     <!-- <link rel="stylesheet" href="vendor/css/login.css" type="text/css">  -->
 
@@ -26,17 +28,113 @@
     <link href="{{ url_for('static', filename='stylesheets/vendor/css/fonts.css') }}" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <div class="container-fluid">
+    <!-- navbar begin -->
+    <div class="topbar">
+        <nav class="navbar navbar-expand-md homenav">
+            <a class="navbar-brand pl-5 ml-5" href="/">Spar-10</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/about-us">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Product
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/overview">Overview</a>
+                            <a class="dropdown-item" href="/text-extraction">Extraction</a>
+                            <a class="dropdown-item" href="/text-classification">Classification</a>
+                            <a class="dropdown-item" href="/text-summarization">Summarization</a>
+                            <a class="dropdown-item" href="/text-redaction">Redaction</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faqs">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact-us">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto pr-5 mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+
+    <!-- body begin -->
+    <div class="container-fluid" style="min-height: 100vh;">
         {% block content %}
 
         {% endblock %}
     </div>
 
+    <!-- body end -->
+
+    <!-- Footer begin -->
+    <footer class="w-100 py-4 flex-shrink-0 home-footer">
+        <div class="container py-3">
+            <div class="row gy-4 gx-5">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="h1 text-white">SPAR10</h5>
+                    <p class="small text-muted">An AI Enabled Text Processing Framework</i></p>
+                    <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Get to know Spar10</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about-us">About</a></li>
+                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/faqs">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Product</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="/overview">Overview</a></li>
+                        <li><a href="/text-extraction">Extraction</a></li>
+                        <li><a href="/text-classification">Classification</a></li>
+                        <li><a href="/text-summarization">Summarization</a></li>
+                        <li><a href="/text-redaction">Redaction</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white mb-3">Follow us: </h5>
+                    <p class="small text-muted">Looking to derive actionable intelligence from text? Follow us to
+                        be updated for the latest news!</p>
+                    <form action="#">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" placeholder="Recipient's email"
+                                aria-label="Recipient's email" aria-describedby="button-addon2">
+                            <button class="btn btn-primary" id="button-addon2" type="button"><i
+                                    class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
 </body>
 
 <script src="{{ url_for('static', filename='stylesheets/vendor/jquery/jquery.min.js') }}"></script>
@@ -47,5 +145,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ url_for('static', filename='stylesheets/vendor/js/sb-admin-2.js') }}"></script>
+<script src="{{ url_for('static', filename='stylesheets/vendor/js/scripts.js') }}"></script>
+
 
 </html>

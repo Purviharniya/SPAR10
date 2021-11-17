@@ -1,1 +1,31 @@
 /* add index.html's css here */
+.scrolled {
+  background-color: #221054;
+  color: white;
+  transition: background-color 400ms linear;
+}
+
+.sidebar .nav-item.dropdown .dropdown-toggle::after,
+.topbar .nav-item.dropdown .dropdown-toggle::after {
+  width: 0.1rem;
+  text-align: center;
+  float: right;
+  vertical-align: 0;
+  border: 0;
+  font-weight: 900;
+  content: "";
+  font-family: "Font Awesome 5 Free";
+}
+
+.home-footer {
+  background-color: #221054;
+}
+
+.home-footer .form-control {
+  background: #212529;
+  border-color: #545454;
+}
+
+.home-footer .form-control:focus {
+  background: #212529;
+}
