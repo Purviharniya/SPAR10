@@ -12,11 +12,24 @@
   font-size: 1.2rem;
   color: #fff;
 }
+
+.homenav .nav-link:hover {
+  color: rgb(255, 158, 36);
+}
+.homenav .navbar-brand:hover {
+  color: rgb(255, 158, 36);
+}
 .homenav .navbar-brand {
   font-size: 1.5rem;
   color: #fff;
   font-family: "PlayfairDisplay-Regular";
 }
+
+.homenav .dropdown-item:hover {
+  font-weight: 600;
+  color: rgb(255, 158, 36);
+}
+
 .sidebar .nav-item.dropdown .dropdown-toggle::after,
 .topbar .nav-item.dropdown .dropdown-toggle::after {
   width: 0.1rem;
@@ -38,6 +51,7 @@
 .home-footer a {
   font-family: "PlayfairDisplay-Regular";
   color: #a0a1ac;
+  font-size: 0.8rem;
 }
 
 .home-footer a:hover {
@@ -90,4 +104,51 @@
   border-radius: 50%;
   background: #545454;
   position: absolute;
+}
+
+.home-footer .title1 {
+  font-size: 1rem;
+}
+
+.index-b1 .big {
+  font-weight: 900;
+  color: rgb(255, 158, 36);
+  padding-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.index-b1 .textex {
+  color: #fff;
+  padding-bottom: 20px;
+}
+
+.index-b1 .img-col img {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.index-b1 .img-col {
+  align-items: center;
+}
+
+.bluecloud {
+  z-index: 1;
+  width: 100%;
+}
+
+.pinkcloud {
+  z-index: 3;
+  width: 100%;
+}
+
+.rocket {
+  z-index: 5;
+  width: 70%;
+  height: 90%;
+  bottom: 0;
+}
+
+.index-b1 .text-con {
+  z-index: 7;
 }
