@@ -1,0 +1,46 @@
+.form-outer-div{
+    margin-top: 100px;
+}
+.img-responsive{
+    height: 500px;
+    width: 75%;
+}
+.signupForm-img{
+    padding-right: 0px;
+    margin-right: 0px;   
+}
+.signupForm{
+     -webkit-box-shadow: 7px 7px 15px -1px rgba(103,103,103,0.99);  
+      box-shadow: 7px 7px 15px -1px rgba(103,103,103,0.99); 
+      border-radius: 1%; 
+      padding:25px; 
+      margin-left:0px;
+      height: 550px;
+}
+.gradient{ 
+    background-image: linear-gradient(to right, #6F085B , #CD0046);
+    border:none;
+    border-radius:25px;
+}
+
+.signupForm .form-control {
+    min-height: 38px;
+    box-shadow: none !important;
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+}
+
+.form-group {
+    margin-bottom: 25px; 
+}
+.signupForm .fa {
+    position: relative;
+    top: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .img-responsive{
+    height: 500px;
+    width: 100%;
+}
+}
