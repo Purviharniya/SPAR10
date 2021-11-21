@@ -1,78 +1,62 @@
-<!DOCTYPE html>
-<html>
-    <head>
-       <title>SPAR-10</title>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-         <!--Necessary CSS-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/stylesheets/vendor/css/signup.css">
-    </head>
-    <body>
-
-    <div class = "container form-outer-div">
-        <div class="row">
-            <div class="col-md-6 signupForm-img">
-                <img src="../static/assests/signup.png" class="img-responsive">
-            </div>
-            <div class="col-md-6 signupForm">
-                <div class="signupForm-title text-center py-4 justify-content-center align-items-center">
-                    <h2>Sign Up</h2>
-                </div>
-                <form method="POST" name=signupForm  action="" autocomplete="off" >
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span><i class="fa fa-user" style="font-size: 24px;"></i></span>
-                            <input type="text" class="form-control " id="name" name="name" placeholder="Name" >
-                            
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span><i class="fa fa-envelope" style="font-size: 19px;"></i></span>
-                            <input type="email" class="form-control " id="email" name="email" placeholder="Email">
-                       </div>
-                       
-                    </div>
-                    <div class="form-group">
-				        <div class="input-group">
-                            <span><i class="fa fa-phone" style="font-size: 23px;"></i></span>
-                            <input type="tel" class="form-control " id="contactno" name="contactno" placeholder="Contact no" >
-                            
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
-                            <input type="password" class="form-control " id="password" name="password" placeholder="Password">
-                            
-                        </div>
-                    </div>
-                    <div class="form-check form-group">
-                        <input class="form-check-input" type="checkbox" name='tnc' required>
-                        <label class="form-check-label">I agree to terms and conditions.</label>     
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SIGN UP</button>
-                    </div>
-                </form>
-                <div class="form-group text-center">
-                        Already have an account? <a href="login.html">Login</a> 
-                </div>
-            </div>
+{% extends 'main.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/signup.css">
 
 
+<div class="container form-outer-div">
+    <div class="row">
+        <div class="col-md-6 signupForm-img">
+            <img src="../static/assets/signup.png" class="img-responsive">
         </div>
-    </div>
+        <div class="col-md-6 signupForm">
+            <div class="signupForm-title text-center py-4 justify-content-center align-items-center">
+                <h2>Sign Up</h2>
+            </div>
+            <form method="POST" name=signupForm action="" autocomplete="off">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span><i class="fa fa-user" style="font-size: 24px;"></i></span>
+                        <input type="text" class="form-control " id="name" name="name" placeholder="Name">
 
- <!--Necessary Javascript-->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-</html>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span><i class="fa fa-envelope" style="font-size: 19px;"></i></span>
+                        <input type="email" class="form-control " id="email" name="email" placeholder="Email">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span><i class="fa fa-phone" style="font-size: 23px;"></i></span>
+                        <input type="tel" class="form-control " id="contactno" name="contactno"
+                            placeholder="Contact no">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
+                        <input type="password" class="form-control " id="password" name="password"
+                            placeholder="Password">
+
+                    </div>
+                </div>
+                <div class="form-check form-group">
+                    <input class="form-check-input" type="checkbox" name='tnc' required>
+                    <label class="form-check-label">I agree to terms and conditions.</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SIGN UP</button>
+                </div>
+            </form>
+            <div class="form-group text-center">
+                Already have an account? <a href="/login">Login</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

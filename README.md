@@ -16,3 +16,6 @@ Login, signup, redaction - riya <br>
 home, extraction, about-us - purvi <br>
 summarization, overview - sagar - refer https://www.tex-ai.com/text-analytics/<br>
 faqs, contact us, classification - akhil <br>
+
+background-image: linear-gradient(
+150deg, #0700dd 0%, #00f2ff 90%);

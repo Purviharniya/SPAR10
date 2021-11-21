@@ -1,59 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <head>
-       <title>SPAR-10</title>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'main.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/login.css">
 
-         <!--Necessary CSS-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/stylesheets/vendor/css/login.css">
-    </head>
-    <body>
 
-    <div class = "container form-outer-div">
-        <div class="row">
-          <div class="col-md-6 loginForm-img">
-                <img src="../static/assests/login.png" class="img-responsive">
-          </div>
-            <div class="col-md-6 loginForm">
-                <div class="loginForm-title text-center py-4 justify-content-center align-items-center">
-                    <h2>Login</h2>
-                </div>
-                <form method="POST" name=loginForm  action="" autocomplete="off" >
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span><i class="fa fa-envelope"></i></span>
-                            <input type="email" class="form-control"name="email" placeholder="Email"  id="email" >
-                        </div>  
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control"name="password" id="password" placeholder ="Password" >
-                        </div>
-                    </div>    
-                    <div class="forgot-password pb-3">
-                        <a href="#" class="hint-text float-left">Forgot Password?</a>
-                    </div>    
-                    <div class="form-group py-3">
-                        <button type="submit" name="Submit" id="Submit" class="btn btn-block btn-primary gradient" >LOGIN</button>
-                    </div>
-
-                </form>
-                <div class="text-center">Don't have an account?<a href="signup.html"> Register</a></div>
-            </div>
-
+<div class="container form-outer-div">
+    <div class="row">
+        <div class="col-md-6 loginForm-img">
+            <img src="../static/assets/login.png" class="img-responsive">
         </div>
-    </div>
+        <div class="col-md-6 loginForm">
+            <div class="loginForm-title text-center py-4 justify-content-center align-items-center">
+                <h2>Login</h2>
+            </div>
+            <form method="POST" name=loginForm action="" autocomplete="off">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Password">
+                    </div>
+                </div>
+                <div class="forgot-password pb-3">
+                    <a href="#" class="hint-text float-left">Forgot Password?</a>
+                </div>
+                <div class="form-group py-3">
+                    <button type="submit" name="Submit" id="Submit"
+                        class="btn btn-block btn-primary gradient">LOGIN</button>
+                </div>
 
- <!--Necessary Javascript-->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-</html>
+            </form>
+            <div class="text-center">Don't have an account?<a href="/signup"> Register</a></div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
