@@ -7,7 +7,7 @@
 .dbutton:hover {
   border: 1px white;
   color: white;
-  background: rgb(23, 142, 197);
+  background: rgb(58,48,137);
 }
 
 .accordionMenu {
@@ -19,7 +19,7 @@
 .accordionMenu label {
   display: block;
   padding: 15px 25px 15px 10px;
-  background: rgb(108, 99, 255);
+  background: #585FAE;
   font-size: 1.5rem;
   color: #fff;
   position: relative;

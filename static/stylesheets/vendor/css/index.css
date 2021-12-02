@@ -167,3 +167,12 @@
   overflow-y: hidden;
   background-image: url("../images/index2.jpg");
 }
+
+.breadcrumb_link{
+  color: white;
+}
+
+.breadcrumb_link:hover {
+  text-decoration: none;
+  color: rgb(255, 158, 36);
+}

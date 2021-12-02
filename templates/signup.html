@@ -6,15 +6,15 @@
     <div class='top-cont'>
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <h1 class="mb-40">
+                <h1 class="mb-40" style="color: white;">
                     Sign Up
                 </h1>
-                <ol class="breadcrumb">
+                <ol class="breadcrumb" style="background-color: transparent;">
                     <li class="breadcrumb-item first-item">
-                        HomePage
+                        <a class="breadcrumb_link" href="/">HomePage</a>
                     </li>
                     <li class="breadcrumb-item first-item">
-                        Sign Up
+                        <a class="breadcrumb_link" href="/signup">Sign Up</a>
                     </li>
                 </ol>
             </div>
@@ -32,7 +32,7 @@
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+                    {{ messages[0] }}.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
