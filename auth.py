@@ -15,20 +15,37 @@ def login():
 def signup():
     return render_template('signup.html')
 
+def validate_signup(name,email,password,contact,remember):
+    
+    if not re.fullmatch(re.compile(r'^[a-zA-Z ]+$'), name):
+        return('Invalid name')
+
+    if not re.fullmatch(re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
+        return('Invalid email address')
+         
+    if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), password):
+        return('Password Should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
+         
+    if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), password):
+        return('Password Should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
+         
+    if remember==False:
+        return('Agree to the terms and conditions')
+         
+    return True
+
 @auth.route('/signup', methods=['POST'])
 def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
     contact =  request.form.get('contactno')
-    user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
     remember = True if request.form.get('tnc') else False
+    user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
 
-    if re.match(r'[a-zA-Z\s]+$', name):
-        print("hi")
-
-    if remember==False:
-        flash('Agree to the terms and conditions')
+    check_valid = validate_signup(name,email,password,contact,remember)
+    if check_valid != True:
+        flash(check_valid)
         return redirect(url_for('auth.signup'))
 
     if user: # if a user is found, we want to redirect back to signup page so user can try again
@@ -60,7 +77,7 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-    return redirect(url_for('main.profile'))
+    return redirect(url_for('main.dashboard'))
 
 @auth.route('/logout')
 @login_required
