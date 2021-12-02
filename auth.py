@@ -23,6 +23,9 @@ def signup_post():
     user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
     remember = True if request.form.get('tnc') else False
 
+    if re.match(r'[a-zA-Z\s]+$', name):
+        print("hi")
+
     if remember==False:
         flash('Agree to the terms and conditions')
         return redirect(url_for('auth.signup'))

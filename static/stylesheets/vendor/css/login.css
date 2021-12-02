@@ -14,9 +14,9 @@
   -webkit-box-shadow: 7px 7px 15px -1px rgba(103, 103, 103, 0.99);
   box-shadow: 7px 7px 15px -1px rgba(103, 103, 103, 0.99);
   border-radius: 1%;
-  padding: 25px;
+  padding: 50px 25px;
   margin-left: 0px;
-  height: 420px;
+  /* height: 420px; */
 }
 .gradient {
   background-image: linear-gradient(to right, #6f085b, #cd0046);
