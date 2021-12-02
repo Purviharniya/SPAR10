@@ -2,43 +2,108 @@
 {% block content %}
 <link rel="stylesheet" href="../static/stylesheets/vendor/css/login.css">
 
-
-<div class="container form-outer-div">
-    <div class="row">
-        <div class="col-md-6 loginForm-img">
-            <img src="../static/assets/login.png" class="img-responsive">
-        </div>
-        <div class="col-md-6 loginForm">
-            <div class="loginForm-title text-center py-4 justify-content-center align-items-center">
-                <h2>Login</h2>
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40">
+                    Login
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        HomePage
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        Login
+                    </li>
+                </ol>
             </div>
-            <form method="POST" name=loginForm action="" autocomplete="off">
-                <div class="form-group">
-                    <div class="input-group">
-                        <span><i class="fa fa-envelope"></i></span>
-                        <input type="email" class="form-control" name="email" placeholder="Email" id="email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span><i class="fa fa-lock"></i></span>
-                        <input type="password" class="form-control" name="password" id="password"
-                            placeholder="Password">
-                    </div>
-                </div>
-                <div class="forgot-password pb-3">
-                    <a href="#" class="hint-text float-left">Forgot Password?</a>
-                </div>
-                <div class="form-group py-3">
-                    <button type="submit" name="Submit" id="Submit"
-                        class="btn btn-block btn-primary gradient">LOGIN</button>
-                </div>
-
-            </form>
-            <div class="text-center">Don't have an account?<a href="/signup"> Register</a></div>
         </div>
-
     </div>
+    <div class="container form-outer-div">
+        <div class="row">
+            <div class="col-md-6 loginForm-img">
+                <img src="../static/assets/login.png" class="img-responsive">
+            </div>
+            <div class="col-md-6 loginForm">
+                <div class="loginForm-title text-center py-4 justify-content-center align-items-center">
+                    <h2>Login</h2>
+                </div>
+                <form method="POST" name=loginForm action="" autocomplete="off">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="forgot-password pb-3">
+                        <a href="#" class="hint-text float-left">Forgot Password?</a>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" name="Submit" id="Submit"
+                            class="btn btn-block btn-primary gradient">LOGIN</button>
+                    </div>
+
+                </form>
+                <div class="text-center">Don't have an account?<a href="/signup"> Register</a></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer begin -->
+    <footer class="w-100 py-4 flex-shrink-0 home-footer">
+        <div class="container py-3">
+            <div class="row gy-4 gx-5">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="h1 text-white">SPAR10</h5>
+                    <p class="small text-muted">An AI Enabled Text Processing Framework. <br>Regardless of your business
+                        needs – operational agility, faster decisions, obtaining customer insights or more.</p>
+                    <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3 title1">Get to know Spar10</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about-us">About</a></li>
+                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/faqs">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3 title1">Product</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="/overview">Overview</a></li>
+                        <li><a href="/text-extraction">Extraction</a></li>
+                        <li><a href="/text-classification">Classification</a></li>
+                        <li><a href="/text-summarization">Summarization</a></li>
+                        <li><a href="/text-redaction">Redaction</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white mb-3">Follow us: </h5>
+                    <p class="small text-muted">Looking to derive actionable intelligence from text? Follow us to
+                        be updated for the latest news!</p>
+                    <form action="#">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" placeholder="Recipient's email"
+                                aria-label="Recipient's email" aria-describedby="button-addon2">
+                            <button class="btn btn-primary" id="button-addon2" type="button"><i
+                                    class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
 </div>
 
 {% endblock %}

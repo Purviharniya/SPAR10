@@ -2,61 +2,127 @@
 {% block content %}
 <link rel="stylesheet" href="../static/stylesheets/vendor/css/signup.css">
 
-
-<div class="container form-outer-div">
-    <div class="row">
-        <div class="col-md-6 signupForm-img">
-            <img src="../static/assets/signup.png" class="img-responsive">
-        </div>
-        <div class="col-md-6 signupForm">
-            <div class="signupForm-title text-center py-4 justify-content-center align-items-center">
-                <h2>Sign Up</h2>
-            </div>
-            <form method="POST" name=signupForm action="" autocomplete="off">
-                <div class="form-group">
-                    <div class="input-group">
-                        <span><i class="fa fa-user" style="font-size: 24px;"></i></span>
-                        <input type="text" class="form-control " id="name" name="name" placeholder="Name">
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span><i class="fa fa-envelope" style="font-size: 19px;"></i></span>
-                        <input type="email" class="form-control " id="email" name="email" placeholder="Email">
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span><i class="fa fa-phone" style="font-size: 23px;"></i></span>
-                        <input type="tel" class="form-control " id="contactno" name="contactno"
-                            placeholder="Contact no">
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
-                        <input type="password" class="form-control " id="password" name="password"
-                            placeholder="Password">
-
-                    </div>
-                </div>
-                <div class="form-check form-group">
-                    <input class="form-check-input" type="checkbox" name='tnc' required>
-                    <label class="form-check-label">I agree to terms and conditions.</label>
-                </div>
-                <div class="form-group">
-                    <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SIGN UP</button>
-                </div>
-            </form>
-            <div class="form-group text-center">
-                Already have an account? <a href="/login">Login</a>
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40">
+                    Sign Up
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        HomePage
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        Sign Up
+                    </li>
+                </ol>
             </div>
         </div>
-
-
     </div>
+    <div class="container pb-5 form-outer-div">
+        <div class="row">
+            <div class="col-md-6 signupForm-img">
+                <img src="../static/assets/signup.png" class="img-responsive">
+            </div>
+            <div class="col-md-6 signupForm">
+                <div class="signupForm-title text-center py-4 justify-content-center align-items-center">
+                    <h2>Sign Up</h2>
+                </div>
+                <form method="POST" name=signupForm action="" autocomplete="off">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-user" style="font-size: 24px;"></i></span>
+                            <input type="text" class="form-control " id="name" name="name" placeholder="Name">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-envelope" style="font-size: 19px;"></i></span>
+                            <input type="email" class="form-control " id="email" name="email" placeholder="Email">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-phone" style="font-size: 23px;"></i></span>
+                            <input type="tel" class="form-control " id="contactno" name="contactno"
+                                placeholder="Contact no">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
+                            <input type="password" class="form-control " id="password" name="password"
+                                placeholder="Password">
+
+                        </div>
+                    </div>
+                    <div class="form-check form-group">
+                        <input class="form-check-input" type="checkbox" name='tnc' required>
+                        <label class="form-check-label">I agree to terms and conditions.</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SIGN UP</button>
+                    </div>
+                </form>
+                <div class="form-group text-center">
+                    Already have an account? <a href="/login">Login</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- Footer begin -->
+    <footer class="w-100 py-4 flex-shrink-0 home-footer">
+        <div class="container py-3">
+            <div class="row gy-4 gx-5">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="h1 text-white">SPAR10</h5>
+                    <p class="small text-muted">An AI Enabled Text Processing Framework. <br>Regardless of your business
+                        needs – operational agility, faster decisions, obtaining customer insights or more.</p>
+                    <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3 title1">Get to know Spar10</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about-us">About</a></li>
+                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/faqs">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3 title1">Product</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="/overview">Overview</a></li>
+                        <li><a href="/text-extraction">Extraction</a></li>
+                        <li><a href="/text-classification">Classification</a></li>
+                        <li><a href="/text-summarization">Summarization</a></li>
+                        <li><a href="/text-redaction">Redaction</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white mb-3">Follow us: </h5>
+                    <p class="small text-muted">Looking to derive actionable intelligence from text? Follow us to
+                        be updated for the latest news!</p>
+                    <form action="#">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" placeholder="Recipient's email"
+                                aria-label="Recipient's email" aria-describedby="button-addon2">
+                            <button class="btn btn-primary" id="button-addon2" type="button"><i
+                                    class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
 </div>
 {% endblock %}
