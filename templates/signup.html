@@ -6,10 +6,10 @@
     <div class='top-cont'>
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <h1 class="mb-40" style="color: white;">
+                <h1 class="mb-40 header">
                     Sign Up
                 </h1>
-                <ol class="breadcrumb" style="background-color: transparent;">
+                <ol class="breadcrumb">
                     <li class="breadcrumb-item first-item">
                         <a class="breadcrumb_link" href="/">HomePage</a>
                     </li>
@@ -20,9 +20,9 @@
             </div>
         </div>
     </div>
-    <div class="container pb-5 form-outer-div">
+    <div class="container form-outer-div">
         <div class="row">
-            <div class="col-md-6 signupForm-img">
+            <div class="col-md-6 signupForm-img align-self-center">
                 <img src="../static/assets/signup.png" class="img-responsive">
             </div>
             <div class="col-md-6 signupForm">
@@ -67,7 +67,14 @@
                             <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
                             <input type="password" class="form-control " id="password" name="password"
                                 placeholder="Password">
-
+                            <i class="fa fa-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
+                            <input type="password" class="form-control " id="confirm-password" name="confirm-password"
+                                placeholder="Confirm your password">
                         </div>
                     </div>
                     <div class="form-check form-group">
@@ -89,4 +96,17 @@
 
     {% include 'partials/footer1.html' %}
 </div>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+
 {% endblock %}

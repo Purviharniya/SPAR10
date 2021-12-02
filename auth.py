@@ -15,7 +15,13 @@ def login():
 def signup():
     return render_template('signup.html')
 
-def validate_signup(name,email,password,contact,remember):
+def validate_signup(name,email,password,cpassword,contact,remember):
+
+    if name=='' or email =='' or password=='' or contact =='':
+        return("Please fill all the fields!")
+
+    if password != cpassword:
+        return('Passwords don\'t match')
     
     if not re.fullmatch(re.compile(r'^[a-zA-Z ]+$'), name):
         return('Invalid name')
@@ -39,11 +45,12 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    cpassword = request.form.get('confirm-password')
     contact =  request.form.get('contactno')
     remember = True if request.form.get('tnc') else False
     user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
 
-    check_valid = validate_signup(name,email,password,contact,remember)
+    check_valid = validate_signup(name,email,password,cpassword,contact,remember)
     if check_valid != True:
         flash(check_valid)
         return redirect(url_for('auth.signup'))
@@ -67,6 +74,10 @@ def login_post():
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
+    if email=='' or password =='':
+        flash("Please fill all the fields")
+        return redirect(url_for('auth.login'))
+        
     user = User.query.filter_by(email=email).first()
 
     # check if the user actually exists

@@ -19,7 +19,7 @@
 .accordionMenu label {
   display: block;
   padding: 15px 25px 15px 10px;
-  background: #585FAE;
+  background: #FF65AB;
   font-size: 1.5rem;
   color: #fff;
   position: relative;
@@ -74,16 +74,4 @@
 .accordionMenu input[type="radio"]:checked + label + .content {
   max-height: 2000px;
   height: auto;
-}
-
-.page-wrapper {
-  top: 0;
-  position: absolute;
-}
-
-.top-cont {
-  padding: 130px 50px 60px 50px;
-  width: 100vw;
-  overflow-y: hidden;
-  background-image: url("../images/index2.jpg");
 }

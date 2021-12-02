@@ -162,17 +162,33 @@
 }
 
 .top-cont {
-  padding: 130px 50px 60px 50px;
+  padding: 120px 50px 50px 50px;
   width: 100vw;
   overflow-y: hidden;
   background-image: url("../images/index2.jpg");
 }
 
-.breadcrumb_link{
+.breadcrumb_link {
   color: white;
 }
 
 .breadcrumb_link:hover {
   text-decoration: none;
   color: rgb(255, 158, 36);
+}
+
+.header {
+  color: rgb(255, 158, 36);
+  font-weight: bolder;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+}
+
+.gradient {
+  background-image: linear-gradient(to right, #6f085b, #cd0046);
+  border: none;
+  border-radius: 25px;
 }

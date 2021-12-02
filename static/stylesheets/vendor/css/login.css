@@ -1,5 +1,5 @@
 .form-outer-div {
-  margin-top: 100px;
+  margin-top: 60px;
   margin-bottom: 60px;
 }
 .img-responsive {
@@ -11,8 +11,8 @@
   margin-right: 0px;
 }
 .loginForm {
-  -webkit-box-shadow: 7px 7px 15px -1px rgba(103, 103, 103, 0.99);
-  box-shadow: 7px 7px 15px -1px rgba(103, 103, 103, 0.99);
+  /* -webkit-box-shadow: 7px 7px 15px -1px rgba(103, 103, 103, 0.99);
+  box-shadow: 7px 7px 15px -1px rgba(103, 103, 103, 0.99); */
   border-radius: 1%;
   padding: 50px 25px;
   margin-left: 0px;
@@ -30,7 +30,10 @@
   border-width: 0 0 1px 0;
   border-radius: 0;
 }
-
+#togglePassword,
+#togglePass {
+  color: #000 !important;
+}
 .form-group {
   margin-bottom: 25px;
 }

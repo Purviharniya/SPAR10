@@ -32,3 +32,12 @@ background-image: linear-gradient(
     - venv\Scripts\activate<br>
 
 3.  To run the app: python main.py
+
+---
+
+1. Dashboard
+2. Profile
+3. Change password
+4. User logs
+5. Redaction
+6. Review summarization

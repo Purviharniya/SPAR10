@@ -6,10 +6,10 @@
     <div class='top-cont'>
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <h1 class="mb-40" style="color: white;">
+                <h1 class="mb-40 header">
                     Login
                 </h1>
-                <ol class="breadcrumb" style="background-color: transparent;">
+                <ol class="breadcrumb">
                     <li class="breadcrumb-item first-item">
                         <a class="breadcrumb_link" href="/">HomePage</a>
                     </li>
@@ -52,6 +52,7 @@
                             <span><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control" name="password" id="password"
                                 placeholder="Password">
+                            <i class="fa fa-eye" id="togglePassword"></i>
                         </div>
                     </div>
                     <div class="form-check form-group">
@@ -75,6 +76,19 @@
     </div>
 
     {% include 'partials/footer1.html' %}
+
 </div>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
 
 {% endblock %}
