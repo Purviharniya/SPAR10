@@ -1,16 +1,28 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager    
+from flask_mail import Mail, Message
+
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
+postamail = Mail()
 
 def create_app():
     app = Flask(__name__)
 
+    app.config['MAIL_SERVER']='smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = 'purvi.h@somaiya.edu'
+    app.config['MAIL_PASSWORD'] = '[password]'
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    postamail = Mail(app)
+
     app.config['SECRET_KEY'] = 'SPAR10'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
     db.init_app(app)
 
     login_manager = LoginManager()

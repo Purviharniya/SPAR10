@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 # from . import
 from flask_login import login_required, current_user
-from __init__ import create_app,db
+from __init__ import create_app,db,postamail
 
 main = Blueprint('main', __name__)
 

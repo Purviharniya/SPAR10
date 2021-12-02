@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
-from __init__ import db
+from __init__ import db,postamail
 from flask_login import login_user, login_required, logout_user
 import re
+import random
+import string
 
 auth = Blueprint('auth', __name__)
 
@@ -95,3 +97,42 @@ def login_post():
 def logout():
     logout_user()
     return redirect(url_for('main.home'))
+
+@auth.route('/forgotpass',methods=["POST","GET"])
+def forgotpass():
+    if request.method=="POST":
+        mail = request.form['mail']
+        check = User.query.filter_by(mail=mail).first()
+        if check:
+            hashCode = ''.join(random.choices(string.ascii_letters + string.digits, k=24))
+            check.hashCode = hashCode
+            db.session.commit()
+            msg = Message('Confirm Password Change', sender = 'purvi.h@somaiya.edu', recipients = [mail])
+            msg.body = "Hello,\nWe've received a request to reset your password. If you want to reset your password, click the link below and enter your new password\n http://localhost:5000/" + check.hashCode
+            postamail.send(msg)
+            flash('Updation link has been sent to your mail')
+            return render_template('forgotpass.html')
+    else:
+        return render_template('forgotpass.html')
+
+@auth.route("/<string:hashCode>",methods=["GET","POST"])
+def hashcode(hashCode):
+    check = User.query.filter_by(hashCode=hashCode).first()    
+    if check:
+        if request.method == 'POST':
+            passw = request.form['passw']
+            cpassw = request.form['cpassw']
+            if passw == cpassw:
+                check.password = passw
+                check.hashCode= None
+                db.session.commit()
+                flash('Passwords updated successfully')
+                return redirect(url_for('auth.login'))
+            else:
+                flash('The passwords don\'t match')
+                return render_template('reenterpass.html')
+        else:
+            return render_template('reenterpass.html')
+    else:
+        flash("Link expired")
+        return redirect(url_for('auth.login'))

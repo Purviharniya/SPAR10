@@ -158,12 +158,12 @@
 
 .page-wrapper {
   top: 0;
+  width: 100%;
   position: absolute;
 }
 
 .top-cont {
   padding: 120px 50px 50px 50px;
-  width: 100vw;
   overflow-y: hidden;
   background-image: url("../images/index2.jpg");
 }

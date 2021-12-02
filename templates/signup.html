@@ -75,6 +75,7 @@
                             <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
                             <input type="password" class="form-control " id="confirm-password" name="confirm-password"
                                 placeholder="Confirm your password">
+                            <i class="fa fa-eye" id="toggleCPassword"></i>
                         </div>
                     </div>
                     <div class="form-check form-group">
@@ -104,6 +105,16 @@
         // toggle the type attribute
         const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
         password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    const toggleCPassword = document.querySelector('#toggleCPassword');
+    const cpassword = document.querySelector('#confirm-password');
+    toggleCPassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = cpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        cpassword.setAttribute('type', type);
         // toggle the eye slash icon
         this.classList.toggle('fa-eye-slash');
     });
