@@ -31,4 +31,4 @@ background-image: linear-gradient(
       virtualenv --system-site-packages -p python3 ./venv <br>
     - venv\Scripts\activate<br>
 
-3.  To run the app: flask main.py
+3.  To run the app: python main.py

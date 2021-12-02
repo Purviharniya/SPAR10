@@ -1,8 +1,9 @@
 .form-outer-div {
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 .img-responsive {
-  height: 500px;
+  height: 400px;
   width: 100%;
 }
 .loginForm-img {
