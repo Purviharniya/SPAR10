@@ -12,6 +12,10 @@
   color: #fff;
 }
 
+.row {
+  margin-left: 0 !important;
+}
+
 .homenav .nav-link:hover {
   color: rgb(255, 158, 36);
 }
