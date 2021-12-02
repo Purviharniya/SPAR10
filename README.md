@@ -19,3 +19,16 @@ faqs, contact us, classification - akhil <br>
 
 background-image: linear-gradient(
 150deg, #0700dd 0%, #00f2ff 90%);
+
+---
+
+1.  https://www.sqlite.org/2021/sqlite-dll-win64-x64-3370000.zip download this and extract it to anaconda3/dlls
+2.  For virtual env:
+
+    - pip install -U pip virtualenv <br>
+    - virtualenv --system-site-packages -p python ./venv <br>
+      or <br>
+      virtualenv --system-site-packages -p python3 ./venv <br>
+    - venv\Scripts\activate<br>
+
+3.  To run the app: flask main.py

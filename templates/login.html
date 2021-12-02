@@ -29,7 +29,17 @@
                 <div class="loginForm-title text-center py-4 justify-content-center align-items-center">
                     <h2>Login</h2>
                 </div>
-                <form method="POST" name=loginForm action="" autocomplete="off">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ messages[0] }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% endwith %}
+                <form method="POST" name=loginForm action="/login" autocomplete="off">
                     <div class="form-group">
                         <div class="input-group">
                             <span><i class="fa fa-envelope"></i></span>
@@ -43,9 +53,14 @@
                                 placeholder="Password">
                         </div>
                     </div>
+                    <div class="form-check form-group">
+                        <input class="form-check-input" type="checkbox" name='remember'>
+                        <label class="form-check-label">Remember me</label>
+                    </div>
                     <div class="forgot-password pb-3">
                         <a href="#" class="hint-text float-left">Forgot Password?</a>
                     </div>
+
                     <div class="form-group py-3">
                         <button type="submit" name="Submit" id="Submit"
                             class="btn btn-block btn-primary gradient">LOGIN</button>
