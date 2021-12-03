@@ -23,68 +23,104 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <img src="../static/assets/faq.svg" width="110%">
+            <div class="col-12 text-center">
+                <img src="../static/assets/faq.svg" width="50%">
             </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <!-- <div class="col-md-6 d-flex justify-content-center align-items-center">
                 <h1 style="margin-top: 1rem;">Frequently Asked Questions</h1>
-            </div>
+            </div> -->
         </div>
         <div class="row d-flex justify-content-center align-items-center" style="margin-top: 2rem;">
             <h3>We have curated a few questions which may be on your mind.</h3>
         </div>
-
         <div class="row d-flex justify-content-center align-items-center mt-2">
-            <button type="button" class="dbutton btn" style="border-radius:2rem;padding: 1rem 1rem;"><strong>Download
+            <a href="https://drive.google.com/file/d/12Eo089nw4y7KWgILK9qbegQjPuXUBTXF/view?usp=sharing">
+                <button type="button" class="dbutton btn" style="border-radius:2rem;padding: 1rem 1rem;"><strong>Download
                     PDF -
                     FAQ's</strong></button>
+            </a>
+            
         </div>
+        <div class="row accordion">
+            <div class="col-md-6">
+                <span class="target-fix" id="accordion"></span>
 
-        <div class="row" style="margin-top: 2rem;margin-bottom: 2rem;">
-            <div class="accordionMenu w-100">
-                <input type="radio" name="question" id="acc1">
-                <label for="acc1">Can SPAR10 be customized according to my requirements?</label>
-                <div class="content">
-                    <div class="inner">
-                        SPAR10 is a bouquet of solutions. As the use-cases of table extraction, summarization,
-                        classification and redaction have many variants required by the users, the base variant of the
-                        modules works for a specific set of inputs. The good news is SPAR10 can be customized to the
-                        requirements of the users.
+                <!-- First Accordion Option -->
+                <div>
+                    <span class="target-fix" id="accordion1"></span>
+                    <a href="#accordion1" id="open-accordion1" title="open">Can SPAR10 be customized according to my requirements?</a>
+                    <a href="#accordion" id="close-accordion1" title="close">Can SPAR10 be customized according to my requirements?</a> 
+                    <div class="accordion-content">
+                        <p>SPAR10 is a bouquet of solutions. As the use-cases of table extraction, summarization,
+                            classification and redaction have many variants required by the users, the base variant of the
+                            modules works for a specific set of inputs. The good news is SPAR10 can be customized to the
+                            requirements of the users.</p>
                     </div>
                 </div>
-                <input type="radio" name="question" id="acc2">
-                <label for="acc2" class="mt-2">Are the solutions domain-specific?</label>
-                <div class="content">
-                    <div class="inner">
-                        The solutions are not domain-specific, it can cut across all domains such as Banking, Retail,
-                        E-commerce, Manufacturing, Education, Healthcare and Lifesciences. The most important things to
-                        be
-                        taken care are the formats of input, output and the training data for some modules. Otherwise,
-                        the
-                        solutions work for any domain if enough training data for summarization and classification are
-                        inputted.
+        
+                <!-- Second Accordion Option -->
+                <div>
+                    <span class="target-fix" id="accordion2"></span>
+                    <a href="#accordion2" id="open-accordion2" title="open">Are the solutions domain-specific?</a>
+                    <a href="#accordion" id="close-accordion2" title="close">Are the solutions domain-specific?</a>
+                    <div class="accordion-content">
+                        <p>The solutions are not domain-specific, it can cut across all domains such as Banking, Retail,
+                            E-commerce, Manufacturing, Education, Healthcare and Lifesciences. The most important things to
+                            be taken care are the formats of input, output and the training data for some modules. Otherwise,
+                            the solutions work for any domain if enough training data for summarization and classification are
+                            inputted.</p>       
                     </div>
                 </div>
-                <!-- 3rd menu -->
-                <input type="radio" name="question" id="acc3">
-                <label for="acc3" class="mt-2">Can SPAR10 extract data from an image?</label>
-                <div class="content">
-                    <div class="inner">
-                        Yes, tables from images can be extracted from images of different formats like jpeg, png, tiff
-                        and
-                        more. SPAR10 also works in the cases where the pdfs and documents have embedded images. This is
-                        one
-                        of the distinguishable features. SPAR10 combines DL, OCR and popular table extraction methods to
-                        create a robust product.
+        
+                <!-- Third Accordion Option -->
+                <div>
+                    <span class="target-fix" id="accordion3"></span>
+                    <a href="#accordion3" id="open-accordion3" title="open">Can SPAR10 extract data from an image?</a>
+                    <a href="#accordion" id="close-accordion3" title="close">Can SPAR10 extract data from an image?</a>
+                    <div class="accordion-content">
+                        <p>Yes, tables from images can be extracted from images of different formats like jpeg, png, tiff
+                            and more. SPAR10 also works in the cases where the pdfs and documents have embedded images. This is
+                            one of the distinguishable features. SPAR10 combines DL, OCR and popular table extraction methods to
+                            create a robust product.</p>
                     </div>
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <!-- Fourth Accordion Option -->
+                <div>
+                    <span class="target-fix" id="accordion4"></span>
+                    <a href="#accordion4" id="open-accordion4" title="open">Are there maintenance costs involved?</a>
+                    <a href="#accordion" id="close-accordion4" title="close">Are there maintenance costs involved?</a> 
+                    <div class="accordion-content">
+                        <p>Zero maintenance cost, as long as the input and output format remains the same.</p>
+                    </div>
+                </div>
+        
+                <!-- Fifth Accordion Option -->
+                <div>
+                    <span class="target-fix" id="accordion5"></span>
+                    <a href="#accordion5" id="open-accordion5" title="open">How does SPAR10 fare amongst other solutions in the market?</a>
+                    <a href="#accordion" id="close-accordion5" title="close">How does SPAR10 fare amongst other solutions in the market?</a>
+                    <div class="accordion-content">
+                        <p>The use-cases we have solved using SPAR10 are complex ones like Tables Extraction, Summarization and Classification. We have used a combination of ML, AI, Text algorithms to solve 
+                            these problems which usually cannot be solved. In addition, SPAR10 can be customized to your specific needs.</p>       
+                    </div>
+                </div>
+        
+                <!-- Sixth Accordion Option -->
+                <div>
+                    <span class="target-fix" id="accordion6"></span>
+                    <a href="#accordion6" id="open-accordion6" title="open">How long will it take to configure a text analytics use case?</a>
+                    <a href="#accordion" id="close-accordion6" title="close">How long will it take to configure a text analytics use case?</a>
+                    <div class="accordion-content">
+                        <p>The modules are off the shelf. They are readily usable if your inputs match our product’s input pipelines.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
+        </div>
     {% include 'partials/footer1.html' %}
     
-</div>
 
+</div>
 {% endblock %}
