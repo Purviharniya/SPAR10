@@ -3,7 +3,7 @@ from flask import Blueprint, render_template,redirect, url_for, request, flash,s
 from flask_login import login_required, current_user
 from __init__ import create_app,db,postamail
 import re
-from models import User
+from models import User,Contact
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -26,9 +26,44 @@ def overview():
 def aboutus():
     return render_template('aboutus.html')
 
-@main.route("/contact-us")
+def validate_contactus(name,email,subject,message):
+
+    if name=='' or email=="" or subject=="" or message=="":
+        return("Please fill all the fields!")
+
+    if len(message)<10:
+        return("Message should have a minimum of 10 characters")
+
+    if not re.fullmatch(re.compile(r'^[a-zA-Z ]+$'), name):
+        return('Invalid name')
+
+    if not re.fullmatch(re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
+        return('Invalid email address')
+
+    return True
+
+@main.route("/contact-us",methods=['GET','POST'])
 def contact():
-    return render_template('contactus.html')
+    if request.method=='POST':
+        email = request.form.get('email')
+        name = request.form.get('name')
+        subject = request.form.get('subject')
+        message = request.form.get('message')
+
+        check_valid = validate_contactus(name,email,subject,message)
+        if check_valid != True:
+            flash(check_valid,"error")
+            return redirect(url_for('main.contact'))
+
+        new_letter = Contact(email=email, name=name, subject=subject,message=message)
+        db.session.add(new_letter)  # Adds new User record to database
+        db.session.commit()  # Commits all changes
+
+        flash("We have received your message! Stay tuned!","success")
+        return redirect(url_for('main.contact'))
+
+    else:
+        return render_template('contactus.html')
 
 @main.route("/faqs")
 def faqs():

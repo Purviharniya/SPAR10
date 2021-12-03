@@ -21,61 +21,73 @@
     </div>
   </div>
   <div class="container">
-    <div class="row" style="margin-bottom: 2rem;"> 
+    <div class="row" style="margin-bottom: 2rem;">
       <div class="col-md-6">
-        <img src="../static/assets/contactus.png" width="100%" height="100%">        
+        <img src="../static/assets/contactus.png" width="100%" height="100%">
       </div>
       <div class="col-md-6 signupForm" style="margin-top: 1rem;width: 100%;">
         <div class="signupForm-title text-center py-4 justify-content-center align-items-center">
-            <h3>Please do contact us for any of your queries and we will get in touch with you.</h3>
+          <h3>Please do contact us for any of your queries and we will get in touch with you.</h3>
         </div>
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ messages[0] }}.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        {% for category,message in messages %}
+        {% if category == "success" %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         {% endif %}
-        {% endwith %}
-        <form method="POST" name="signupForm" action="/signup" autocomplete="off">
-            <div class="form-group">
-                <div class="input-group">
-                    <span><i class="fa fa-user" style="font-size: 25px; margin-right: 1rem;"></i></span>
-                    <input type="text" class="form-control " id="name" name="name" placeholder="Name">
-
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span><i class="fa fa-envelope" style="font-size: 22px;  margin-right: 1rem;"></i></span>
-                    <input type="email" class="form-control " id="email" name="email" placeholder="Email">
-                </div>
-
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span><i class="fa fa-book" style="font-size: 24px;  margin-right: 1rem;"></i></span>
-                    <input type="text" class="form-control " id="subject" name="subject"
-                        placeholder="Subject">
-
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span><i class="fa fa-lock" style="font-size: 25px;  margin-right: 1rem;"></i></span>
-                    
-                    <textarea class="form-control rounded-0" id="message" name="message" rows="5" placeholder="Message"></textarea>
-
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SUBMIT</button>
-            </div>
-          </form>
-            
+        {% if category == "error" %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST" name="contactForm" action="/contact-us" autocomplete="off">
+          <div class="form-group">
+            <div class="input-group">
+              <span><i class="fa fa-user" style="font-size: 25px; margin-right: 1rem;"></i></span>
+              <input type="text" class="form-control " id="name" name="name" placeholder="Name">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span><i class="fa fa-envelope" style="font-size: 22px;  margin-right: 1rem;"></i></span>
+              <input type="email" class="form-control " id="email" name="email" placeholder="Email">
+            </div>
+
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span><i class="fa fa-book" style="font-size: 24px;  margin-right: 1rem;"></i></span>
+              <input type="text" class="form-control " id="subject" name="subject" placeholder="Subject">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span><i class="fa fa-lock" style="font-size: 25px;  margin-right: 1rem;"></i></span>
+
+              <textarea class="form-control rounded-0" id="message" name="message" rows="5"
+                placeholder="Message"></textarea>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SUBMIT</button>
+          </div>
+        </form>
+
+      </div>
     </div>
   </div>
 
