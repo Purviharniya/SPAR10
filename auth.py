@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash,session
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
 from __init__ import db,postamail
 from flask_login import login_user, login_required, logout_user
+from flask_mail import Mail, Message
 import re
 import random
 import string
@@ -103,15 +104,16 @@ def logout():
 @auth.route('/forgotpass',methods=["POST","GET"])
 def forgotpass():
     if request.method=="POST":
-        mail = request.form['mail']
-        check = User.query.filter_by(mail=mail).first()
+        mail = request.form['email']
+        check = User.query.filter_by(email=mail).first()
         if check:
             hashCode = ''.join(random.choices(string.ascii_letters + string.digits, k=24))
             check.hashCode = hashCode
             db.session.commit()
-            msg = Message('Confirm Password Change', sender = 'purvi.h@somaiya.edu', recipients = [mail])
+            msg = Message('Confirm Password Change', sender = 'spar10.project@gmail.com', recipients = [mail])
             msg.body = "Hello,\nWe've received a request to reset your password. If you want to reset your password, click the link below and enter your new password\n http://localhost:5000/" + check.hashCode
             postamail.send(msg)
+            session["reset_link"] = "http://localhost:5000/"+check.hashCode
             flash(u'Updation link has been sent to your mail',"success")
             return render_template('forgotpass.html')
     else:
@@ -122,18 +124,26 @@ def hashcode(hashCode):
     check = User.query.filter_by(hashCode=hashCode).first()    
     if check:
         if request.method == 'POST':
-            passw = request.form['passw']
-            cpassw = request.form['cpassw']
-            if passw == cpassw:
-                check.password = passw
+            passw = request.form['password']
+            cpassw = request.form['confirm-password']
+
+            if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), passw):
+                flash('Password Should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
+                #redirect to the same link 
+                return redirect(session["reset_link"])
+
+            if passw == cpassw: 
+                check.password = generate_password_hash(passw, method='sha256')
                 check.hashCode= None
                 db.session.commit()
-                flash(u'Passwords updated successfully',"success")
+                flash(u'Password updated successfully',"success")
+                print("here")
                 return redirect(url_for('auth.login'))
+
             else:
                 flash(u'The passwords don\'t match',"error")
-                return render_template('reenterpass.html')
+                return render_template('resetpass.html')
         else:
-            return render_template('reenterpass.html')
+            return render_template('resetpass.html',link=session["reset_link"] )
     else :
         return redirect(url_for('main.not_found'))
