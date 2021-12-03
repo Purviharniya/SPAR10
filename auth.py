@@ -34,8 +34,8 @@ def validate_signup(name,email,password,cpassword,contact,remember):
     if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), password):
         return('Password Should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
          
-    if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), password):
-        return('Password Should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
+    if password != cpassword:
+        return('Your passwords dont match')
          
     if remember==False:
         return('Agree to the terms and conditions')
@@ -53,12 +53,13 @@ def signup_post():
     user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
 
     check_valid = validate_signup(name,email,password,cpassword,contact,remember)
+
     if check_valid != True:
-        flash(check_valid)
+        flash(check_valid,"error")
         return redirect(url_for('auth.signup'))
 
     if user: # if a user is found, we want to redirect back to signup page so user can try again
-        flash('Email address already exists')
+        flash(u'Email address already exists',"error")
         return redirect(url_for('auth.signup'))
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
@@ -67,6 +68,7 @@ def signup_post():
     # add the new user to the database
     db.session.add(new_user)
     db.session.commit()
+    flash(u'Registered Successfully! Please login',"success")
     return redirect(url_for('auth.login'))
 
 @auth.route('/login', methods=['POST'])
@@ -77,7 +79,7 @@ def login_post():
     remember = True if request.form.get('remember') else False
 
     if email=='' or password =='':
-        flash("Please fill all the fields")
+        flash(u"Please fill all the fields","error")
         return redirect(url_for('auth.login'))
         
     user = User.query.filter_by(email=email).first()
@@ -85,7 +87,7 @@ def login_post():
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
     if not user or not check_password_hash(user.password, password):
-        flash('Please check your login details and try again.')
+        flash(u'Please check your login details and try again.',"error")
         return redirect(url_for('auth.login')) # if the user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
@@ -110,7 +112,7 @@ def forgotpass():
             msg = Message('Confirm Password Change', sender = 'purvi.h@somaiya.edu', recipients = [mail])
             msg.body = "Hello,\nWe've received a request to reset your password. If you want to reset your password, click the link below and enter your new password\n http://localhost:5000/" + check.hashCode
             postamail.send(msg)
-            flash('Updation link has been sent to your mail')
+            flash(u'Updation link has been sent to your mail',"success")
             return render_template('forgotpass.html')
     else:
         return render_template('forgotpass.html')
@@ -126,13 +128,12 @@ def hashcode(hashCode):
                 check.password = passw
                 check.hashCode= None
                 db.session.commit()
-                flash('Passwords updated successfully')
+                flash(u'Passwords updated successfully',"success")
                 return redirect(url_for('auth.login'))
             else:
-                flash('The passwords don\'t match')
+                flash(u'The passwords don\'t match',"error")
                 return render_template('reenterpass.html')
         else:
             return render_template('reenterpass.html')
-    else:
-        flash("Link expired")
-        return redirect(url_for('auth.login'))
+    else :
+        return redirect(url_for('main.not_found'))

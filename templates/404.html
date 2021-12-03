@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<!-- add the content here -->
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/errorpages.css">
+<div class="wrap404">
+    <div class='cont404'>
+        <div class="container">
+            <h1>
+                404
+            </h1>
+
+            <h4>
+                Page cannot be found
+            </h4>
+            <h5>
+                Can't find what you're looking for? Try searching instead:
+            </h5>
+            <br>
+            <a href="/home" class="btn btn-black">
+                Back to Home
+            </a>
+        </div>
+    </div>
+    {% include 'partials/footer1.html' %}
+
+</div>
+
+{% endblock %}

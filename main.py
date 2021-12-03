@@ -10,6 +10,10 @@ main = Blueprint('main', __name__)
 def home():
     return render_template('index.html')
 
+@main.route("/page404")
+def not_found():
+    return render_template("404.html")
+
 @main.route("/overview")
 def overview():
     return render_template('overview.html')

@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager    
 from flask_mail import Mail, Message
-
+from flask import render_template
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
@@ -24,6 +24,8 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
     db.init_app(app)
+
+    # app.config['TRAP_HTTP_EXCEPTIONS']=True
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
