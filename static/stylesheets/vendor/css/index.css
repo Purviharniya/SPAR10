@@ -79,15 +79,15 @@
 .index-b1 {
   position: absolute;
   top: 0;
-  background-image: url("../images/index-1.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   min-height: 98vh;
 }
 
 .index-b1 .row.row1 {
   margin-right: 0 !important;
   min-height: 98vh;
+  background-image: url("../images/index-1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .text-con {
@@ -123,6 +123,7 @@
 .index-b1 .textex {
   color: #fff;
   padding-bottom: 20px;
+  font-size: 1.3rem;
 }
 
 .index-b1 .img-col img {
@@ -154,6 +155,46 @@
 
 .index-b1 .text-con {
   z-index: 7;
+}
+
+.row2-ind {
+  width: 100%;
+  margin: 20px 0px;
+  background-color: rgb(17, 16, 16);
+  font-family: "Raleway", sans-serif;
+}
+.row3-ind {
+  width: 100%;
+  margin: 20px 0px;
+}
+.row3-ind h1 {
+  color: #000;
+  font-weight: 900;
+  font-family: "Raleway", sans-serif;
+}
+
+.row3-ind li {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.row2-extraction {
+  width: 80%;
+}
+
+.row3-classification {
+  width: 65%;
+}
+
+.row2-ind h2,
+h3,
+p {
+  padding-bottom: 20px;
+}
+
+.row2-ind h3 {
+  color: #fff;
+  font-weight: 800;
 }
 
 .page-wrapper {

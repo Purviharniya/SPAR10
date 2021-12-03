@@ -128,7 +128,7 @@ def hashcode(hashCode):
             cpassw = request.form['confirm-password']
 
             if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), passw):
-                flash('Password Should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
+                flash('Password should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.')
                 #redirect to the same link 
                 return redirect(session["reset_link"])
 
@@ -137,7 +137,7 @@ def hashcode(hashCode):
                 check.hashCode= None
                 db.session.commit()
                 flash(u'Password updated successfully',"success")
-                print("here")
+                # print("here")
                 return redirect(url_for('auth.login'))
 
             else:
