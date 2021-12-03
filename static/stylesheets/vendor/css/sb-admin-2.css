@@ -3318,7 +3318,7 @@ input[type="button"].btn-block {
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-  color: #2e2f37;
+  color: #2e2f37 !important;
   text-decoration: none;
   background-color: #f8f9fc;
 }

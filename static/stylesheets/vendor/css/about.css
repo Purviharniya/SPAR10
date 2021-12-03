@@ -1,0 +1,126 @@
+.wrap-about1 {
+  width: 100%;
+  background-image: url("../images/aboutbackground1.jpg");
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  color: #fff;
+}
+
+.yellowish {
+  color: #fde428;
+}
+.wrap-about1 h1 {
+  font-weight: 900;
+  font-family: "Raleway", sans-serif;
+}
+
+.wrap-about1 h5 {
+  padding-top: 20px;
+}
+
+.wrap-about1 .row {
+  padding: 40px 0 200px 0;
+  margin-left: 50px !important;
+}
+
+.wrap-about1 h1::after {
+  margin: 9px 0 0;
+  content: "";
+  display: block;
+  width: 35px;
+  height: 6px;
+  background: #fde428;
+  border-radius: 3px;
+}
+
+.wrap-about1 img {
+  width: 60%;
+}
+
+.wrap-about2 {
+  width: 100%;
+}
+
+.wrap-about2 .fas {
+  color: #2a2a2a;
+  font-size: 5em;
+}
+.wrap-about2 .para {
+  margin-top: 20px;
+  text-align: justify;
+}
+.wrap-about2 .para h2::after {
+  margin: 9px 0 0;
+  content: "";
+  display: block;
+  width: 35px;
+  height: 6px;
+  background: #178ec5;
+  border-radius: 3px;
+}
+
+.wrap-about2 .para h2 {
+  color: #178ec5;
+  font-weight: 800;
+}
+.wrap-about2 .para p {
+  padding-top: 15px;
+  color: #2a2a2a;
+}
+
+.wrap-about3 {
+  width: 100%;
+  background-image: url("../images/aboutbackground2.jpg");
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  color: #fff;
+}
+
+.wrap-about3 h2::after {
+  margin: 9px 0 0;
+  content: "";
+  display: block;
+  width: 35px;
+  height: 6px;
+  background: #fde428;
+  border-radius: 3px;
+}
+
+.wrap-about3 h2 {
+  font-size: 3em;
+  color: #fde428;
+  font-weight: 800;
+}
+
+.wrap-about3 img {
+  width: 70%;
+}
+
+.benefit {
+  display: flex;
+  height: 100%;
+}
+
+.wrap-about3 li {
+  margin-top: 40px;
+  font-size: 1.1rem;
+  list-style: none;
+}
+
+.wrap-about3 ul li::before {
+  content: "";
+  display: inline-block;
+  height: 25px;
+  width: 28px;
+  background-image: url("../images/benefit-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: -33px;
+}
+
+.wrap-about3 li .yellowish{
+  padding-top: 15px;
+}
+
