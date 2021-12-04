@@ -1,6 +1,179 @@
 {% extends 'main.html' %}
 {% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/text-extraction.css">
 
 <!-- add the content here -->
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40 header">
+                    Text Redaction
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/">Homepage</a>
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/text-redaction">Text Redaction</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class='wrap-ext1'>
+
+        <div class="row">
+            <div class="col-md-4 px-4 py-4">
+                <h1>
+
+                </h1>
+                <h5 style="font-weight: 100;">
+                    SPAR10's text redaction solution, enables you to automatically identify and remove confidential information within any document while retaining its overall context.
+                    SPAR10 is trained to redact the sensitive fields in all documents automatically, quickly and accurately.
+                    SPAR10 can handle medical records, tax and insurance forms, bank statements, legal documentation, purchase orders and more to automatically redact personal information such as names, email IDs, zip codes, credit card numbers, postal addresses. This saves you time and effort while ensuring failproof security for you and your customers.
+                    
+                </h5>
+                <h1>
+
+                </h1>
+            </div>
+            <div class="col-md-8 align-self-center">
+                <img src="../static/assets/banner.png" class="img-responsive">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrap-ext2 my-5">
+        <div class="container text-center">
+            <h2 class="mb-2" style="color: black;font-weight: 900;font-size: 2.5rem;">Tech stack</h2>
+            <h4 class="my-5" style="color: black;font-weight: 300;">SPAR10 uses Python libraries for redaction.</h4>
+              <div class="row ">
+                  <div class="col-md-6">
+                      <div class="info-box">
+                          <h3>PDF, Docx</h3>
+                          <img src="../static/assets/text.png" class="img-responsive">
+                          <h5><span class="yellowish">Library Used: </span>PyMuPDF, aspose.words, fitz, H5py
+                          </h5>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="info-box">
+                          <h3>NLP</h3>
+                          <img src="../static/assets/pdf.png" class="img-responsive">
+                          <h5><span class="yellowish">Library Used: </span>SpaCy</h5>
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-ext3 py-5">
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <div class="data">
+                    <h2 class="pb-3">
+                        SPAR10 advantages
+                    </h2>
+                    <h5 class="pb-5 wrap-tex3">
+                        From detailed bank statements and electronic health records to large spreadsheets and more, SPAR10 can help you:
+                    </h5>
+                </div>
+                <div class="container ext3-con1">
+                    <div class="row mt-5 text-center no-gutters">
+                        <div class="col-md-6">
+                            <img src="../static/assets/ad1.png" class="img-responsive" alt="">
+                            <h5>With consistent and automated redaction</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../static/assets/ad2.png" class="img-responsive" alt="">
+                            <h5>Redact thousands of pages, images, video and audio files in a few clicks</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="container ext3-con1">
+                    <div class="row mt-5 text-center no-gutters">
+                        <div class="col-md-6">
+                            <img src="../static/assets/ad3.png" class="img-responsive" alt="">
+                            <h5>Reduce review costs</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../static/assets/ad4.png" class="img-responsive" alt="">
+                            <h5>Achieve 100% accuracy with no manual intervention</h5>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="col-md-6 text-center align-self-center">
+                <img src="../static/assets/file-redaction.png" class="img-responsive">
+            </div>
+            <div class="data">
+                <h2 class="pb-3 py-3">Features</h2>
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="benefit-container">
+                            <ul>
+                                <li>
+                                    <span class="white">Automated redaction</span><br>
+                                    <div class="yellowish">
+                                        SPAR10 automatically identifies PII, PCI, PHI and more as per the requirements and redacts it. 
+                                        No manual intervention is required to select fields to be redacted.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="white">On-prem, cloud or hybrid</span><br>
+                                    <div class="yellowish">
+                                        SPAR10 can redact documents stored on-prem, in the cloud or even in a hybrid environment.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="white">Pattern redaction</span><br>
+                                    <div class="yellowish">
+                                        SPAR10 enables you to identify and remove words and phrases that match named patterns in text such as bank account numbers, personal identification numbers, email addresses and so on.
+                                    </div>
+                                </li>
+    
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="benefit-container">
+                            <ul>
+                                <li>
+                                    <span class="white">Minimal training required</span><br>
+                                    <div class="yellowish">
+                                        With the help of artificial intelligence and machine learning, SPAR10 can intuitively identify and redact PII from scanned documents, PDFs, image files and more.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="white">Volume</span><br>
+                                    <div class="yellowish">
+                                        SPAR10 allows flexibility and scalability, which means it is capable of redacting any volume of documents while ensuring accuracy and consistency.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="white">Compliance</span><br>
+                                    <div class="yellowish">
+                                        SPAR10 adheres to data compliance laws such as GDPR, HIPPA and more in protecting sensitive information.
+                                    </div>
+                                </li>
+    
+                            </ul>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    {% include 'partials/footer1.html' %}
+
+</div>
+
 
 {% endblock %}
