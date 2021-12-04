@@ -1,6 +1,139 @@
 {% extends 'main.html' %}
 {% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/text-extraction.css">
 
 <!-- add the content here -->
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40 header">
+                    Text Extraction
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/">Homepage</a>
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/text-extraction">Text Extraction</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class='wrap-ext1'>
+
+        <div class="row">
+            <div class="col-md-4 px-4 py-4">
+                <h1>
+
+                </h1>
+                <h5 style="font-weight: 100;">
+                    Our text extraction solutions can extract structured and unstructured text, and convert it into a
+                    predefined format. Load your document in any of the formats – be it a pdf, doc or image. Choose from
+                    the many ML/DL/Scraping extraction methods. Export to CSV, JSON and many more formats.
+                </h5>
+                <h1>
+
+                </h1>
+            </div>
+            <div class="col-md-8 align-self-center">
+                <img src="../static/assets/ext-1.png" class="img-responsive">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrap-ext2 my-5">
+        <div class="container text-center">
+            <h2 class="mb-2" style="color: black;font-weight: 900;font-size: 2.5rem;">Tech Stack</h2>
+            <h4 class="my-5" style="color: black;font-weight: 300;">Text analytics using Python libraries are used for
+                extraction and structuring.</h4>
+            <div class="row ">
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <h3>PDF</h3>
+                        <img src="../static/assets/pdf.png" class="img-responsive">
+                        <h5><span class="yellowish">Library Used:</span>Tabula, Camelot, Tensorflow, Keras, Pytesseract
+                        </h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <h3>Images</h3>
+                        <img src="../static/assets/img-ext.png" class="img-responsive">
+                        <h5><span class="yellowish">Library Used:</span>OpenCV, Tensorflow, Keras, Pytesseract</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <h3>Websites</h3>
+                        <img src="../static/assets/website-ext.png" class="img-responsive">
+                        <h5><span class="yellowish">Library Used:</span>BeautifulSoup, Scrapy, Selenium</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-ext3 py-5">
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <div class="data">
+                    <h2 class="pb-3">
+                        In a Nutshell
+                    </h2>
+                    <h5 class="pb-5 wrap-tex3">
+                        Our text extraction tool can automatically extract text from PDFs, images and websites to
+                        structure the unstructured data.
+                    </h5>
+                </div>
+                <div class="data">
+                    <h2 class="pb-3">Functions (Use Cases)</h2>
+                    <ul>
+                        <li>Extract tabular and peripheral data from PDFs</li>
+                        <li>Extract alternative data from websites and APIs</li>
+                        <li>Redaction of sensitive information extracted from documents such as Bank statements, EHRs,
+                            Invoices, KYC, Emails, Legal documents, Research papers, and more.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 text-center align-self-center">
+                <img src="../static/assets/ind-extraction1.png" class="img-responsive">
+            </div>
+            <!-- <div class="col-12">
+                <h2>Features</h2>
+            </div> -->
+        </div>
+        <div class="container ext3-con1">
+            <div class="row mt-5 text-center no-gutters">
+                <div class="col-md-4">
+                    <img src="../static/assets/ext-s1.png" class="img-responsive" alt="">
+                    <h5>No manual template designing needed. Deep Learning methods detect the tabular areas and OCR them
+                        as
+                        tabular data. Sequential text analytics in NLP detect the entities (batch number, issue date
+                        etc.)
+                        across document irrespective of their position</h5>
+                </div>
+                <div class="col-md-4">
+                    <img src="../static/assets/ext-s2.png" class="img-responsive" alt="">
+                    <h5>Customize the extracted output to a XLSX, CSV, JSON, XML file or write to a database</h5>
+                </div>
+                <div class="col-md-4">
+                    <img src="../static/assets/ext-s3.png" class="img-responsive" alt="">
+                    <h5>Support a variety of languages, including English, Thai, Japanese, Arabic, Mandarin, German, and
+                        all
+                        Latin languages</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {% include 'partials/footer1.html' %}
+
+</div>
+
 
 {% endblock %}
