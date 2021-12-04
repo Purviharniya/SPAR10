@@ -111,6 +111,13 @@ def profile():
         if check_valid != True:
             flash(check_valid,"error")
             return redirect(url_for('main.profile'))
+        
+        if current_user.email != mail:
+            user = User.query.filter_by(email=mail).first()
+
+            if user: # if a user is found, we want to redirect back to signup page so user can try again
+                flash(u'Email address already exists',"error")
+                return redirect(url_for('main.profile'))
 
         try:
             db.session.commit()
