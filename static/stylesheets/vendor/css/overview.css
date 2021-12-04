@@ -1,7 +1,11 @@
-.sec-ext1{
-    background: rgb(17, 16, 16);
+.sec-ext1 {
+  background: rgb(17, 16, 16);
+}
+
+.sec-ext1 .container img {
+  width: 100%;
 }
 
 .row {
-margin-right: 0 !important;
+  margin-right: 0 !important;
 }
