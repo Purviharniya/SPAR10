@@ -1,0 +1,52 @@
+.outerdiv{
+    margin-top:50px;
+    background: #F2E4E4;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.redaction{
+    margin-top: 60px;
+    padding-top: 15px;
+    background: #907D7D;
+    height: 300px;
+}
+
+.img-responsive{
+    height: 30px;
+}
+
+.file{
+    background: #F2E4E4;
+    padding-top: 15px;
+    padding-left:10px;
+}
+
+.buttonstyle{
+border-radius:25px;
+background: black;
+border:black;
+}
+
+.buttonstyle:hover
+{
+background-image:none;
+background-color:#221054;
+}
+
+@media screen and (max-width: 767px) {
+  .outerdiv{
+    margin-top:50px;
+    background: #F2E4E4;
+    border-radius: 25px;
+    overflow-x: hidden;
+}
+
+.redaction{
+    margin-top: 40px;
+    padding-top: 5px;
+    background: #907D7D;
+    height: 300px;
+    overflow-x: hidden;
+}
+}
