@@ -162,6 +162,16 @@ def settings():
 def dashboard():
     return render_template('dashboard.html', name=current_user.name)
 
+@main.route("/system-redaction")
+@login_required
+def system_redaction():
+    return render_template('systemredaction.html')
+
+@main.route("/review-summarization")
+@login_required
+def reviewsummarization():
+    return render_template('reviewsummarization.html')
+
 if __name__ == '__main__':
     db.create_all(app=create_app()) # create the SQLite database
     create_app().run(debug=True) # run the flask app on debug mode

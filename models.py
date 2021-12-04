@@ -15,3 +15,10 @@ class Contact(db.Model):
     name = db.Column(db.String(100))
     subject = db.Column(db.String(1000))
     message = db.Column(db.String(10000))
+
+# class UserLog(db.Model):
+#     id = db.Column(db.Integer, primary_key=True) 
+#     userid = db.Column(db.Integer,db.ForeignKey(User.id))
+#     function = db.Column(db.String(100))
+#     timestamp = db.Column(db.String(100))
+
