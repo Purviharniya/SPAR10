@@ -8,6 +8,8 @@ db = SQLAlchemy()
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
 postamail = Mail()
 
+UPLOAD_FOLDER = "C:/Users/User/projects/SPAR10/uploads/"
+
 def create_app():
     app = Flask(__name__)
 
@@ -17,6 +19,7 @@ def create_app():
     app.config['MAIL_PASSWORD'] = 'SPAR10PROJECT'
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     postamail = Mail(app)
 
     app.config['SECRET_KEY'] = 'SPAR10'
