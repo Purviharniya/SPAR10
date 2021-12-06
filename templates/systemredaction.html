@@ -16,12 +16,12 @@
                         <form action="/system-redaction" method="POST" name="redaction_form">
                             <div class="form-group">
                                 <label for="file1">Upload the file to be redacted:</label>
-                                <input type="file" class="form-control-file" id="file1" name='file1'>
+                                <input type="file" class="form-control-file" id="file1" name='file1' required>
                             </div>
 
                             <div class="form-group">
                                 <label for="foptions">Select redact option:</label><br>
-                                <select multiple="multiple" class="form-control" id="foptions" name="foptions">
+                                <select multiple="multiple" class="form-control" id="foptions" name="foptions" required>
                                     <option value="PERSON">PERSON</option>
                                     <option value="GPE">GPE</option>
                                     <option value="LOC">LOC</option>
