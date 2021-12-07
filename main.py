@@ -8,6 +8,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import os
 
+
+
 main = Blueprint('main', __name__)
 
 @main.route("/")
@@ -163,14 +165,55 @@ def settings():
 def dashboard():
     return render_template('dashboard.html', name=current_user.name)
 
-@main.route("/system-redaction")
+@main.route("/system-redaction", methods=['GET', 'POST'])
 @login_required
 def system_redaction():
-    return render_template('systemredaction.html')
+    if request.method == 'POST':
+        # reviewText = request.form.get('reviewtext')
+        # print(reviewText)
+        # print(request.files)
+
+        # if 'file1' not in request.files and reviewText == '':
+        #     flash('No file part or review text is empty',"error")
+        #     return redirect(url_for('main.systemredaction'))
+
+        # if request.files['file1'].filename !='' and reviewText != '':
+        #     flash('Input either a file OR a text review, both wont do!',"error")
+        #     return redirect(url_for('main.systemredaction'))
+        
+        file = request.files['file1']
+
+        # if file.filename == '' and  reviewText=='':
+        #     flash('No selected file',"error")
+        #     return redirect(url_for('main.systemredaction'))
+
+        check = allowed_file(file.filename)
+        print("CHECK:",check)
+
+        if file and check == True:
+            filename = secure_filename(file.filename)
+            path_to_save= UPLOAD_FOLDER+ 'review_summarization' + filename
+            file.save(os.path.join(UPLOAD_FOLDER+'review_summarization', filename))
+            import py_files.spar10_redaction
+            #load model and get summarized reviews 
+
+            #save summarized file
+            #redirect with summarized file path
+            return render_template('systemredaction.html', file_name=path_to_save)
+
+        if check == False:
+            flash('Only excel files are allowed',"error")
+            return redirect(url_for('main.systemredaction'))
+
+        # if reviewText != '':
+        #     return render_template('systemredaction.html', review_text=reviewText)
+        
+    else:
+        return render_template('systemredaction.html')
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['csv','xlsx']
+           filename.rsplit('.', 1)[1].lower() in ['pdf']
 
 @main.route("/review-summarization", methods=['GET', 'POST'])
 @login_required
@@ -201,7 +244,9 @@ def reviewsummarization():
             filename = secure_filename(file.filename)
             path_to_save= UPLOAD_FOLDER+ 'review_summarization' + filename
             file.save(os.path.join(UPLOAD_FOLDER+'review_summarization', filename))
+            import py_files.spar10_redaction
             #load model and get summarized reviews 
+
             #save summarized file
             #redirect with summarized file path
             return render_template('reviewsummarization.html', file_name=path_to_save)
@@ -215,6 +260,9 @@ def reviewsummarization():
         
     else:
         return render_template('reviewsummarization.html')
+
+
+
 
 if __name__ == '__main__':
     db.create_all(app=create_app()) # create the SQLite database

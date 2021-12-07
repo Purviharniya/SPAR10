@@ -8,7 +8,7 @@ db = SQLAlchemy()
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
 postamail = Mail()
 
-UPLOAD_FOLDER = "C:/Users/User/projects/SPAR10/uploads/"
+UPLOAD_FOLDER = "C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/"
 
 def create_app():
     app = Flask(__name__)
