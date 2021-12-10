@@ -1,0 +1,133 @@
+{% extends 'main.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/signup.css">
+
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40 header">
+                    Sign Up
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/">HomePage</a>
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/signup">Sign Up</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container form-outer-div">
+        <div class="row">
+            <div class="col-md-6 signupForm-img align-self-center">
+                <img src="../static/assets/signup.png" class="img-responsive">
+            </div>
+            <div class="col-md-6 signupForm">
+                <div class="signupForm-title text-center py-4 justify-content-center align-items-center">
+                    <h2>Sign Up</h2>
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category,message in messages %}
+                        {% if category == "success" %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                        {% if category == "error" %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <form method="POST" name="signupForm" action="/signup" autocomplete="off">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-user" style="font-size: 24px;"></i></span>
+                            <input type="text" class="form-control " id="name" name="name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-envelope" style="font-size: 19px;"></i></span>
+                            <input type="email" class="form-control " id="email" name="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-phone" style="font-size: 23px;"></i></span>
+                            <input type="tel" class="form-control " id="contactno" name="contactno"
+                                placeholder="Contact no">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
+                            <input type="password" class="form-control " id="password" name="password"
+                                placeholder="Password">
+                            <i class="fa fa-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" style="font-size: 25px;"></i></span>
+                            <input type="password" class="form-control " id="confirm-password" name="confirm-password"
+                                placeholder="Confirm your password">
+                            <i class="fa fa-eye" id="toggleCPassword"></i>
+                        </div>
+                    </div>
+                    <div class="form-check form-group">
+                        <input class="form-check-input" type="checkbox" name='tnc'>
+                        <label class="form-check-label">I agree to terms and conditions.</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="Submit" class="btn btn-block btn-primary gradient">SIGN UP</button>
+                    </div>
+                    <div class="form-group text-center">
+                        Already have an account? <a href="/login">Login</a>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+    {% include 'partials/footer1.html' %}
+</div>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    const toggleCPassword = document.querySelector('#toggleCPassword');
+    const cpassword = document.querySelector('#confirm-password');
+    toggleCPassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = cpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        cpassword.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+
+{% endblock %}

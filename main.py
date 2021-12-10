@@ -15,19 +15,19 @@ main = Blueprint('main', __name__)
 @main.route("/")
 @main.route("/home")
 def home():
-    return render_template('index.html')
+    return render_template('main_views/index.html')
 
 @main.route("/page404")
 def not_found():
-    return render_template("404.html")
+    return render_template("partials/404.html")
 
 @main.route("/overview")
 def overview():
-    return render_template('overview.html')
+    return render_template('main_views/overview.html')
 
 @main.route("/about-us")
 def aboutus():
-    return render_template('aboutus.html')
+    return render_template('main_views/aboutus.html')
 
 def validate_contactus(name,email,subject,message):
 
@@ -66,27 +66,27 @@ def contact():
         return redirect(url_for('main.contact'))
 
     else:
-        return render_template('contactus.html')
+        return render_template('main_views/contactus.html')
 
 @main.route("/faqs")
 def faqs():
-    return render_template('faqs.html')
+    return render_template('main_views/faqs.html')
 
 @main.route("/text-extraction")
 def textextraction():
-    return render_template('textextraction.html')
+    return render_template('main_views/textextraction.html')
 
 @main.route("/text-summarization")
 def textsummarization():
-    return render_template('textsummarization.html')
+    return render_template('main_views/textsummarization.html')
 
 @main.route("/text-classification")
 def textclassification():
-    return render_template('textclassification.html')
+    return render_template('main_views/textclassification.html')
 
 @main.route("/text-redaction")
 def textredaction():
-    return render_template('textredaction.html')
+    return render_template('main_views/textredaction.html')
 
 def validate_profile_details(name,email,contact):
 
@@ -128,13 +128,13 @@ def profile():
             current_user.name = name
             current_user.email = mail
             current_user.contact = contact
-            return render_template('profile.html', name=current_user.name , user = current_user)
+            return render_template('system_views/profile.html', name=current_user.name , user = current_user)
         except:
             flash(u"Looks like there is some error with database!","error")
             return render_template('profile.html', name=current_user.name , user = current_user)
 
     else:    
-        return render_template('profile.html', name=current_user.name , user = current_user)
+        return render_template('system_views/profile.html', name=current_user.name , user = current_user)
 
 @main.route("/settings",methods=["POST","GET"])
 @login_required
@@ -145,75 +145,25 @@ def settings():
 
         if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), passw):
             flash('Password should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.','error')
-            return render_template('settings.html', name=current_user.name)
+            return render_template('system_views/settings.html', name=current_user.name)
 
         if cpassw != passw:
             flash('Passwords don\'t match!','error')
-            return render_template('settings.html', name=current_user.name)
+            return render_template('system_views/settings.html', name=current_user.name)
         
         check = User.query.filter_by(email=current_user.email).first()
         check.password = generate_password_hash(passw, method='sha256')
         db.session.commit()
         flash(u'Password updated successfully',"success")
-        return render_template('settings.html', name=current_user.name)
+        return render_template('system_views/settings.html', name=current_user.name)
 
     else:
-        return render_template('settings.html', name=current_user.name)
+        return render_template('system_views/settings.html', name=current_user.name)
 
 @main.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template('dashboard.html', name=current_user.name)
-
-@main.route("/system-redaction", methods=['GET', 'POST'])
-@login_required
-def system_redaction():
-    if request.method == 'POST':
-        # reviewText = request.form.get('reviewtext')
-        # print(reviewText)
-        # print(request.files)
-
-        # if 'file1' not in request.files and reviewText == '':
-        #     flash('No file part or review text is empty',"error")
-        #     return redirect(url_for('main.systemredaction'))
-
-        # if request.files['file1'].filename !='' and reviewText != '':
-        #     flash('Input either a file OR a text review, both wont do!',"error")
-        #     return redirect(url_for('main.systemredaction'))
-        
-        file = request.files['file1']
-
-        # if file.filename == '' and  reviewText=='':
-        #     flash('No selected file',"error")
-        #     return redirect(url_for('main.systemredaction'))
-
-        check = allowed_file(file.filename)
-        print("CHECK:",check)
-
-        if file and check == True:
-            filename = secure_filename(file.filename)
-            path_to_save= UPLOAD_FOLDER+ 'review_summarization' + filename
-            file.save(os.path.join(UPLOAD_FOLDER+'review_summarization', filename))
-            import py_files.spar10_redaction
-            #load model and get summarized reviews 
-
-            #save summarized file
-            #redirect with summarized file path
-            return render_template('systemredaction.html', file_name=path_to_save)
-
-        if check == False:
-            flash('Only excel files are allowed',"error")
-            return redirect(url_for('main.systemredaction'))
-
-        # if reviewText != '':
-        #     return render_template('systemredaction.html', review_text=reviewText)
-        
-    else:
-        return render_template('systemredaction.html')
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['pdf']
+    return render_template('system_views/dashboard.html', name=current_user.name)
 
 @main.route("/review-summarization", methods=['GET', 'POST'])
 @login_required
@@ -249,20 +199,17 @@ def reviewsummarization():
 
             #save summarized file
             #redirect with summarized file path
-            return render_template('reviewsummarization.html', file_name=path_to_save)
+            return render_template('system_views/reviewsummarization.html', file_name=path_to_save)
 
         if check == False:
             flash('Only excel files are allowed',"error")
             return redirect(url_for('main.reviewsummarization'))
 
         if reviewText != '':
-            return render_template('reviewsummarization.html', review_text=reviewText)
+            return render_template('system_views/reviewsummarization.html', review_text=reviewText)
         
     else:
-        return render_template('reviewsummarization.html')
-
-
-
+        return render_template('system_views/reviewsummarization.html')
 
 if __name__ == '__main__':
     db.create_all(app=create_app()) # create the SQLite database

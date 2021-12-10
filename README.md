@@ -41,3 +41,11 @@ background-image: linear-gradient(
 4. User logs
 5. Redaction
 6. Review summarization
+
+
+-----------
+
+1. make folder creation relative (uploads->summarization,redaction,extraction,classification)
+2. shift routes to separate .py files
+3. shift templates to separate folders
+4. make sure all the routes work fine

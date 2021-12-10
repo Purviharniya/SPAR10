@@ -8,7 +8,7 @@ db = SQLAlchemy()
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
 postamail = Mail()
 
-UPLOAD_FOLDER = "C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/"
+UPLOAD_FOLDER = "C:/Users/User/projects/SPAR10/uploads/"
 
 def create_app():
     app = Flask(__name__)
@@ -48,5 +48,17 @@ def create_app():
     # blueprint for non-auth parts of app
     from main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    from system_redaction import system_redaction as system_redaction_blueprint
+    app.register_blueprint(system_redaction_blueprint)
+
+    # from review_summarization import system_redaction as system_redaction_blueprint
+    # app.register_blueprint(system_redaction_blueprint)
+
+    # from system_redaction import system_redaction as system_redaction_blueprint
+    # app.register_blueprint(system_redaction_blueprint)
+
+    # from system_redaction import system_redaction as system_redaction_blueprint
+    # app.register_blueprint(system_redaction_blueprint)
 
     return app

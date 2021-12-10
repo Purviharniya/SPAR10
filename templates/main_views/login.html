@@ -1,0 +1,106 @@
+{% extends 'main.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/login.css">
+
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40 header">
+                    Login
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/">HomePage</a>
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/login">Login</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container form-outer-div">
+        <div class="row">
+            <div class="col-md-5 loginForm-img align-self-center">
+                <img src="../static/assets/login.png" class="img-responsive">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6 loginForm">
+                <div class="loginForm-title text-center py-4 justify-content-center align-items-center">
+                    <h2>Login</h2>
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category,message in messages %}
+                        {% if category == "success" %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                        {% if category == "error" %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <form method="POST" name=loginForm action="/login" autocomplete="off">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Password">
+                            <i class="fa fa-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+                    <div class="form-check form-group">
+                        <input class="form-check-input" type="checkbox" name='remember'>
+                        <label class="form-check-label">Remember me</label>
+                    </div>
+                    <div class="forgot-password pb-3">
+                        <a href="/forgotpass" class="hint-text float-left">Forgot Password?</a>
+                    </div>
+
+                    <div class="form-group py-3">
+                        <button type="submit" name="Submit" id="Submit"
+                            class="btn btn-block btn-primary gradient">LOGIN</button>
+                    </div>
+
+                </form>
+                <div class="text-center">Don't have an account?<a href="/signup"> Register</a></div>
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'partials/footer1.html' %}
+
+</div>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+
+{% endblock %}
