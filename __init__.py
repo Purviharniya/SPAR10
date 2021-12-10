@@ -3,12 +3,38 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager    
 from flask_mail import Mail, Message
 from flask import render_template
+import os
+
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
 postamail = Mail()
 
-UPLOAD_FOLDER = "C:/Users/User/projects/SPAR10/uploads/"
+def get_SPAR10_dir_path():
+    path = os.path.dirname(os.path.abspath(__file__))
+    return path
+
+SPAR10_directory = get_SPAR10_dir_path().replace("\\","/")
+# print(SPAR10_directory)  #to check for the correct directory 
+
+
+def create_uploads_folder_and_get_path(dir):
+    path_uploads = dir +'/uploads'
+    if not os.path.exists(path_uploads):
+        os.makedirs(path_uploads)
+
+    return path_uploads
+
+UPLOAD_FOLDER = create_uploads_folder_and_get_path(SPAR10_directory)
+# print(UPLOAD_FOLDER) #check for uploads folder path
+
+def create_redaction_folders_and_get_path(dir):
+    try:
+        os.makedirs("path/to/directory")
+
+    except FileExistsError: 
+        pass     # directory already exists
+
 
 def create_app():
     app = Flask(__name__)
