@@ -101,41 +101,6 @@ def validate_profile_details(name,email,contact):
        
     return True
 
-@main.route("/profile",methods=["POST","GET"])
-@login_required
-def profile():
-    if request.method=='POST':
-        name = request.form['name']
-        mail = request.form['email']
-        contact = request.form['contact']
-        id = current_user.id
-
-        check_valid = validate_profile_details(name,mail,contact)
-        if check_valid != True:
-            flash(check_valid,"error")
-            return redirect(url_for('main.profile'))
-        
-        if current_user.email != mail:
-            user = User.query.filter_by(email=mail).first()
-
-            if user: # if a user is found, we want to redirect back to signup page so user can try again
-                flash(u'Email address already exists',"error")
-                return redirect(url_for('main.profile'))
-
-        try:
-            db.session.commit()
-            flash(u"Details updated successfully!","success")
-            current_user.name = name
-            current_user.email = mail
-            current_user.contact = contact
-            return render_template('system_views/profile.html', name=current_user.name , user = current_user)
-        except:
-            flash(u"Looks like there is some error with database!","error")
-            return render_template('profile.html', name=current_user.name , user = current_user)
-
-    else:    
-        return render_template('system_views/profile.html', name=current_user.name , user = current_user)
-
 @main.route("/settings",methods=["POST","GET"])
 @login_required
 def settings():
@@ -160,10 +125,7 @@ def settings():
     else:
         return render_template('system_views/settings.html', name=current_user.name)
 
-@main.route("/dashboard")
-@login_required
-def dashboard():
-    return render_template('system_views/dashboard.html', name=current_user.name)
+
 
 @main.route("/review-summarization", methods=['GET', 'POST'])
 @login_required

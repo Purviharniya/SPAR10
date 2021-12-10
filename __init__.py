@@ -116,6 +116,9 @@ def create_app():
     from main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from system import system as system_blueprint
+    app.register_blueprint(system_blueprint)
+
     from system_redaction import system_redaction as system_redaction_blueprint
     app.register_blueprint(system_redaction_blueprint)
 
