@@ -45,6 +45,12 @@ def create_revsum_folder_and_get_path(dir):
         os.makedirs(path_revsum)
     return path_revsum
 
+def create_parasum_folder_and_get_path(dir):
+    path_parasum = dir +'/review_summarization'
+    if not os.path.exists(path_parasum):
+        os.makedirs(path_parasum)
+    return path_parasum
+
 def create_extraction_folder_and_get_path(dir):
     path_extraction = dir +'/text_extraction'
     if not os.path.exists(path_extraction):
@@ -66,6 +72,7 @@ def create_textclass_folder_and_get_path(dir):
 REDACTION_FOLDER = create_redaction_folder_and_get_path(UPLOAD_FOLDER) #redaction folder
 DOCSUM_FOLDER = create_docsum_folder_and_get_path(UPLOAD_FOLDER) #document summarization folder
 REVSUM_FOLDER = create_revsum_folder_and_get_path(UPLOAD_FOLDER) #review summarization folder
+PARASUM_FOLDER = create_parasum_folder_and_get_path(UPLOAD_FOLDER) #review summarization folder
 EXTRACTION_FOLDER = create_extraction_folder_and_get_path(UPLOAD_FOLDER) #text extraction folder
 DOCCLASS_FOLDER = create_docclass_folder_and_get_path(UPLOAD_FOLDER) #document classification folder
 TEXTCLASS_FOLDER = create_textclass_folder_and_get_path(UPLOAD_FOLDER) #text classification folder
