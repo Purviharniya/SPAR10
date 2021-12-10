@@ -4,6 +4,7 @@ from models import User,Contact
 import os
 import re
 from __init__ import create_app,db,postamail
+from werkzeug.utils import secure_filename
 
 system = Blueprint('system', __name__)
 

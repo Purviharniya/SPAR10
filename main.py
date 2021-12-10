@@ -101,32 +101,6 @@ def validate_profile_details(name,email,contact):
        
     return True
 
-@main.route("/settings",methods=["POST","GET"])
-@login_required
-def settings():
-    if request.method=="POST":
-        passw = request.form['password']
-        cpassw = request.form['confirm-password']
-
-        if not re.fullmatch(re.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"), passw):
-            flash('Password should have at least one number, at least one uppercase and one lowercase character,at least one special symbol,be between 6 to 20 characters.','error')
-            return render_template('system_views/settings.html', name=current_user.name)
-
-        if cpassw != passw:
-            flash('Passwords don\'t match!','error')
-            return render_template('system_views/settings.html', name=current_user.name)
-        
-        check = User.query.filter_by(email=current_user.email).first()
-        check.password = generate_password_hash(passw, method='sha256')
-        db.session.commit()
-        flash(u'Password updated successfully',"success")
-        return render_template('system_views/settings.html', name=current_user.name)
-
-    else:
-        return render_template('system_views/settings.html', name=current_user.name)
-
-
-
 @main.route("/review-summarization", methods=['GET', 'POST'])
 @login_required
 def reviewsummarization():

@@ -87,6 +87,7 @@ def create_app():
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.config['REDACTION_FOLDER'] = REDACTION_FOLDER
     postamail = Mail(app)
 
     app.config['SECRET_KEY'] = 'SPAR10'

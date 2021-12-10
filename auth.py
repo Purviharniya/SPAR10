@@ -12,11 +12,11 @@ auth = Blueprint('auth', __name__)
 
 @auth.route("/login")
 def login():
-    return render_template('login.html')
+    return render_template('main_views/login.html')
 
 @auth.route("/signup")
 def signup():
-    return render_template('signup.html')
+    return render_template('main_views/signup.html')
 
 def validate_signup(name,email,password,cpassword,contact,remember):
 
@@ -93,7 +93,7 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-    return redirect(url_for('main.dashboard'))
+    return redirect(url_for('system.dashboard'))
 
 @auth.route('/logout')
 @login_required
@@ -115,9 +115,9 @@ def forgotpass():
             postamail.send(msg)
             session["reset_link"] = "http://localhost:5000/"+check.hashCode
             flash(u'Updation link has been sent to your mail',"success")
-            return render_template('forgotpass.html')
+            return render_template('main_views/forgotpass.html')
     else:
-        return render_template('forgotpass.html')
+        return render_template('main_views/forgotpass.html')
 
 @auth.route("/<string:hashCode>",methods=["GET","POST"])
 def hashcode(hashCode):
@@ -142,8 +142,8 @@ def hashcode(hashCode):
 
             else:
                 flash(u'The passwords don\'t match',"error")
-                return render_template('resetpass.html')
+                return render_template('main_views/resetpass.html')
         else:
-            return render_template('resetpass.html',link=session["reset_link"] )
+            return render_template('main_views/resetpass.html',link=session["reset_link"] )
     else :
         return redirect(url_for('main.not_found'))
