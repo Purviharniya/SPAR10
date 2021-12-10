@@ -17,7 +17,6 @@ def get_SPAR10_dir_path():
 SPAR10_directory = get_SPAR10_dir_path().replace("\\","/")
 # print(SPAR10_directory)  #to check for the correct directory 
 
-
 def create_uploads_folder_and_get_path(dir):
     path_uploads = dir +'/uploads'
     if not os.path.exists(path_uploads):
@@ -26,15 +25,50 @@ def create_uploads_folder_and_get_path(dir):
     return path_uploads
 
 UPLOAD_FOLDER = create_uploads_folder_and_get_path(SPAR10_directory)
-# print(UPLOAD_FOLDER) #check for uploads folder path
+# print(UPLOAD_FOLDER) #check for uploads folder path 
 
-def create_redaction_folders_and_get_path(dir):
-    try:
-        os.makedirs("path/to/directory")
+def create_redaction_folder_and_get_path(dir):
+    path_redaction = dir +'/redaction'
+    if not os.path.exists(path_redaction):
+        os.makedirs(path_redaction)
+    return path_redaction
 
-    except FileExistsError: 
-        pass     # directory already exists
+def create_docsum_folder_and_get_path(dir):
+    path_docsum = dir +'/document_summarization'
+    if not os.path.exists(path_docsum):
+        os.makedirs(path_docsum)
+    return path_docsum
 
+def create_revsum_folder_and_get_path(dir):
+    path_revsum = dir +'/review_summarization'
+    if not os.path.exists(path_revsum):
+        os.makedirs(path_revsum)
+    return path_revsum
+
+def create_extraction_folder_and_get_path(dir):
+    path_extraction = dir +'/text_extraction'
+    if not os.path.exists(path_extraction):
+        os.makedirs(path_extraction)
+    return path_extraction
+
+def create_docclass_folder_and_get_path(dir):
+    path_docclass = dir +'/document_classification'
+    if not os.path.exists(path_docclass):
+        os.makedirs(path_docclass)
+    return path_docclass
+
+def create_textclass_folder_and_get_path(dir):
+    path_textclass = dir +'/document_classification'
+    if not os.path.exists(path_textclass):
+        os.makedirs(path_textclass)
+    return path_textclass
+
+REDACTION_FOLDER = create_redaction_folder_and_get_path(UPLOAD_FOLDER) #redaction folder
+DOCSUM_FOLDER = create_docsum_folder_and_get_path(UPLOAD_FOLDER) #document summarization folder
+REVSUM_FOLDER = create_revsum_folder_and_get_path(UPLOAD_FOLDER) #review summarization folder
+EXTRACTION_FOLDER = create_extraction_folder_and_get_path(UPLOAD_FOLDER) #text extraction folder
+DOCCLASS_FOLDER = create_docclass_folder_and_get_path(UPLOAD_FOLDER) #document classification folder
+TEXTCLASS_FOLDER = create_textclass_folder_and_get_path(UPLOAD_FOLDER) #text classification folder
 
 def create_app():
     app = Flask(__name__)
