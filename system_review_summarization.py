@@ -11,12 +11,12 @@ system_review_summarization = Blueprint('system_review_summarization', __name__)
 
 def allowed_files_for_revsum(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['pdf','doc','docx']
+           filename.rsplit('.', 1)[1].lower() in ['csv','xlsx']
 
 @system_review_summarization.route("/review-summarization", methods=['GET', 'POST'])
 @login_required
 def reviewsummarization():
-    if request.method == 'POST':
+     if request.method == 'POST':
         reviewText = request.form.get('reviewtext')
         print(reviewText)
         print(request.files)
@@ -28,7 +28,7 @@ def reviewsummarization():
         if request.files['file1'].filename !='' and reviewText != '':
             flash('Input either a file OR a text review, both wont do!',"error")
             return redirect(url_for('system_review_summarization.reviewsummarization'))
-        
+
         file = request.files['file1']
 
         if file.filename == '' and  reviewText=='':
@@ -42,9 +42,7 @@ def reviewsummarization():
             filename = secure_filename(file.filename)
             path_to_save= UPLOAD_FOLDER+ 'review_summarization' + filename
             file.save(os.path.join(UPLOAD_FOLDER+'review_summarization', filename))
-            import py_files.spar10_redaction
             #load model and get summarized reviews 
-
             #save summarized file
             #redirect with summarized file path
             return render_template('system_views/reviewsummarization.html', file_name=path_to_save)
@@ -55,6 +53,6 @@ def reviewsummarization():
 
         if reviewText != '':
             return render_template('system_views/reviewsummarization.html', review_text=reviewText)
-        
+
     else:
         return render_template('system_views/reviewsummarization.html')
