@@ -9,19 +9,6 @@ http://aventer.themezinho.net/?storefront=envato-elements
 
 ---
 
-For illustrations-
-https://thedesignproject.co/
-
-Login, signup, redaction - riya <br>
-home, extraction, about-us - purvi <br>
-summarization, overview - sagar - refer https://www.tex-ai.com/text-analytics/<br>
-faqs, contact us, classification - akhil <br>
-
-background-image: linear-gradient(
-150deg, #0700dd 0%, #00f2ff 90%);
-
----
-
 1.  https://www.sqlite.org/2021/sqlite-dll-win64-x64-3370000.zip download this and extract it to anaconda3/dlls
 2.  For virtual env:
 
@@ -35,17 +22,8 @@ background-image: linear-gradient(
 
 ---
 
-1. Dashboard
-2. Profile
-3. Change password
-4. User logs
-5. Redaction
-6. Review summarization
+TO DO:
 
+1. redaction: allow the user to view redacted file, and then provide an option to download (file upload preview, redacted file preview, save file to db, provide an option to download-pdf)
 
------------
-
-1. make folder creation relative (uploads->summarization,redaction,extraction,classification)
-2. shift routes to separate .py files
-3. shift templates to separate folders
-4. make sure all the routes work fine
+---
