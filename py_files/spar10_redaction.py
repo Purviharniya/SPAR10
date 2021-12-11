@@ -10,7 +10,7 @@ Original file is located at
 
 ### Installing the required libraries
 """
-
+# python -m spacy download en # use this to download spacy en package
 # pip install PyMuPDF==1.16.14
 
 # pip install aspose.words
@@ -44,11 +44,13 @@ def get_sensitive_data(lines,tt):
 	
   docx = nlp(lines)
   redacted_sentences = []
-  for ent in docx.ents:
-    ent.merge()
+  with docx.retokenize() as retokenizer:
+    for ent in docx.ents:
+      retokenizer.merge(ent)
   for token in docx:
     if token.ent_type_ == tt:
-      yield token.string
+      # print(token) #to see the output
+      yield token.text
 
 def get_email_addresses(string):
   
@@ -58,15 +60,15 @@ def get_email_addresses(string):
 def get_path():
 
   # replace it with name of the pdf file
-  path = "C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/review_summarization/testing.pdf"
+  path = "C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf"
 
   if path[-4:]=='docx':
     
     # Load word document
     doc = aw.Document("C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/review_summarization/testing.docx")
     # Save as PDF
-    doc.save("C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/review_summarization/testing.pdf")
-    path="C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/review_summarization/testing.pdf"
+    doc.save("C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf")
+    path="C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf"
 
   return path
 

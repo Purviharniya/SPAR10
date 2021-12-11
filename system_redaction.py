@@ -24,12 +24,13 @@ def systemredaction():
             path_to_save= REDACTION_FOLDER + '/' + filename
             print(path_to_save)
             file.save(path_to_save)
+            
             import py_files.spar10_redaction
             #load model and get summarized reviews 
 
             #save summarized file
             #redirect with summarized file path
-            return render_template('system_views/system_redaction.html', file_name=path_to_save)
+            return render_template('system_views/systemredaction.html', file_name=path_to_save)
 
         if check == False:
             flash('Only excel files are allowed',"error")

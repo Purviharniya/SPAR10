@@ -1,7 +1,9 @@
+aspose_words==21.11.0
 fitz==0.0.1.dev2
 Flask==1.1.2
 Flask_Login==0.5.0
 Flask_Mail==0.9.1
 Flask_SQLAlchemy==2.5.1
 spacy==3.2.1
-Werkzeug==1.0.1
+Werkzeug==2.0.2
+PyMuPDF==1.16.14
