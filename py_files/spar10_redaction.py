@@ -54,9 +54,20 @@ def get_sensitive_data(lines,tt):
       yield token.text
 
 def get_email_addresses(string):
-  
-  r = re.compile(r'[\w\.-]+@[\w\.-]+')
+  r = re.compile(r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$')
   return r.findall(string)
+
+def get_dates(string):
+  # mm/dd/yyyy or mm-dd-yyyy or mm.dd.yyyy
+  r1 = r'^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$'
+  # dd/mm/yyyy, dd-mm-yyyy or dd.mm.yyyy
+  r2 = r'^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$'
+  #yyyy-mm-dd
+  r3 = r'\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*'
+  #string dates like January 21, 2020 are left
+  generic_re = re.compile("(%s|%s|%s)" % (r1, r2, r3))
+
+  return generic_re.findall(string)
 
 def get_path():
 
@@ -99,7 +110,8 @@ def redaction():
       
       if i=='EMAIL':
         sensitive = get_email_addresses(page.getText("text"))
-      
+      elif i=='DATE':
+        sensitive = get_dates(page.getText("text"))
       else:
         sensitive = get_sensitive_data(page.getText("text"),i)
     
