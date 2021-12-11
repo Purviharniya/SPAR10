@@ -6,6 +6,7 @@ import re
 from __init__ import create_app,db,postamail,UPLOAD_FOLDER,REDACTION_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
+from py_files.spar10_redaction import redaction
 
 system_redaction = Blueprint('system_redaction', __name__)
 
@@ -24,13 +25,14 @@ def systemredaction():
             path_to_save= REDACTION_FOLDER + '/' + filename
             print(path_to_save)
             file.save(path_to_save)
-            
-            import py_files.spar10_redaction
-            #load model and get summarized reviews 
 
+            #load model and get summarized reviews 
+            redaction()
+            
             #save summarized file
             #redirect with summarized file path
-            return render_template('system_views/systemredaction.html', file_name=path_to_save)
+            flash('The redacted file has been downloaded',"success")
+            return redirect(url_for('system_redaction.systemredaction'))
 
         if check == False:
             flash('Only excel files are allowed',"error")
