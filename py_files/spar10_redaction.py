@@ -18,6 +18,7 @@ Original file is located at
 """### Importing the required libraries"""
 
 # NLP libraries
+
 import spacy
 from spacy import displacy
 nlp = spacy.load('en_core_web_sm')
@@ -115,4 +116,4 @@ def redaction():
   doc.save('redacted.pdf')
   print("Successfully redacted")
 
-redaction()
+# redaction()
