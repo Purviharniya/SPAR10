@@ -16,7 +16,7 @@ def systemredaction():
     if request.method == 'POST':
         file = request.files['file1']
 
-        check = allowed_file_for_redaction(file.filename)
+        check = allowed_files_for_redaction(file.filename)
         # print("CHECK:",check) to check if file extension is acceptable or not
  
         if file and check == True:
@@ -41,6 +41,6 @@ def systemredaction():
     else:
         return render_template('system_views/systemredaction.html')
 
-def allowed_file_for_redaction(filename):
+def allowed_files_for_redaction(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ['pdf','doc','docx']

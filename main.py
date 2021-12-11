@@ -101,52 +101,6 @@ def validate_profile_details(name,email,contact):
        
     return True
 
-@main.route("/review-summarization", methods=['GET', 'POST'])
-@login_required
-def reviewsummarization():
-    if request.method == 'POST':
-        reviewText = request.form.get('reviewtext')
-        print(reviewText)
-        print(request.files)
-
-        if 'file1' not in request.files and reviewText == '':
-            flash('No file part or review text is empty',"error")
-            return redirect(url_for('main.reviewsummarization'))
-
-        if request.files['file1'].filename !='' and reviewText != '':
-            flash('Input either a file OR a text review, both wont do!',"error")
-            return redirect(url_for('main.reviewsummarization'))
-        
-        file = request.files['file1']
-
-        if file.filename == '' and  reviewText=='':
-            flash('No selected file',"error")
-            return redirect(url_for('main.reviewsummarization'))
-
-        check = allowed_file(file.filename)
-        print("CHECK:",check)
-
-        if file and check == True:
-            filename = secure_filename(file.filename)
-            path_to_save= UPLOAD_FOLDER+ 'review_summarization' + filename
-            file.save(os.path.join(UPLOAD_FOLDER+'review_summarization', filename))
-            import py_files.spar10_redaction
-            #load model and get summarized reviews 
-
-            #save summarized file
-            #redirect with summarized file path
-            return render_template('system_views/reviewsummarization.html', file_name=path_to_save)
-
-        if check == False:
-            flash('Only excel files are allowed',"error")
-            return redirect(url_for('main.reviewsummarization'))
-
-        if reviewText != '':
-            return render_template('system_views/reviewsummarization.html', review_text=reviewText)
-        
-    else:
-        return render_template('system_views/reviewsummarization.html')
-
 if __name__ == '__main__':
     db.create_all(app=create_app()) # create the SQLite database
     create_app().run(debug=True) # run the flask app on debug mode
