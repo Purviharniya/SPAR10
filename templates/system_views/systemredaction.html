@@ -4,53 +4,6 @@
     rel="stylesheet" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <!-- add the content here -->
-<!-- <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card mt-2">
-            <div class="card shadow pt-1 pb-5">
-                <div class="card-body">
-                    <div class="col-12 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Document Redaction:</h4>
-
-                        <form action="/system-redaction" method="POST" name="redaction_form">
-                            <div class="form-group">
-                                <label for="file1">Upload the file to be redacted:</label>
-                                <input type="file" class="form-control-file" id="file1" name='file1' required>
-                            </div> -->
-
-                            <!-- <div class="form-group">
-                                <label for="foptions">Select redact option:</label><br>
-                                <select multiple="multiple" class="form-control" id="foptions" name="foptions" required>
-                                    <option value="PERSON">PERSON</option>
-                                    <option value="GPE">GPE</option>
-                                    <option value="LOC">LOC</option>
-                                    <option value="ORG">ORG</option>
-                                    <option value="TIME">TIME</option>
-                                    <option value="DATE">DATE</option>
-                                    <option value="MONEY">MONEY</option>
-                                    <option value="FAC">FAC</option>
-                                    <option value="QUANITY">QUANITY</option>
-                                    <option value="CARDINAL">CARDINAL</option>
-                                    <option value="ORDINAL">ORDINAL</option>
-                                </select>
-                            </div> -->
-
-                            <!-- <input type="submit" class="btn btn-purple" value="Upload" name="redact_submit">
-                            <input type="reset" class="btn btn-purple" value="Cancel" name="redact_reset">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#foptions').multiselect();
-    });
-</script> -->
-
 
 <div class="container-fluid">
 
@@ -82,19 +35,30 @@
                         {% endfor %}
                         {% endif %}
                         {% endwith %}
-                        <form action="/system-redaction" enctype='multipart/form-data' method="POST"
-                            name="resum_form">
+                        <form action="/system-redaction" enctype='multipart/form-data' method="POST" name="resum_form">
                             <div class="form-group">
                                 <label for="file1">Upload the pdf to be redacted: </label>
                                 <input type="file" class="form-control-file" id="file1" name='file1'>
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="or">OR</label>
-                            </div>
                             <div class="form-group">
-                                <label for="reviewtext">Enter the review here:</label>
-                                <textarea class="form-control" id="reviewtext" name='reviewtext' rows="5"></textarea>
-                            </div> -->
+                                <label for="foptions">Select redact option:</label><br>
+                                <select multiple="multiple" class="form-control" id="foptions" name="foptions" required>
+                                    <!-- <option value="ALL">ALL OF THE BELOW</option> -->
+                                    <option value="EMAIL">EMAIL</option>
+                                    <option value="PERSON">PERSON</option>
+                                    <option value="GPE">GPE</option>
+                                    <option value="LOC">LOC</option>
+                                    <option value="ORG">ORG</option>
+                                    <option value="TIME">TIME</option>
+                                    <option value="DATE">DATE</option>
+                                    <option value="MONEY">MONEY</option>
+                                    <option value="FAC">FAC</option>
+                                    <option value="QUANITY">QUANITY</option>
+                                    <option value="CARDINAL">CARDINAL</option>
+                                    <option value="ORDINAL">ORDINAL</option>
+                                </select>
+                            </div>
+
                             <input type="submit" class="btn btn-purple" value="Upload" name="resum_submit">
                             <input type="reset" class="btn btn-purple" value="Cancel" name="resum_reset">
                         </form>
@@ -104,5 +68,9 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#foptions').multiselect();
+    });
+</script>
 {% endblock %}

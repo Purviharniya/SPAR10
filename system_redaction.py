@@ -3,7 +3,7 @@ from flask import Blueprint, render_template,redirect, url_for, request, flash,s
 from models import User,Contact
 import os
 import re
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER,REDACTION_FOLDER
+from __init__ import create_app,db,postamail,UPLOAD_FOLDER,REDACTION_FOLDER,DOWNLOAD_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from py_files.spar10_redaction import redaction
@@ -15,23 +15,24 @@ system_redaction = Blueprint('system_redaction', __name__)
 def systemredaction():
     if request.method == 'POST':
         file = request.files['file1']
-
+        redaction_options = request.form.getlist('foptions')
+        print(redaction_options)
         check = allowed_files_for_redaction(file.filename)
         # print("CHECK:",check) to check if file extension is acceptable or not
  
-        if file and check == True:
+        if file and redaction_options!=[] and check == True:
             # print("LINE 23: ",secure_filename())
             filename = secure_filename(file.filename)
             path_to_save= REDACTION_FOLDER + '/' + filename
-            print(path_to_save)
+    
             file.save(path_to_save)
 
             #load model and get summarized reviews 
-            redaction()
+            redactedfile = redaction(path_to_save,DOWNLOAD_FOLDER,filename,redaction_options)
             
             #save summarized file
             #redirect with summarized file path
-            flash('The redacted file has been downloaded',"success")
+            flash('The redacted file has been downloaded as '+redactedfile+' in the downloads folder.',"success")
             return redirect(url_for('system_redaction.systemredaction'))
 
         if check == False:

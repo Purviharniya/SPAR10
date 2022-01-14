@@ -18,14 +18,22 @@ SPAR10_directory = get_SPAR10_dir_path().replace("\\","/")
 # print(SPAR10_directory)  #to check for the correct directory 
 
 def create_uploads_folder_and_get_path(dir):
-    path_uploads = dir +'/uploads'
+    path_uploads = dir +'/uploads'  
     if not os.path.exists(path_uploads):
         os.makedirs(path_uploads)
 
     return path_uploads
 
+def create_downloads_folder_and_get_path(dir):
+    path_downloads = dir +'/downloads' 
+    if not os.path.exists(path_downloads):
+        os.makedirs(path_downloads)
+
+    return path_downloads
+
 UPLOAD_FOLDER = create_uploads_folder_and_get_path(SPAR10_directory)
-# print(UPLOAD_FOLDER) #check for uploads folder path 
+DOWNLOAD_FOLDER = create_downloads_folder_and_get_path(SPAR10_directory)
+# print(DOWNLOAD_FOLDER) #check for uploads folder path  #C:/Users/User/projects/SPAR10/downloads
 
 def create_redaction_folder_and_get_path(dir):
     path_redaction = dir +'/redaction'

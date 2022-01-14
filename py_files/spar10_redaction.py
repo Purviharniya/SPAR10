@@ -54,48 +54,25 @@ def get_sensitive_data(lines,tt):
       yield token.text
 
 def get_email_addresses(string):
-  r = re.compile(r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$')
+  r = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
   return r.findall(string)
 
 def get_dates(string):
-  # mm/dd/yyyy or mm-dd-yyyy or mm.dd.yyyy
-  # r1 = r'^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$'
-  # # dd/mm/yyyy, dd-mm-yyyy or dd.mm.yyyy
-  # r2 = r'^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$'
-  #yyyy-mm-dd
-  r3 = r'\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*'
-  #string dates like January 21, 2020 are left
-  generic_re = re.compile("(%s)" % (r3))
+  r = re.compile(r'(?:\d{1,2}[-/th|st|nd|rd\s.])?(?:(?:Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|August|Sep|September|Oct|October|Nov|November|Dec|December)[\s,.]*)?(?:(?:\d{1,2})[-/th|st|nd|rd\s,.]*)?(?:\d{2,4})')
+  return r.findall(string)
 
-  return generic_re.findall(string)
-
-def get_path():
-
-  # replace it with name of the pdf file
-  path = "C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf"
-
-  if path[-4:]=='docx':
-    
-    # Load word document
-    doc = aw.Document("C:/Users/91720/Desktop/STUDY/NOTES/SEM 7/LY project/Code/SPAR10/uploads/review_summarization/testing.docx")
-    # Save as PDF
-    doc.save("C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf")
-    path="C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf"
-
-  return path
-
-def redaction():
+def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
 	
   """ main redactor code """
 
-  redactables = ['EMAIL','PERSON','GPE','LOC','ORG','TIME','DATE','MONEY','FAC','QUANITY','CARDINAL','ORDINAL']
+  redactables = ['EMAIL','PERSON','GPE','LOC','ORG','TIME','DATE','MONEY','FAC','QUANITY','CARDINAL','ORDINAL'] #redaction options for reference
     
   # get the path of the pdf
-  path = get_path()
-    
+  path = file_path
+  print("USER:",redaction_options)
   # opening the pdf
   doc = fitz.open(path)
-    
+  # sensitive = []
   # iterating through pages
   for page in doc:
     
@@ -104,17 +81,27 @@ def redaction():
     # cases where there is alignment issue
     page._wrapContents()
     
-    for i in redactables:
+    print('CONTENT:',page.getText("text"))
 
-      # getting the react boxes which consists the matching email regex or the NER's
-      
+    for i in redaction_options:
+
+      # if i in redaction_options:
+        # getting the react boxes which consists the matching email regex or the NER's
+      print(i+":")
       if i=='EMAIL':
         sensitive = get_email_addresses(page.getText("text"))
+        print('EMAILS',sensitive)
+
       elif i=='DATE':
         sensitive = get_dates(page.getText("text"))
+        print('DATES',sensitive)
+
       else:
         sensitive = get_sensitive_data(page.getText("text"),i)
-    
+        print('SENS',sensitive)
+
+      print('SENSITIVE DATA:',sensitive)
+
       for data in sensitive:
         areas = page.searchFor(data)
           
@@ -123,9 +110,14 @@ def redaction():
           
         # applying the redaction
         page.apply_redactions()
-      
+          
   # saving it to a new pdf
-  doc.save('redacted.pdf')
-  print("Successfully redacted")
+  redactedfile = filename.split('.')[0]+'_redacted.pdf'
+  redactedfilepath = DOWNLOAD_FOLDER + '/' + redactedfile
 
-redaction()
+  doc.save(redactedfilepath)
+
+  print("Successfully redacted")
+  return redactedfile
+
+# redaction()

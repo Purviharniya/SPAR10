@@ -16,7 +16,7 @@ def allowed_files_for_revsum(filename):
 @system_review_summarization.route("/review-summarization", methods=['GET', 'POST'])
 @login_required
 def reviewsummarization():
-     if request.method == 'POST':
+    if request.method == 'POST':
         reviewText = request.form.get('reviewtext')
         print(reviewText)
         print(request.files)
@@ -53,6 +53,5 @@ def reviewsummarization():
 
         if reviewText != '':
             return render_template('system_views/reviewsummarization.html', review_text=reviewText)
-
     else:
         return render_template('system_views/reviewsummarization.html')
