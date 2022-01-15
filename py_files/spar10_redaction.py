@@ -42,7 +42,6 @@ import re
 """# CODE"""
 
 def get_sensitive_data(lines,tt):
-	
   docx = nlp(lines)
   redacted_sentences = []
   with docx.retokenize() as retokenizer:
@@ -61,6 +60,18 @@ def get_dates(string):
   r = re.compile(r'(?:\d{1,2}[-/th|st|nd|rd\s.])?(?:(?:Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|August|Sep|September|Oct|October|Nov|November|Dec|December)[\s,.]*)?(?:(?:\d{1,2})[-/th|st|nd|rd\s,.]*)?(?:\d{2,4})')
   return r.findall(string)
 
+def get_path(file_path):
+  path = file_path
+
+  if path.split('.')[-1] in ['docx','doc']:
+    # Load word document
+    doc = aw.Document(file_path)
+    # Save as PDF
+    path=file_path.split('.')[0]+'.pdf'
+    doc.save(path)
+  
+  return path
+
 def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
 	
   """ main redactor code """
@@ -68,8 +79,11 @@ def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
   redactables = ['EMAIL','PERSON','GPE','LOC','ORG','TIME','DATE','MONEY','FAC','QUANITY','CARDINAL','ORDINAL'] #redaction options for reference
     
   # get the path of the pdf
-  path = file_path
-  print("USER:",redaction_options)
+  path = get_path(file_path)
+
+  # print("PATH:",path)
+  # print("USER:",redaction_options)
+
   # opening the pdf
   doc = fitz.open(path)
   # sensitive = []
@@ -81,26 +95,26 @@ def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
     # cases where there is alignment issue
     page._wrapContents()
     
-    print('CONTENT:',page.getText("text"))
+    # print('CONTENT:',page.getText("text"))
 
     for i in redaction_options:
 
       # if i in redaction_options:
         # getting the react boxes which consists the matching email regex or the NER's
-      print(i+":")
+      # print(i+":")
       if i=='EMAIL':
         sensitive = get_email_addresses(page.getText("text"))
-        print('EMAILS',sensitive)
+        # print('EMAILS',sensitive)
 
       elif i=='DATE':
         sensitive = get_dates(page.getText("text"))
-        print('DATES',sensitive)
+        # print('DATES',sensitive)
 
       else:
         sensitive = get_sensitive_data(page.getText("text"),i)
-        print('SENS',sensitive)
+        # print('SENS',sensitive)
 
-      print('SENSITIVE DATA:',sensitive)
+      # print('SENSITIVE DATA:',sensitive)
 
       for data in sensitive:
         areas = page.searchFor(data)

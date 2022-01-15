@@ -24,6 +24,6 @@ http://aventer.themezinho.net/?storefront=envato-elements
 
 TO DO:
 
-1. redaction: allow the user to view redacted file, and then provide an option to download (file upload preview, redacted file preview, save file to db, provide an option to download-pdf)
+1. redaction: allow the user to view redacted file (preview), and then provide an option to download (save file to db, provide an option to download-pdf)
 
 ---
