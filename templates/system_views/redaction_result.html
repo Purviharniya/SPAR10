@@ -1,0 +1,46 @@
+{% extends 'main2.html' %} {% block content %}
+
+<!-- add the content here -->
+<div class="container-fluid">
+
+    <!--  Success message on form changes
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card mt-2">
+            <div class="card shadow pt-1 pb-5">
+                <div class="card-body">
+                    <div class="col-6 mb-3">
+                        <h4 class="font-weight-bold text-purple mb-5">Original Document:</h4>
+                        <p>{{original_file}}</p>
+                        <p>{{redacted_file}}</p>
+                    </div>
+                    <div>
+                        <!-- <embed src={{path_to_save}} type="application/pdf" width="800px" height="200px" /> -->
+                        <!-- <object data="../../uploads/redaction/testing.pdf"></object> -->
+                        <iframe src={{original_file}} type="application/pdf" style="height: 100%;width: 100%"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card mt-2">
+            <div class="card shadow pt-1 pb-5">
+                <div class="card-body">
+                    <div class="col-6 mb-3">
+                        <h4 class="font-weight-bold text-purple mb-5">Redacted Document:</h4>
+                    </div>
+                    <div>
+                        <iframe src={{redacted_file}} type="application/pdf" style="height: 100%;width: 100%"></iframe>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

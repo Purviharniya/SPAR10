@@ -1,7 +1,5 @@
-{% extends 'main2.html' %}
-{% block content %}
-<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"
-    rel="stylesheet" type="text/css" />
+{% extends 'main2.html' %} {% block content %}
+<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <!-- add the content here -->
 
@@ -13,31 +11,24 @@
                 <div class="card-body">
                     <div class="col-12 mb-3">
                         <h4 class="font-weight-bold text-purple mb-5">Text Redaction:</h4>
-                        {% with messages = get_flashed_messages(with_categories=true) %}
-                        {% if messages %}
-                        {% for category,message in messages %}
-                        {% if category == "success" %}
+                        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category,message in messages %} {% if category == "success" %}
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ message }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        {% endif %}
-                        {% if category == "error" %}
+                        {% endif %} {% if category == "error" %}
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ message }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        {% endif %}
-                        {% endfor %}
-                        {% endif %}
-                        {% endwith %}
+                        {% endif %} {% endfor %} {% endif %} {% endwith %}
                         <form action="/system-redaction" enctype='multipart/form-data' method="POST" name="resum_form">
                             <div class="form-group">
-                                <label for="file1">Upload the pdf to be redacted: </label>
+                                <label for="file1">Upload the file to be redacted: </label>
                                 <input type="file" class="form-control-file" id="file1" name='file1'>
                             </div>
                             <div class="form-group">
@@ -69,7 +60,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#foptions').multiselect();
     });
 </script>

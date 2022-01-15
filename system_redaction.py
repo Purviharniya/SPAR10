@@ -33,7 +33,9 @@ def systemredaction():
             #save summarized file
             #redirect with summarized file path
             flash('The redacted file has been downloaded as '+redactedfile+' in the downloads folder.',"success")
-            return redirect(url_for('system_redaction.systemredaction'))
+            print(path_to_save)
+            # return redirect(url_for('system_redaction.systemredaction'))
+            return render_template('system_views/redaction_result.html', original_file=path_to_save,redacted_file=DOWNLOAD_FOLDER+redactedfile)
 
         if check == False:
             flash('Only excel files are allowed',"error")
