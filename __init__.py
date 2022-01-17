@@ -134,6 +134,9 @@ def create_app():
     from system_review_summarization import system_review_summarization as system_review_summarization_blueprint
     app.register_blueprint(system_review_summarization_blueprint)
 
+    from system_para_summarization import system_para_summarization as system_para_summarization_blueprint
+    app.register_blueprint(system_para_summarization_blueprint)
+
     # from system_redaction import system_redaction as system_redaction_blueprint
     # app.register_blueprint(system_redaction_blueprint)
 
