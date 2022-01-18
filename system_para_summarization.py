@@ -11,9 +11,9 @@ from summarizer import Summarizer, TransformerSummarizer
 
 system_para_summarization = Blueprint('system_para_summarization', __name__)
 
-def allowed_files_for_revsum(filename):
+def allowed_files_for_parasum(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['csv','xlsx']
+           filename.rsplit('.', 1)[1].lower() in ['doc','docx','pdf']
 
 @system_para_summarization.route("/para-summarization", methods=['GET', 'POST'])
 @login_required
@@ -37,23 +37,29 @@ def parasummarization():
             flash('No selected file',"error")
             return redirect(url_for('system_para_summarization.parasummarization'))
 
-        check = allowed_files_for_revsum(file.filename)
-        print("CHECK:",check)
+        check = allowed_files_for_parasum(file.filename)
+        # print("CHECK:",check)
 
-        if file and check == True:
-            filename = secure_filename(file.filename)
-            path_to_save= UPLOAD_FOLDER+ 'para_summarization' + filename
-            file.save(os.path.join(UPLOAD_FOLDER+'para_summarization', filename))
-            #load model and get summarized paras 
-            #save summarized file
-            #redirect with summarized file path
-            return render_template('system_views/parasummarization.html', file_name=path_to_save)
+        # print(file)
 
-        if check == False:
-            flash('Only excel files are allowed',"error")
-            return redirect(url_for('system_para_summarization.parasummarization'))
+        if file:
+            if check == True:
+                filename = secure_filename(file.filename)
+                path_to_save= UPLOAD_FOLDER+ 'para_summarization' + filename
+                file.save(os.path.join(UPLOAD_FOLDER+'para_summarization', filename))
+                #load model and get summarized paras 
+                #save summarized file
+                #redirect with summarized file path
+                return render_template('system_views/parasummarization.html', file_name=path_to_save)
+
+            if check == False:
+                flash('Only excel files are allowed',"error")
+                return redirect(url_for('system_para_summarization.parasummarization'))
 
         if paraText != '':
+            # print('paraText is being passed')
+            # print(paraText)
+            
             return render_template('system_views/parasummarization.html', para_text=paraText)
     else:
         return render_template('system_views/parasummarization.html')

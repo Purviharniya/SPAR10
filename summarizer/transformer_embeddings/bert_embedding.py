@@ -40,12 +40,12 @@ class BertEmbedding:
         base_model, base_tokenizer = self.MODELS.get(model, (None, None))
 
         self.device = tf.device("cpu")
-        if tf.test.is_gpu_available:
-            assert (
-                isinstance(gpu_id, int) and (0 <= gpu_id and gpu_id < len(tf.config.list_physical_devices('GPU')))
-            ), f"`gpu_id` must be an integer between 0 to {len(tf.config.list_physical_devices('GPU')) - 1}. But got: {gpu_id}"
+        # if tf.test.is_gpu_available:
+        #     assert (
+        #         isinstance(gpu_id, int) and (0 <= gpu_id and gpu_id < len(tf.config.list_physical_devices('GPU')))
+        #     ), f"`gpu_id` must be an integer between 0 to {len(tf.config.list_physical_devices('GPU')) - 1}. But got: {gpu_id}"
 
-            self.device = tf.device(f"cuda:{gpu_id}")
+        #     self.device = tf.device(f"cuda:{gpu_id}")
 
         if custom_model:
             self.model = custom_model.to(self.device)
@@ -60,7 +60,7 @@ class BertEmbedding:
 
         self.model.eval()
 
-    def tokenize_input(self, text: str) -> tf.tensor:
+    def tokenize_input(self, text: str) -> tf.Tensor:
         """
         Tokenizes the text input.
 
@@ -69,7 +69,7 @@ class BertEmbedding:
         """
         tokenized_text = self.tokenizer.tokenize(text)
         indexed_tokens = self.tokenizer.convert_tokens_to_ids(tokenized_text)
-        return tf.tensor([indexed_tokens]).to(self.device)
+        return tf.Tensor([indexed_tokens]).to(self.device)
 
     def _pooled_handler(self, hidden: tf.Tensor,
                         reduce_option: str) -> tf.Tensor:
