@@ -128,8 +128,8 @@ def create_app():
     from system import system as system_blueprint
     app.register_blueprint(system_blueprint)
 
-    from system_redaction import system_redaction as system_redaction_blueprint
-    app.register_blueprint(system_redaction_blueprint)
+    # from system_redaction import system_redaction as system_redaction_blueprint
+    # app.register_blueprint(system_redaction_blueprint)
 
     from system_review_summarization import system_review_summarization as system_review_summarization_blueprint
     app.register_blueprint(system_review_summarization_blueprint)

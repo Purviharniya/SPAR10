@@ -1,8 +1,7 @@
 from typing import List
 
 import numpy as np
-# import torch
-import tensorflow as tf
+import torch
 from sentence_transformers import SentenceTransformer
 
 
@@ -12,17 +11,15 @@ class SBertEmbedding:
     def __init__(self, model: str):
         """
         SBert Parent Handler.
-
         :param model: The model string for SentenceTransformer.
         """
         self.sbert_model = SentenceTransformer(model)
-        self.device = tf.device("cuda" if tf.test.is_gpu_available else "cpu")
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.sbert_model.to(self.device)
 
     def extract_embeddings(self, sentences: List[str]) -> np.ndarray:
         """
         Calculates sentence embeddings.
-
         :param sentences: The sentences to summarizer.
         :return Numpy array of sentences.
         """
@@ -32,7 +29,6 @@ class SBertEmbedding:
     def __call__(self, sentences: List[str]) -> np.ndarray:
         """
         Calculates sentence embeddings.
-
         :param sentences: The sentences to summarizer.
         :return Numpy array of sentences.
         """

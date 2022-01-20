@@ -7,9 +7,11 @@ from __init__ import create_app,db,postamail,UPLOAD_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 
-from summarizer import Summarizer, TransformerSummarizer
+from summarizer import Summarizer
+# from summarizer.sbert import SBertSummarizer
 
 system_para_summarization = Blueprint('system_para_summarization', __name__)
+model = Summarizer()
 
 def allowed_files_for_parasum(filename):
     return '.' in filename and \
@@ -20,46 +22,89 @@ def allowed_files_for_parasum(filename):
 def parasummarization():
     if request.method == 'POST':
         paraText = request.form.get('paratext')
-        print(paraText)
-        print(request.files)
+        option = request.form.get('options')
+        # print("option:",option)
+        option_value=0  # ratio or num of sentence
+        # print(paraText)
+        # print(request.files)
 
         if 'file1' not in request.files and paraText == '':
-            flash('No file part or para text is empty',"error")
+            flash('No file part or paragraph text is empty',"error")
             return redirect(url_for('system_para_summarization.parasummarization'))
 
         if request.files['file1'].filename !='' and paraText != '':
-            flash('Input either a file OR a text para, both wont do!',"error")
+            flash('Input either a file OR a text para, both won\'t do!',"error")
+            return redirect(url_for('system_para_summarization.parasummarization'))
+
+        if option=='0':
+            flash('Select an option for summarizing the text!',"error")
+            return redirect(url_for('system_para_summarization.parasummarization'))
+
+        elif option=='1':
+            ratio = request.form.get('ratio')
+            # print("RATIO",type(ratio)) #str
+            if not ratio.replace('.','',1).isdigit():
+                ratio=0.0
+            ratio = float(ratio)
+            print("RATIO",ratio)
+            if ratio<=0.0 or ratio>=1.0:
+                flash('Enter a valid ratio!',"error")
+                return redirect(url_for('system_para_summarization.parasummarization'))
+            else:
+                option_value=ratio
+
+        elif option=='2':
+            sentence = request.form.get('num_sent')
+            if not sentence.isnumeric():
+                sentence=0
+            sentence = int(sentence)
+            if sentence=='' or sentence<=0:
+                flash('Enter a valid sentence count!',"error")
+                return redirect(url_for('system_para_summarization.parasummarization'))
+            else:
+                option_value = sentence
+
+        else:
+            flash('Select an option for summarizing the text!',"error")
             return redirect(url_for('system_para_summarization.parasummarization'))
 
         file = request.files['file1']
 
         if file.filename == '' and  paraText=='':
-            flash('No selected file',"error")
+            flash('No file selected',"error")
             return redirect(url_for('system_para_summarization.parasummarization'))
 
         check = allowed_files_for_parasum(file.filename)
         # print("CHECK:",check)
-
         # print(file)
+        
+        global model
 
         if file:
             if check == True:
                 filename = secure_filename(file.filename)
                 path_to_save= UPLOAD_FOLDER+ 'para_summarization' + filename
                 file.save(os.path.join(UPLOAD_FOLDER+'para_summarization', filename))
-                #load model and get summarized paras 
+                #load model and get summarized para  
                 #save summarized file
                 #redirect with summarized file path
                 return render_template('system_views/parasummarization.html', file_name=path_to_save)
 
             if check == False:
-                flash('Only excel files are allowed',"error")
+                flash('Only pdf/doc/docx files are allowed',"error")
                 return redirect(url_for('system_para_summarization.parasummarization'))
 
         if paraText != '':
             # print('paraText is being passed')
             # print(paraText)
+            # load model and get the summarized para 
+            if type(option_value)==int:
+                result = model(paraText, num_sentences=option_value)  # Specified with ratio
+            else:
+                result = model(paraText, ratio=option_value)
+            # redirect to a new page with original and summarized text
+            print(result)
             
-            return render_template('system_views/parasummarization.html', para_text=paraText)
+            return render_template('system_views/parasummarization.html', para_text=paraText,result=result)
     else:
         return render_template('system_views/parasummarization.html')

@@ -24,6 +24,9 @@ http://aventer.themezinho.net/?storefront=envato-elements
 
 TO DO:
 
-1. redaction: allow the user to view redacted file (preview), and then provide an option to download (save file to db, provide an option to download-pdf)
+1. redaction: output page, improve the accuracy
+2. Summarization: file summarization 
+3. Extraction: full
+4. Classification: full
 
 ---
