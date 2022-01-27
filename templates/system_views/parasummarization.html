@@ -78,7 +78,8 @@
                                     <input type="number" class="form-control" name="num_sent" placeholder="e.g. 3">
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-purple" value="Upload" name="resum_submit">
+                            <input type="submit" class="btn btn-purple" value="Upload" name="resum_submit"
+                                id='submitbtn'>
                             <input type="reset" class="btn btn-purple" value="Cancel" name="resum_reset">
                         </form>
                     </div>
@@ -86,10 +87,37 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="loadingModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- Modal content-->
+            <div class="modal-content" style='background-color: rgb(245, 245, 245);'>
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <img src="../static/assets/loading.gif" class='img-responsive w-100' alt="loading gif">
+                    </div>
+                    <h3 class='text-center font-weight-bold'>Loading...</h3>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card mt-2">
             {% if result %}
             <div class="card shadow p-1 my-5">
+                <div class="row">
+                    <div class="col-12 text-purple text-center">
+                        <h2 class="font-weight-bold">Results</h2>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6 py-3 text-justify overflow-auto">
                         <h4 class='text-purple font-weight-bold px-3'>Original Text:</h4>
@@ -135,6 +163,15 @@
 
         });
     });
+
+    $(document).ready(function () {
+        if (document.querySelector(".alert-danger") == null) {
+            console.log("No danger alerts present")
+            $("#submitbtn").click(function () {
+                $("#loadingModal").modal({ backdrop: "static" });
+            });
+        }
+    })
 
 </script>
 {% endblock %}

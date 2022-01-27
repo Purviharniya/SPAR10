@@ -54,7 +54,7 @@ def create_revsum_folder_and_get_path(dir):
     return path_revsum
 
 def create_parasum_folder_and_get_path(dir):
-    path_parasum = dir +'/review_summarization'
+    path_parasum = dir +'/para_summarization'
     if not os.path.exists(path_parasum):
         os.makedirs(path_parasum)
     return path_parasum
@@ -94,8 +94,10 @@ def create_app():
     app.config['MAIL_PASSWORD'] = 'SPAR10PROJECT'
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.config['REDACTION_FOLDER'] = REDACTION_FOLDER
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER #main directory of uploads
+    app.config['REDACTION_FOLDER'] = REDACTION_FOLDER  #redaction folder for uploads
+    app.config['PARASUM_FOLDER'] = PARASUM_FOLDER #para summarization folder for uploads
+
     postamail = Mail(app)
 
     app.config['SECRET_KEY'] = 'SPAR10'

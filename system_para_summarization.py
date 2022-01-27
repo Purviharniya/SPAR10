@@ -3,10 +3,10 @@ from flask import Blueprint, render_template,redirect, url_for, request, flash,s
 from models import User,Contact
 import os
 import re
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER
+from __init__ import create_app,db,postamail,UPLOAD_FOLDER,PARASUM_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
-
+from py_files.file_summarization import file_summarizer
 from summarizer import Summarizer
 # from summarizer.sbert import SBertSummarizer
 
@@ -15,7 +15,7 @@ model = Summarizer()
 
 def allowed_files_for_parasum(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['doc','docx','pdf']
+           filename.rsplit('.', 1)[1].lower() in ['doc','docx','pdf','txt']
 
 @system_para_summarization.route("/para-summarization", methods=['GET', 'POST'])
 @login_required
@@ -83,15 +83,24 @@ def parasummarization():
         if file:
             if check == True:
                 filename = secure_filename(file.filename)
-                path_to_save= UPLOAD_FOLDER+ 'para_summarization' + filename
-                file.save(os.path.join(UPLOAD_FOLDER+'para_summarization', filename))
-                #load model and get summarized para  
-                #save summarized file
-                #redirect with summarized file path
-                return render_template('system_views/parasummarization.html', file_name=path_to_save)
+                path_to_save= PARASUM_FOLDER + '/' + filename
+                file.save(path_to_save)
 
-            if check == False:
-                flash('Only pdf/doc/docx files are allowed',"error")
+                #extract text from file 
+                extracted_text = file_summarizer(path_to_save)
+                # print("EXTRACTED STRING",extracted_text)
+                #load model and get summarized para  
+                if type(option_value)==int:
+                    result = model(extracted_text, num_sentences=option_value)  # Specified with ratio
+                else:
+                    result = model(extracted_text, ratio=option_value)
+                # redirect to a new page with original and summarized text
+                print(result)
+                
+                return render_template('system_views/parasummarization.html', para_text=extracted_text,result=result)
+
+            else:
+                flash('Only pdf/doc/docx/txt files are allowed',"error")
                 return redirect(url_for('system_para_summarization.parasummarization'))
 
         if paraText != '':
@@ -103,7 +112,7 @@ def parasummarization():
             else:
                 result = model(paraText, ratio=option_value)
             # redirect to a new page with original and summarized text
-            print(result)
+            # print(result)
             
             return render_template('system_views/parasummarization.html', para_text=paraText,result=result)
     else:
