@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/text-extraction.css">
+<!-- add the content here -->
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="mb-40 header">
+                    Text Redaction
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/">Homepage</a>
+                    </li>
+                    <li class="breadcrumb-item first-item">
+                        <a class="breadcrumb_link" href="/text-redaction">Text Redaction</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" style="margin-bottom: 8rem;margin-top: 2rem;">
+            <div class="col-md-6 ">
+                <h5>ORIGINAL FILE</h5>
+                <embed
+                src="{{ url_for('static', filename='uploads/redaction/testing.pdf') }}"
+                type="application/pdf"
+                frameBorder="0"
+                scrolling="auto"
+                height="100%"
+                width="100%"
+            ></embed>
+            </div>
+
+            <div class="col-md-6">
+                <h5>REDACTED FILE</h5>
+                <embed
+                src="{{ url_for('static', filename='downloads/testing_redacted.pdf') }}"
+                type="application/pdf"
+                frameBorder="0"
+                scrolling="auto"
+                height="100%"
+                width="100%"
+            ></embed>
+
+                <a href="{{ url_for('static', filename='downloads/testing_redacted.pdf') }}">
+                    <button type="button" class="btn" style="border-radius:2rem;padding: 1rem 1rem; background-color: black;"><strong>Download file</strong></button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'partials/footer1.html' %}
+
+</div>
+
+
+{% endblock %}

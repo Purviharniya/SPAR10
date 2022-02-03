@@ -88,6 +88,10 @@ def textclassification():
 def textredaction():
     return render_template('main_views/textredaction.html')
 
+@main.route("/preview")
+def previewredaction():
+    return render_template('system_views/preview.html')
+
 def validate_profile_details(name,email,contact):
 
     if name=='' or email =='' or contact =='':
