@@ -6,12 +6,14 @@ import re
 from __init__ import create_app,db,postamail,UPLOAD_FOLDER,PARASUM_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
-from py_files.file_summarization import file_summarizer
+from summarizer.file_summarization import file_summarizer
 from summarizer import TransformerSummarizer
 # from summarizer.sbert import SBertSummarizer
 
 system_para_summarization = Blueprint('system_para_summarization', __name__)
-model = TransformerSummarizer(transformer_type="Albert",transformer_model_key="albert-base-v2")
+
+transformer_model_key_dict = {'Albert':'albert-base-v2','XLNet':'xlnet-large-cased','Roberta':'roberta-large',
+'BigBird':'google/bigbird-roberta-base','XLM':'xlm-mlm-en-2048','GPT2':'gpt2-large','Bert':'bert-base-uncased'}
 
 def allowed_files_for_parasum(filename):
     return '.' in filename and \
@@ -23,6 +25,7 @@ def parasummarization():
     if request.method == 'POST':
         paraText = request.form.get('paratext')
         option = request.form.get('options')
+        model_type = request.form.get('model_type')
         # print("option:",option)
         option_value=0  # ratio or num of sentence
         # print(paraText)
@@ -78,7 +81,8 @@ def parasummarization():
         # print("CHECK:",check)
         # print(file)
         
-        global model
+        # global model
+        model = TransformerSummarizer(transformer_type=model_type,transformer_model_key=transformer_model_key_dict[model_type]) 
 
         if file:
             if check == True:
@@ -91,13 +95,13 @@ def parasummarization():
                 # print("EXTRACTED STRING",extracted_text)
                 #load model and get summarized para  
                 if type(option_value)==int:
-                    result = model(extracted_text, num_sentences=option_value)  # Specified with ratio
+                    result = model(extracted_text, num_sentences=option_value,min_length=30)  # Specified with ratio
                 else:
-                    result = model(extracted_text, ratio=option_value)
+                    result = model(extracted_text, ratio=option_value,min_length=30)
                 # redirect to a new page with original and summarized text
                 print(result)
                 
-                return render_template('system_views/parasummarization.html', para_text=extracted_text,result=result)
+                return render_template('system_views/parasummarizationresult.html', para_text=extracted_text,result=result)
 
             else:
                 flash('Only pdf/doc/docx/txt files are allowed',"error")
@@ -114,6 +118,7 @@ def parasummarization():
             # redirect to a new page with original and summarized text
             # print(result)
             
-            return render_template('system_views/parasummarization.html', para_text=paraText,result=result)
+            return render_template('system_views/parasummarizationresult.html', para_text=paraText,result=result)
     else:
         return render_template('system_views/parasummarization.html')
+

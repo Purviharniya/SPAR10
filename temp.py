@@ -38,7 +38,7 @@ result = model(body, num_sentences=2)  # Will return 3 sentences
 
 print(result)
 
-# 1. ablert 
+# 1. ablert  transformer_type="Albert",transformer_model_key="albert-base-v2"
 # The Chrysler Building, the famous art deco New York skyscraper, will be sold for a small fraction of its previous sales price. 
 # Still there have been a number of high profile skyscrapers purchased for top dollar in recent years, including the Waldorf Astoria hotel, which Chinese firm Anbang Insurance purchased in 2016 for nearly $2 billion, and the Willis Tower in Chicago, which 
 # was formerly known as Sears Tower, once the world's tallest.

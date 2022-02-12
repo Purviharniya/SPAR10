@@ -8,12 +8,7 @@
         display: none;
     }
 
-    .original-overflow {
-        width: 100%;
-        height: 350px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
+    
 </style>
 
 <div class="container-fluid">
@@ -59,14 +54,25 @@
                                 <label for="paratext">Enter the paragraph to be summarized:</label>
                                 <textarea class="form-control" id="paratext" name='paratext' rows="5"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="select">Select the option for transformer type:</label>
-                                <select class="form-select" aria-label="select" name="options" id="options">
-                                    <option value="0" selected>Select an option</option>
-                                    <option value="1">Ratio</option>
-                                    <option value="2">No. of sentences</option>
+                            <div class="form-group d-flex align-items-center">
+                                <div><label for="select">Select the option for summarizer transformer type:</label>
+                                    <br>
+                                    <small id="" class="form-text text-muted">Hover over the options for
+                                        use-cases</small>
+                                </div>
+
+                                <select class="form-select ml-3" aria-label="select" name="model_type" id="model_type"
+                                    size="7">
+                                    <option value="Bert" id="Bert" selected>Bert</option>
+                                    <option value="GPT2" id="GPT2">GPT2</option>
+                                    <option value="XLM" id="XLM">XLM</option>
+                                    <option value="BigBird" id="BigBird">BigBird</option>
+                                    <option value="Roberta" id="Roberta">Roberta</option>
+                                    <option value="XLNet" id="XLNet">XLNet</option>
+                                    <option value="Albert" id="Albert">Albert</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="select">Choose the option for summarizing the text:</label>
                                 <select class="form-select" aria-label="select" name="options" id="options">
@@ -116,36 +122,9 @@
 
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card mt-2">
-            {% if result %}
-            <div class="card shadow p-1 my-5">
-                <div class="row">
-                    <div class="col-12 text-purple text-center">
-                        <h2 class="font-weight-bold">Results</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 py-3 text-justify overflow-auto">
-                        <h4 class='text-purple font-weight-bold px-3'>Original Text:</h4>
-                        <div class="original-overflow px-3">
-                            <p>{{para_text}}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 py-3 text-justify overflow-auto">
-                        <h4 class='text-purple font-weight-bold px-3'>Summarized Text:</h4>
-                        <div class="original-overflow px-3">
-                            <p>{{result}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
 </div>
 <script>
+
     $(document).ready(function () {
         $("select#options").change(function () {
             var selectedOption = $(this).children("option:selected").val();
@@ -180,6 +159,30 @@
             });
         }
     })
+
+    $(document).ready(function () {
+        $("#Bert").tooltip({
+            title: "Tooltip for Bert"
+        });
+        $("#GPT2").tooltip({
+            title: "Tooltip for GPT2"
+        });
+        $("#XLM").tooltip({
+            title: "Tooltip for XLM"
+        });
+        $("#BigBird").tooltip({
+            title: "Tooltip for BigBird"
+        });
+        $("#Roberta").tooltip({
+            title: "Tooltip for Roberta"
+        });
+        $("#XLNet").tooltip({
+            title: "Tooltip for XLNet"
+        });
+        $("#Albert").tooltip({
+            title: "Tooltip for Albert"
+        });
+    });
 
 </script>
 {% endblock %}
