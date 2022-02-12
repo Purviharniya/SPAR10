@@ -3,42 +3,32 @@
 <!-- add the content here -->
 <div class="container-fluid">
 
-    <!--  Success message on form changes
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div> -->
-
     <div class="row">
-        <div class="col-md-6 grid-margin stretch-card mt-2">
+        <div class="col-md-12 grid-margin stretch-card mt-2">
             <div class="card shadow pt-1 pb-5">
                 <div class="card-body">
-                    <div class="col-6 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Original Document:</h4>
+                    <div class="col-12 mb-3">
+                        <h4 class="font-weight-bold text-purple mb-1">Original Document:</h4>
                         <!-- <p>{{original_file}}</p>
                         <p>{{redacted_file}}</p> -->
-                        <!-- C:/Users/User/projects/SPAR10/static/uploads/redaction/testing.pdf
-
-C:/Users/User/projects/SPAR10/static/downloads/testing_redacted.pdf -->
                     </div>
-                    <div>
-                        <embed src="{{ url_for('static', filename='uploads/redaction/testing.pdf') }}"
-                            type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"></embed>
+                    <div style="height:500px">
+                        <embed src="{{ url_for('static', filename=original_file) }}"
+                            type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%" autostart="true" showcontrols="true"></embed>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 grid-margin stretch-card mt-2">
+        <div class="col-md-12 grid-margin stretch-card mt-2">
             <div class="card shadow pt-1 pb-5">
                 <div class="card-body">
-                    <div class="col-6 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Redacted Document:</h4>
+                    <div class="col-12 mb-3">
+                        <h4 class="font-weight-bold text-purple">Redacted Document:</h4> <br>
+                        <h6 class="font-weight-bold mb-4"> Redacted Options: {{options}}</h6>
                     </div>
-                    <div>
-                        <embed src="{{ url_for('static', filename='downloads/testing_redacted.pdf') }}"
-                            type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"></embed>
+                    <div style="height:500px">
+                        <embed src="{{ url_for('static', filename=redacted_file) }}"
+                            type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%" autostart="true" showcontrols="true"></embed>
                     </div>
                 </div>
             </div>

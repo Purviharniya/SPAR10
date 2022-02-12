@@ -16,7 +16,7 @@ def systemredaction():
     if request.method == 'POST':
         file = request.files['file1']
         redaction_options = request.form.getlist('foptions')
-        print(redaction_options)
+        # print(redaction_options)
         check = allowed_files_for_redaction(file.filename)
         # print("CHECK:",check) to check if file extension is acceptable or not
  
@@ -31,10 +31,12 @@ def systemredaction():
             redactedfile = redaction(path_to_save,DOWNLOAD_FOLDER,filename,redaction_options)
             
             #save summarized file & redirect with summarized file path
-            flash('The redacted file has been downloaded as '+redactedfile+' in the downloads folder.',"success")
-            print(path_to_save)
+            # flash('The redacted file has been downloaded as '+redactedfile+' in the downloads folder.',"success")
+            # print(path_to_save)
 
-            return render_template('system_views/redaction_result.html',original_file=path_to_save,redacted_file=DOWNLOAD_FOLDER+'/'+redactedfile)
+            path_to_download=DOWNLOAD_FOLDER+'/'+redactedfile
+            # print(path_to_save.split('static/'))
+            return render_template('system_views/redaction_result.html',original_file=path_to_save.split('static/')[-1],redacted_file=path_to_download.split('static/')[-1],options = ','.join(redaction_options))
 
         if check == False:
             flash('Only excel files are allowed',"error")

@@ -30,3 +30,12 @@ TO DO:
 4. Classification: model architectures ready (vgg16 and inception); run the model-> compare accuracies and select the best model.
 
 ---
+
+Fixing -------
+
+1. Redaction dynamic + preview styling
+2. Transformer Summarization + adding options in the frontend as well as backend + fixing file structure
+3. Extraction Frontend
+4. Document classification frontend
+5. Document preview in all forms having uploads
+6. Saving file names with current timestamp so that files arent overwritten
