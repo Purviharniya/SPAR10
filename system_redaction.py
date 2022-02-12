@@ -6,7 +6,7 @@ import re
 from __init__ import create_app,db,postamail,UPLOAD_FOLDER,REDACTION_FOLDER,DOWNLOAD_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
-from py_files.spar10_redaction import redaction
+from redaction.spar10_redaction import redaction
 
 system_redaction = Blueprint('system_redaction', __name__)
 
