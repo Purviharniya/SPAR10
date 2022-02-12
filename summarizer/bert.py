@@ -12,6 +12,10 @@ from transformers import (AlbertModel, AlbertTokenizer, BartModel, BigBirdModel,
                           TransfoXLModel, TransfoXLTokenizer, XLMModel,
                           XLMTokenizer, XLNetModel, XLNetTokenizer)
 
+from transformers import logging
+
+logging.set_verbosity_error()
+
 from summarizer.summary_processor import SummaryProcessor
 from summarizer.text_processors.sentence_handler import SentenceHandler
 from summarizer.transformer_embeddings.bert_embedding import BertEmbedding

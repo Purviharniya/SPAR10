@@ -49,6 +49,19 @@ def profile():
         return render_template('system_views/profile.html', name=current_user.name , user = current_user)
 
 
+def validate_profile_details(name,email,contact):
+
+    if name=='' or email =='' or contact =='':
+        return("Please fill all the fields!")
+    
+    if not re.fullmatch(re.compile(r'^[a-zA-Z ]+$'), name):
+        return('Invalid name')
+
+    if not re.fullmatch(re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
+        return('Invalid email address')
+       
+    return True
+
 @system.route("/settings",methods=["POST","GET"])
 @login_required
 def settings():

@@ -17,13 +17,12 @@
                 <div class="card-body">
                     <div class="col-6 mb-3">
                         <h4 class="font-weight-bold text-purple mb-5">Original Document:</h4>
-                        <p>{{original_file}}</p>
-                        <p>{{redacted_file}}</p>
+                        <!-- <p>{{original_file}}</p>
+                        <p>{{redacted_file}}</p> -->
                     </div>
                     <div>
-                        <!-- <embed src='C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf' type="application/pdf" width="800px" height="200px" />
-                        <object data='C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf'></object> -->
-                        <iframe src='C:/Users/User/projects/SPAR10/uploads/redaction/testing.pdf' type="application/pdf" style="height: 100%;width: 100%"></iframe>
+                        <embed src="{{ url_for('static', filename='uploads/redaction/testing.pdf') }}"
+                            type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"></embed>
                     </div>
                 </div>
             </div>
@@ -35,8 +34,8 @@
                         <h4 class="font-weight-bold text-purple mb-5">Redacted Document:</h4>
                     </div>
                     <div>
-                        <iframe src={{redacted_file}} type="application/pdf" style="height: 100%;width: 100%"></iframe>
-
+                        <embed src="{{ url_for('static', filename='downloads/testing_redacted.pdf') }}"
+                            type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"></embed>
                     </div>
                 </div>
             </div>

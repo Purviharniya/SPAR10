@@ -7,11 +7,11 @@ from __init__ import create_app,db,postamail,UPLOAD_FOLDER,PARASUM_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from py_files.file_summarization import file_summarizer
-from summarizer import Summarizer
+from summarizer import TransformerSummarizer
 # from summarizer.sbert import SBertSummarizer
 
 system_para_summarization = Blueprint('system_para_summarization', __name__)
-model = Summarizer()
+model = TransformerSummarizer(transformer_type="Albert",transformer_model_key="albert-base-v2")
 
 def allowed_files_for_parasum(filename):
     return '.' in filename and \
