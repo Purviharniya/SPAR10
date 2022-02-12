@@ -33,8 +33,8 @@ TO DO:
 
 Fixing -------
 
-1. Redaction dynamic + preview styling
-2. Transformer Summarization + adding options in the frontend as well as backend + fixing file structure
+1. Redaction dynamic + preview styling  ---> DONE
+2. Transformer Summarization + adding options in the frontend as well as backend + fixing file structure 
 3. Extraction Frontend
 4. Document classification frontend
 5. Document preview in all forms having uploads
