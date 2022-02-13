@@ -1,8 +1,4 @@
 {% extends 'main2.html' %} {% block content %}
-<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"
-    rel="stylesheet" type="text/css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-<!-- add the content here -->
 
 <div class="container-fluid">
 
@@ -11,7 +7,7 @@
             <div class="card shadow pt-1 pb-5">
                 <div class="card-body">
                     <div class="col-12 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Text Extraction:</h4>
+                        <h4 class="font-weight-bold text-purple mb-5">Document Classification:</h4>
                         {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for
                         category,message in messages %} {% if category == "success" %}
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -28,31 +24,20 @@
                             </button>
                         </div>
                         {% endif %} {% endfor %} {% endif %} {% endwith %}
-                        <form action="/system-extraction" enctype='multipart/form-data' method="POST" name="ext_form">
+                        <form action="/system-classification" enctype='multipart/form-data' method="POST"
+                            name="class_form">
                             <div class="form-group">
-                                <label for="file1">Upload the file for extraction: </label>
+                                <label for="file1">Upload the file for classification: </label>
                                 <input type="file" class="form-control-file" id="file1" name='file1'
                                     onchange="PreviewDoc();">
                             </div>
                             <div class="embedding">
                                 <embed width="500" height="300" id="viewer" class="my-3 ">
                             </div>
-                            <div class="form-group">
-                                <label for="foptions">Select extraction options:</label><br>
-                                <select multiple="multiple" class="form-control" id="foptions" name="foptions" required>
-                                    <!-- <option value="ALL">ALL OF THE BELOW</option> -->
-                                    <option value="invoice_number">Invoice Number</option>
-                                    <option value="vendor_name">Vendor Name</option>
-                                    <option value="invoice_date">Invoice Date</option>
-                                    <option value="total_amount">Total Amount</option>
-                                    <option value="net_amount">Net Amount</option>
-                                    <option value="tax_amount">Tax Amount</option>
-                                </select>
-                            </div>
 
-                            <input type="submit" class="btn btn-purple" value="Upload" name="ext_submit"
+                            <input type="submit" class="btn btn-purple" value="Upload" name="class_submit"
                                 id='submitbtn'>
-                            <input type="reset" class="btn btn-purple" value="Cancel" name="ext_reset">
+                            <input type="reset" class="btn btn-purple" value="Cancel" name="class_reset">
                         </form>
                     </div>
                 </div>
@@ -87,9 +72,6 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#foptions').multiselect();
-    });
 
     $(document).ready(function () {
         if (document.querySelector(".alert-danger") == null) {
