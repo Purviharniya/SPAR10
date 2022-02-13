@@ -37,6 +37,6 @@ Fixing -------
 2. Transformer Summarization + adding options in the frontend as well as backend + fixing file structure + separate summary page ---> DONE
 3. Extraction Frontend
 4. Document classification frontend
-5. Document preview in all forms having uploads
+5. Document preview in all forms having uploads ---> DONE
 6. Saving file names with current timestamp so that files arent overwritten
 7. Implement multithreading for time consuming processes -> para summarization

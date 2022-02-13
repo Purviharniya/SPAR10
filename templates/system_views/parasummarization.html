@@ -7,8 +7,6 @@
     #sentenceInput {
         display: none;
     }
-
-    
 </style>
 
 <div class="container-fluid">
@@ -45,7 +43,11 @@
                             name="parasum_form">
                             <div class="form-group">
                                 <label for="file1">Upload the document/pdf containing the text: </label>
-                                <input type="file" class="form-control-file" id="file1" name='file1'>
+                                <input type="file" class="form-control-file" id="file1" name='file1'
+                                    onchange="PreviewDoc();">
+                            </div>
+                            <div class="embedding">
+                                <embed width="500" height="300" id="viewer" class="my-3 ">
                             </div>
                             <div class="form-group">
                                 <label for="or">OR</label>
@@ -183,6 +185,23 @@
             title: "Tooltip for Albert"
         });
     });
+
+
+    function PreviewDoc() {
+        const preview = document.querySelector('div.embedding embed');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            // convert image file to base64 string
+            preview.src = reader.result;
+            preview.type = "application/pdf";
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
 
 </script>
 {% endblock %}
