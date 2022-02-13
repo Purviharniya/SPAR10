@@ -24,7 +24,7 @@ http://aventer.themezinho.net/?storefront=envato-elements
 
 TO DO:
 
-1. redaction: output page, improve the accuracy
+1. redaction: improve the accuracy
 2. Summarization: file summarization ( textract-for doc and txt; borb for pdf ), review summarization
 3. Extraction: try InvoiceNet (full feature remaining)
 4. Classification: model architectures ready (vgg16 and inception); run the model-> compare accuracies and select the best model.
