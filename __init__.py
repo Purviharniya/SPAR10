@@ -142,6 +142,9 @@ def create_app():
     from system_extraction import system_extraction as system_extraction_blueprint
     app.register_blueprint(system_extraction_blueprint)
 
+    from system_classification import system_classification as system_classification_blueprint
+    app.register_blueprint(system_classification_blueprint)
+
     # from system_redaction import system_redaction as system_redaction_blueprint
     # app.register_blueprint(system_redaction_blueprint)
 
