@@ -21,7 +21,6 @@ def systemredaction():
         # print("CHECK:",check) to check if file extension is acceptable or not
  
         if file and redaction_options!=[] and check == True:
-            # print("LINE 23: ",secure_filename())
             filename = secure_filename(file.filename)
             path_to_save= REDACTION_FOLDER + '/' + filename
     
@@ -29,13 +28,8 @@ def systemredaction():
 
             #load model and get summarized reviews 
             redactedfile = redaction(path_to_save,DOWNLOAD_FOLDER,filename,redaction_options)
-            
-            #save summarized file & redirect with summarized file path
-            # flash('The redacted file has been downloaded as '+redactedfile+' in the downloads folder.',"success")
-            # print(path_to_save)
-
             path_to_download=DOWNLOAD_FOLDER+'/'+redactedfile
-            # print(path_to_save.split('static/'))
+
             return render_template('system_views/redaction_result.html',original_file=path_to_save.split('static/')[-1],redacted_file=path_to_download.split('static/')[-1],options = ','.join(redaction_options))
 
         if check == False:
