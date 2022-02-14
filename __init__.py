@@ -15,7 +15,7 @@ def get_SPAR10_dir_path():
     return path
 
 SPAR10_directory = get_SPAR10_dir_path().replace("\\","/")
-print(SPAR10_directory)  #to check for the correct directory 
+# print(SPAR10_directory)  #to check for the correct directory 
 
 def create_uploads_folder_and_get_path(dir):
     path_uploads = dir +'/static/uploads'  
@@ -130,8 +130,8 @@ def create_app():
     from system import system as system_blueprint
     app.register_blueprint(system_blueprint)
 
-    # from system_redaction import system_redaction as system_redaction_blueprint
-    # app.register_blueprint(system_redaction_blueprint)
+    from system_redaction import system_redaction as system_redaction_blueprint
+    app.register_blueprint(system_redaction_blueprint)
 
     from system_review_summarization import system_review_summarization as system_review_summarization_blueprint
     app.register_blueprint(system_review_summarization_blueprint)
@@ -139,8 +139,11 @@ def create_app():
     from system_para_summarization import system_para_summarization as system_para_summarization_blueprint
     app.register_blueprint(system_para_summarization_blueprint)
 
-    from system_redaction import system_redaction as system_redaction_blueprint
-    app.register_blueprint(system_redaction_blueprint)
+    from system_extraction import system_extraction as system_extraction_blueprint
+    app.register_blueprint(system_extraction_blueprint)
+
+    from system_classification import system_classification as system_classification_blueprint
+    app.register_blueprint(system_classification_blueprint)
 
     # from system_redaction import system_redaction as system_redaction_blueprint
     # app.register_blueprint(system_redaction_blueprint)
