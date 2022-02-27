@@ -112,7 +112,7 @@ def create_app():
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
-    from models import User
+    from system.models import User
 
     @login_manager.user_loader
     def load_user(user_id):
@@ -120,32 +120,29 @@ def create_app():
         return User.query.get(int(user_id))
 
     # blueprint for auth routes in our app
-    from auth import auth as auth_blueprint
+    from system.auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 
     # blueprint for non-auth parts of app
-    from main import main as main_blueprint
+    from system.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    from system import system as system_blueprint
+    from system.system import system as system_blueprint
     app.register_blueprint(system_blueprint)
 
-    from system_redaction import system_redaction as system_redaction_blueprint
+    from system.system_redaction import system_redaction as system_redaction_blueprint
     app.register_blueprint(system_redaction_blueprint)
 
-    from system_review_summarization import system_review_summarization as system_review_summarization_blueprint
+    from system.system_review_summarization import system_review_summarization as system_review_summarization_blueprint
     app.register_blueprint(system_review_summarization_blueprint)
 
-    from system_para_summarization import system_para_summarization as system_para_summarization_blueprint
+    from system.system_para_summarization import system_para_summarization as system_para_summarization_blueprint
     app.register_blueprint(system_para_summarization_blueprint)
 
-    from system_extraction import system_extraction as system_extraction_blueprint
+    from system.system_extraction import system_extraction as system_extraction_blueprint
     app.register_blueprint(system_extraction_blueprint)
 
-    from system_classification import system_classification as system_classification_blueprint
+    from system.system_classification import system_classification as system_classification_blueprint
     app.register_blueprint(system_classification_blueprint)
-
-    # from system_redaction import system_redaction as system_redaction_blueprint
-    # app.register_blueprint(system_redaction_blueprint)
 
     return app
