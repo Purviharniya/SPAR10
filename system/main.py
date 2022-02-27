@@ -86,7 +86,3 @@ def textclassification():
 def textredaction():
     return render_template('main_views/textredaction.html')
 
-
-# if __name__ == '__main__':
-#     db.create_all(app=create_app()) # create the SQLite database
-#     create_app().run(debug=True) # run the flask app on debug mode
