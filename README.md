@@ -20,23 +20,9 @@ http://aventer.themezinho.net/?storefront=envato-elements
 
 3.  To run the app: python main.py
 
----
-
-TO DO:
-
-1. redaction: improve the accuracy
-2. Summarization: file summarization ( textract-for doc and txt; borb for pdf ), review summarization
-3. Extraction: try InvoiceNet (full feature remaining)
-4. Classification: model architectures ready (vgg16 and inception); run the model-> compare accuracies and select the best model.
-
----
 
 Fixing -------
 
-1. Redaction dynamic + preview styling ---> DONE
-2. Transformer Summarization + adding options in the frontend as well as backend + fixing file structure + separate summary page ---> DONE
-3. Extraction Frontend  ---> DONE
-4. Document classification frontend 
-5. Document preview in all forms having uploads ---> DONE
-6. Saving file names with current timestamp so that files arent overwritten
-7. Implement multithreading for time consuming processes -> para summarization
+1. The document preview is not working for .doc/.docx files 
+2. Saving file names with current timestamp so that files arent overwritten
+3. Implement multithreading for time consuming processes -> para summarization
