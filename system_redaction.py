@@ -6,7 +6,7 @@ import re
 from __init__ import create_app,db,postamail,UPLOAD_FOLDER,REDACTION_FOLDER,DOWNLOAD_FOLDER
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
-from redaction.spar10_redaction import redaction
+from redaction import spar10_redaction
 
 system_redaction = Blueprint('system_redaction', __name__)
 
@@ -27,7 +27,7 @@ def systemredaction():
             file.save(path_to_save)
 
             #load model and get summarized reviews 
-            redactedfile = redaction(path_to_save,DOWNLOAD_FOLDER,filename,redaction_options)
+            redactedfile = spar10_redaction.redaction(path_to_save,DOWNLOAD_FOLDER,filename,redaction_options)
             path_to_download=DOWNLOAD_FOLDER+'/'+redactedfile
 
             return render_template('system_views/redaction_result.html',original_file=path_to_save.split('static/')[-1],redacted_file=path_to_download.split('static/')[-1],options = ','.join(redaction_options))
