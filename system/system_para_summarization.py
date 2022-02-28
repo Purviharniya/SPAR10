@@ -1,13 +1,11 @@
-from flask_login import login_required, current_user
-from flask import Blueprint, render_template,redirect, url_for, request, flash,session
-from system.models import User,Contact
-import os
-import re
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER,PARASUM_FOLDER
-from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
-from summarizer.file_summarization import file_summarizer
+from flask import (Blueprint, flash, redirect, render_template, request,
+                   url_for)
+from flask_login import login_required
 from summarizer import TransformerSummarizer
+from summarizer.file_summarization import file_summarizer
+from werkzeug.utils import secure_filename
+from __init__ import PARASUM_FOLDER
+
 # from summarizer.sbert import SBertSummarizer
 
 system_para_summarization = Blueprint('system_para_summarization', __name__)

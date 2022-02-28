@@ -1,11 +1,8 @@
-from flask_login import login_required, current_user
-from flask import Blueprint, render_template,redirect, url_for, request, flash,session
-from system.models import User,Contact
-import os
-import re
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER,DOWNLOAD_FOLDER
+from flask_login import login_required
+from flask import Blueprint, render_template,redirect, url_for, request, flash
+from __init__ import UPLOAD_FOLDER
 from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
+
 
 system_classification = Blueprint('system_classification', __name__)
 
