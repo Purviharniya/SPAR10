@@ -1,12 +1,7 @@
-from flask import Blueprint, render_template,redirect, url_for, request, flash,session
-# from . import
-from flask_login import login_required, current_user
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER
+from flask import Blueprint, render_template,redirect, url_for, request, flash
+from __init__ import db
 import re
-from system.models import User,Contact
-from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
-import os
+from system.models import Contact
 
 main = Blueprint('main', __name__)
 

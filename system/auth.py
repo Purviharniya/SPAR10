@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from system.models import User
 from __init__ import db,postamail
 from flask_login import login_user, login_required, logout_user
-from flask_mail import Mail, Message
+from flask_mail import Message
 import re
 import random
 import string
@@ -137,7 +137,6 @@ def hashcode(hashCode):
                 check.hashCode= None
                 db.session.commit()
                 flash(u'Password updated successfully',"success")
-                # print("here")
                 return redirect(url_for('auth.login'))
 
             else:

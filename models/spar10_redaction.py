@@ -1,6 +1,5 @@
 # NLP libraries
 import spacy
-from spacy import displacy
 nlp = spacy.load('en_core_web_sm')
 
 # Time Pkg
@@ -24,7 +23,6 @@ import re
 def get_sensitive_data(lines,tt):
 	
   docx = nlp(lines)
-  redacted_sentences = []
   for ent in docx.ents:
     ent.merge()
   for token in docx:

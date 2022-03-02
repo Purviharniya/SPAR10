@@ -1,5 +1,4 @@
 import spacy
-from spacy import displacy
 nlp = spacy.load('en_core_web_sm')
 import time
 timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -12,7 +11,6 @@ import re
 
 def get_sensitive_data(lines,tt):
   docx = nlp(lines)
-  redacted_sentences = []
   with docx.retokenize() as retokenizer:
     for ent in docx.ents:
       retokenizer.merge(ent)
@@ -44,7 +42,7 @@ def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
 	
   """ main redactor code """
 
-  redactables = ['EMAIL','PERSON','GPE','LOC','ORG','TIME','DATE','MONEY','FAC','QUANITY','CARDINAL','ORDINAL'] #redaction options for reference
+  # redactables = ['EMAIL','PERSON','GPE','LOC','ORG','TIME','DATE','MONEY','FAC','QUANITY','CARDINAL','ORDINAL'] #redaction options for reference
     
   # get the path of the pdf
   path = get_path(file_path)

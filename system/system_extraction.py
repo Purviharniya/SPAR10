@@ -1,11 +1,7 @@
-from flask_login import login_required, current_user
-from flask import Blueprint, render_template,redirect, url_for, request, flash,session
-from system.models import User
-import os
-import re
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER,DOWNLOAD_FOLDER
+from flask_login import login_required
+from flask import Blueprint, render_template,redirect, url_for, request, flash
+from __init__ import UPLOAD_FOLDER,DOWNLOAD_FOLDER
 from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
 
 system_extraction = Blueprint('system_extraction', __name__)
 
@@ -21,7 +17,7 @@ def systemextraction():
         if file and extraction_options!=[] and check == True:
 
             filename = secure_filename(file.filename)
-            path_to_save = EXTRACTION_FOLDER + '/text_extraction/' + filename
+            path_to_save = UPLOAD_FOLDER + '/text_extraction/' + filename
     
             file.save(path_to_save)
 

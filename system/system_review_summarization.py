@@ -1,11 +1,8 @@
-from flask_login import login_required, current_user
-from flask import Blueprint, render_template,redirect, url_for, request, flash,session
-from system.models import User,Contact
+from flask_login import login_required
+from flask import Blueprint, render_template,redirect, url_for, request, flash
 import os
-import re
-from __init__ import create_app,db,postamail,UPLOAD_FOLDER,REDACTION_FOLDER
+from __init__ import UPLOAD_FOLDER
 from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
 
 system_review_summarization = Blueprint('system_review_summarization', __name__)
 

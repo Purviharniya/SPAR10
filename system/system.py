@@ -1,10 +1,8 @@
 from flask_login import login_required, current_user
-from flask import Blueprint, render_template,redirect, url_for, request, flash,session
-from system.models import User,Contact
-import os
+from flask import Blueprint, render_template,redirect, url_for, request, flash
+from system.models import User
 import re
-from __init__ import create_app,db,postamail
-from werkzeug.utils import secure_filename
+from __init__ import db
 
 system = Blueprint('system', __name__)
 
