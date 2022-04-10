@@ -67,7 +67,7 @@ def redaction():
     # _wrapContents is needed for fixing
     # alignment issues with rect boxes in some
     # cases where there is alignment issue
-    page._wrapContents()
+    #page._wrapContents()
     
     for i in redactables:
 

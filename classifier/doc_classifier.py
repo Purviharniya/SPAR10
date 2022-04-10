@@ -1,10 +1,7 @@
 
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np 
 import cv2
 from keras.models import load_model
-
-from keras import models
 
 img_size = 224
 categories={
