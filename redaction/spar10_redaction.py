@@ -55,7 +55,7 @@ def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
     # _wrapContents is needed for fixing
     # alignment issues with rect boxes in some
     # cases where there is alignment issue
-    page._wrapContents()
+    #page._wrapContents()
     
     # print('CONTENT:',page.getText("text"))
 

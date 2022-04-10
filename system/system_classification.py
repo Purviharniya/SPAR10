@@ -2,7 +2,7 @@ from flask_login import login_required
 from flask import Blueprint, render_template,redirect, url_for, request, flash
 from __init__ import UPLOAD_FOLDER
 from werkzeug.utils import secure_filename
-
+from classifier.doc_classifier import predict_category
 
 system_classification = Blueprint('system_classification', __name__)
 
@@ -20,10 +20,11 @@ def systemclassification():
     
             file.save(path_to_save)
 
-            return render_template('system_views/systemclassification.html')
+            doc_category = predict_category(path_to_save)
+            return render_template('system_views/systemclassification.html', doc_category = doc_category)
 
         if check == False:
-            flash('Only pdf/doc/docx/jpg/png/jpeg files are allowed',"error")
+            flash('Only jpg/png/jpeg/jfif files are allowed',"error")
             return redirect(url_for('system_classification.systemclassification'))
     
     else:
@@ -31,4 +32,4 @@ def systemclassification():
 
 def allowed_files_for_classification(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['pdf','doc','docx','jpg','png','jpeg']
+           filename.rsplit('.', 1)[1].lower() in ['jpg','png','jpeg','jfif']
