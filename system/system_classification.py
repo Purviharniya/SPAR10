@@ -21,7 +21,7 @@ def systemclassification():
             file.save(path_to_save)
 
             doc_category = predict_category(path_to_save)
-            return render_template('system_views/systemclassification.html', doc_category = doc_category)
+            return render_template('system_views/systemclassification.html', doc_category = doc_category, img_path = path_to_save.split('static/')[-1])
 
         if check == False:
             flash('Only jpg/png/jpeg/jfif files are allowed',"error")

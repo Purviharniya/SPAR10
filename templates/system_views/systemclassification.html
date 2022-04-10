@@ -35,20 +35,16 @@
                             name="class_form">
                             <div class="form-group">
                                 <label for="file1">Upload the file for classification: </label>
-                                <input type="file" class="form-control-file" id="file1" name='file1'
-                                    onchange="PreviewDoc();">
+                                <input type="file" class="form-control-file" id="file1" name='file1' onchange="PreviewDoc();">                              
                             </div>
                             <div class="embedding">
-                                <embed width="500" height="300" id="viewer" class="my-3 ">
+                                <embed width="500" height="300" id="viewer" class="my-3">
                             </div>
-
                             <input type="submit" class="btn btn-purple" value="Upload" name="class_submit"
                                 id='submitbtn'>
                             <input type="reset" class="btn btn-purple" value="Cancel" name="class_reset">
                         </form>
-                        <div class="original-overflow px-3">
-                            <p id="summarized_text" class="pt-3">{{doc_category}}</p>
-                        </div>
+                        <strong><h3 class="pt-3 px-3">{{doc_category}}</h3></strong>
                     </div>
                 </div>
             </div>
@@ -107,6 +103,7 @@
             reader.readAsDataURL(file);
         }
     }
+   
 
 </script>
 {% endblock %}

@@ -14,7 +14,7 @@ categories={
     6: 'The uploaded image is a NOTE!!',
     7: 'The uploaded image is a REPORT!!',
     8: 'The uploaded image is a RESUME!!',
-    9: 'The uploaded image is a SCIENTIFIC!!'
+    9: 'The uploaded image is a SCIENTIFIC PAPER!!'
 }
 
 model = load_model("classifier/final_trained_model.h5")

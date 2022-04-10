@@ -16,7 +16,7 @@
             <div class="card shadow pt-1 pb-5">
                 <div class="card-body">
                     <div class="col-12 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Paragraph Summarization:</h4>
+                        <h4 class="font-weight-bold text-purple mb-5">Text Summarization:</h4>
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                         {% for category,message in messages %}
@@ -164,25 +164,25 @@
 
     $(document).ready(function () {
         $("#Bert").tooltip({
-            title: "Tooltip for Bert"
+            title: "NLP tasks like NER, Sentence Segmentation, Part-Of-Speech tagging."
         });
         $("#GPT2").tooltip({
-            title: "Tooltip for GPT2"
+            title: "Text generation, Language translation, Building question-answering systems."
         });
         $("#XLM").tooltip({
-            title: "Tooltip for XLM"
+            title: "Cross-lingual classification task (sentence entailment in 15 languages), Machine translation."
         });
         $("#BigBird").tooltip({
-            title: "Tooltip for BigBird"
+            title: "Genomics processing, Long Document Summarization \& Question Answering."
         });
         $("#Roberta").tooltip({
-            title: "Tooltip for Roberta"
+            title: "An optimized version of BERT that can improve the training procedure for multiple NLP tasks."
         });
         $("#XLNet").tooltip({
-            title: "Tooltip for XLNet"
+            title: " Sentiment classification, Language modeling."
         });
         $("#Albert").tooltip({
-            title: "Tooltip for Albert"
+            title: "An upgraded version of Bert model which can be utilized for Masked Language model in training."
         });
     });
 
