@@ -1,3 +1,4 @@
+import time
 from flask import (Blueprint, flash, redirect, render_template, request,
                    url_for)
 from flask_login import login_required
@@ -84,7 +85,10 @@ def parasummarization():
 
         if file:
             if check == True:
-                filename = secure_filename(file.filename)
+                t = time.localtime()
+                timestamp = time.strftime('%b-%d-%Y_%H_%M_%S', t)
+                filename = file.filename.split('.')[0] + '_' + timestamp + '.' + file.filename.split('.')[1] 
+                filename = secure_filename(filename)
                 path_to_save= PARASUM_FOLDER + '/' + filename
                 file.save(path_to_save)
 

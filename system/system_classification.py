@@ -1,3 +1,4 @@
+import time
 from flask_login import login_required
 from flask import Blueprint, render_template,redirect, url_for, request, flash
 from __init__ import UPLOAD_FOLDER
@@ -15,7 +16,11 @@ def systemclassification():
         # print("CHECK:",check) to check if file extension is acceptable or not
  
         if file and check == True:
-            filename = secure_filename(file.filename)
+            t = time.localtime()
+            timestamp = time.strftime('%b-%d-%Y_%H_%M_%S', t)
+            # print(file.filename.split('.')[0] + '_' + timestamp + '.' + file.filename.split('.')[1])
+            filename = file.filename.split('.')[0] + '_' + timestamp + '.' + file.filename.split('.')[1] 
+            filename = secure_filename(filename)
             path_to_save= UPLOAD_FOLDER + '/document_classification/' + filename
     
             file.save(path_to_save)

@@ -1,3 +1,4 @@
+import time
 from flask_login import login_required
 from flask import Blueprint, render_template,redirect, url_for, request, flash
 from __init__ import UPLOAD_FOLDER,DOWNLOAD_FOLDER
@@ -15,13 +16,14 @@ def systemextraction():
         extraction_options = request.form.getlist('foptions')
 
         if file and extraction_options!=[] and check == True:
+            t = time.localtime()
+            timestamp = time.strftime('%b-%d-%Y_%H_%M_%S', t)
+            filename = file.filename.split('.')[0] + '_' + timestamp + '.' + file.filename.split('.')[1] 
 
-            filename = secure_filename(file.filename)
+            filename = secure_filename(filename)
             path_to_save = UPLOAD_FOLDER + '/text_extraction/' + filename
-    
             file.save(path_to_save)
-
-            path_to_download=DOWNLOAD_FOLDER+'/'+redactedfile
+            path_to_download = DOWNLOAD_FOLDER+'/'+ redactedfile
 
             return render_template('system_views/extraction_result.html')
 
