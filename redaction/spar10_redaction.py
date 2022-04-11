@@ -1,12 +1,10 @@
 import spacy
 nlp = spacy.load('en_core_web_sm')
 import time
-timestr = time.strftime("%Y%m%d-%H%M%S")
 import fitz
 import aspose.words as aw
 import warnings
 warnings.filterwarnings('ignore')
-
 import re
 
 def get_sensitive_data(lines,tt):
@@ -76,7 +74,10 @@ def redaction(file_path,DOWNLOAD_FOLDER,filename,redaction_options):
           
         page.apply_redactions()
           
-  redactedfile = filename.split('.')[0]+'_redacted.pdf'
+  t = time.localtime()
+  timestamp = time.strftime('%b-%d-%Y_%H_%M_%S', t)
+  redactedfile = filename.split('.')[0] + '_' + timestamp + '_redacted.pdf'
+  print(t)
   redactedfilepath = DOWNLOAD_FOLDER + '/' + redactedfile
 
   doc.save(redactedfilepath)
