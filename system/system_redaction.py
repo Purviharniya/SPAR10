@@ -1,3 +1,4 @@
+import time
 from flask_login import login_required
 from flask import Blueprint, render_template,redirect, url_for, request, flash
 from __init__ import UPLOAD_FOLDER,REDACTION_FOLDER,DOWNLOAD_FOLDER
@@ -17,7 +18,10 @@ def systemredaction():
         # print("CHECK:",check) to check if file extension is acceptable or not
  
         if file and redaction_options!=[] and check == True:
-            filename = secure_filename(file.filename)
+            t = time.localtime()
+            timestamp = time.strftime('%b-%d-%Y_%H_%M_%S', t)
+            filename = file.filename.split('.')[0] + '_' + timestamp + '.' + file.filename.split('.')[1] 
+            filename = secure_filename(filename)
             path_to_save= REDACTION_FOLDER + '/' + filename
     
             file.save(path_to_save)
