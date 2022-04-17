@@ -107,7 +107,7 @@ def text_extractor():
 
     reader= easyocr.Reader(['en'])
 
-    folder_path = "static/uploads/text_extraction"
+    folder_path = "static/uploads/text_extraction" # if folder dosent exists then create that --edit tbd
     path_of_images = load_images_from_folder(folder_path)
 
     new_images = rotated_images(path_of_images)
