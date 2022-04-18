@@ -35,10 +35,10 @@
                             name="class_form">
                             <div class="form-group">
                                 <label for="file1">Upload the file for classification: </label>
-                                <input type="file" class="form-control-file" id="file1" name='file1' onchange="PreviewDoc();">                              
+                                <input type="file" class="form-control-file" id="file1" name='file1' onchange="previewImage();">                              
                             </div>
                             <div class="embedding">
-                                <embed width="500" height="300" id="viewer" class="my-3">
+                                <image id="viewer" class="my-3">
                             </div>
                             <input type="submit" class="btn btn-purple" value="Upload" name="class_submit"
                                 id='submitbtn'>
@@ -103,7 +103,20 @@
             reader.readAsDataURL(file);
         }
     }
-   
+   function previewImage() {
+		var file = document.getElementById("file1").files;
+		if (file[0]) {
+			var fileReader = new FileReader();  
+			fileReader.onload = function (event) {
+				document.getElementById("viewer").setAttribute("src", event.target.result);
+			}		
+
+			fileReader.readAsDataURL(file[0]);
+		}
+	var element = document.getElementById("viewer");
+        element.setAttribute('width', 450);
+        element.setAttribute('height', 700);  
+	}
 
 </script>
 {% endblock %}

@@ -1,27 +1,149 @@
 {% extends 'main2.html' %}
 {% block content %}
 
+<link rel="stylesheet" href="../static/stylesheets/vendor/css/overview.css">
 <!-- add the content here -->
-<div class="container-fluid">
+<div class='page-wrapper'>
+    <div class='top-cont'>
+        <div class="row align-items-center">    
+            <div class="col-12 mx-2 mt-2">
+                <h1 class="font-weight-bold mb-5" style="color:black;">Welcome {{name.title()}} !!</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class='sec-ext1'>
+        <div class="container pb-5">
+            <img src="../static/assets/overview-banner.png" class="img-responsive">
+        </div>
+    </div>
 
-    <!--  Success message on form changes
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div> -->
+    <div class="container py-5 my-3">
+        <div
+            style=" color: #000;font-size: 2.5rem; font-weight: 900;font-family: Raleway, sans-serif;text-align: center;">
+            Text analytics product from the pioneer</div>
 
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card mt-2">
-            <div class="card shadow pt-1 pb-5">
-                <div class="card-body">
-                    <div class="col-12 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Dashboard: {{name.title()}}</h4>
+        <div class="text-justify my-4" style="font-size: 1.1rem;text-align: center;">
+            SPAR10 helps you to produce structured data, metadata & insights by extracting data, analyzing and
+            summarizing text, and classifying content. Our text analytics solutions can provide the best insights from
+            your text data.
+        </div>
 
-                    </div>
+    </div>
+
+    <div class="row2-ind" style='background: rgb(17, 16, 16);color: #fff;'>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-md-6">
+                    <img src="static/assets/ind-extraction1.png" alt="" class="row2-extraction img-responsive">
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <h2 style="color:#fde428;;font-weight: 800;">
+                        Text Extraction
+                    </h2>
+                    <p class="text-justify " style="color: white;">
+                        Our text extraction solutions can extract structured and unstructured text, and convert it into
+                        a
+                        predefined format. Load your document in any of the formats – be it a pdf, doc or image. Choose
+                        from
+                        the many ML/DL/Scraping extraction methods. Export to CSV, JSON and many more formats.</p>
+
+                    <h5 class="text-justify " style='color:#fde428;'>How it Works?</h5>
+                    <p class="text-justify " style="color: white;">Extract structured and unstructured text, and convert
+                        it into a predefined format. Load your document in any of the formats – be it a pdf, doc or
+                        image. Choose from the many ML/DL/Scraping extraction methods. Export to CSV, JSON and many more
+                        formats.</p>
+
+                    <a href="/text-extraction" class="btn px-3" style='background-color:#0098d7;color: #fff;'>
+                        See More
+                    </a>
                 </div>
             </div>
+
+            <div class="row py-5">
+
+                <div class="col-md-6 align-self-center">
+                    <h2 style="color:#fde428;;font-weight: 800;">
+                        Text Summarization
+                    </h2>
+
+                    <p class="text-justify " style="color: white;">
+                        Get a bite-sized summary of huge TL; DR documents (invoices, bank statements, investor reports,
+                        books, articles, journals, reviews, tweets, comments, legislation).</p>
+
+                    <h5 class="text-justify " style='color:#fde428;'>How it Works?</h5>
+                    <p class="text-justify " style="color: white;">Our NLP stack app digests your text collection and
+                        builds the crux of the collection through topics, clusters and keywords. Load your text
+                        collection from the databases or folders, train them using our NLP models for patterns and
+                        unearth the insights as per the modules – Topic Models, Doc Clusters, Keyphrase Highlights, Name
+                        Entity Recognition (NER) Graphs.</p>
+
+                    <a href="/text-summarisation" class="btn px-3" style='background-color:#0098d7;color: #fff;'>
+                        See More
+                    </a>
+                </div>
+                <div class="col-md-6 align-self-center align-items-center text-center">
+                    <img src="../static/assets/ind-analytics1.png" alt=""
+                        class="w-100 row2-classification img-responsive">
+                </div>
+
+            </div>
+
+
+            <div class="row py-5">
+                <div class="col-md-6">
+                    <img src="../static/assets/ind-classi.png" alt="" class="img-responsive" style="width:90%;">
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <h2 style="color:#fde428;;font-weight: 800;">
+                        Text Classification
+                    </h2>
+                    <p class="text-justify " style="color: white;">
+                        Assign a category to each document (invoices, bank statements, investor reports, books,
+                        articles, journals, reviews, tweets, comments, legislation).</p>
+
+                    <h5 class="text-justify " style='color:#fde428;'>How it Works?</h5>
+                    <p class="text-justify " style="color: white;">A multialgo-ML classification engine customized for
+                        parsing short text stories and detecting the category. Load your labelled training data, our
+                        engine learns using the ensemble ML models and chooses the best model to fit the best-suited
+                        label. Our team of data scientists help you in configuring the initial setup and retuning the
+                        models.</p>
+
+                    <a href="/text-classification" class="btn px-3" style='background-color:#0098d7;color: #fff;'>
+                        See More
+                    </a>
+                </div>
+            </div>
+
+            <div class="row py-5">
+
+                <div class="col-md-6 align-self-center">
+                    <h2 style="color:#fde428;font-weight: 800;">
+                        Text Redaction
+                    </h2>
+
+                    <p class="text-justify " style="color: white;">
+                        Protect your data by automatically redacting any form of sensitive data from any type of
+                        document (pdf/scanned & other formats) quickly and accurately.</p>
+
+                    <h5 class="text-justify " style='color:#fde428;'>How it Works?</h5>
+                    <p class="text-justify " style="color: white;">SPAR10 automatically redacts any document containing
+                        classified information from any sector. Personnel records, bank statements, medical records, tax
+                        forms, etc can be redacted. Information such as Name, email id, phone number, addresses, all
+                        sort of sensitive numeric content and other such confidentially sensitive data can be redacted.
+                        We help mask confidential information across industries and help adhere to worldwide regulatory
+                        compliances.</p>
+
+                    <a href="/text-redaction" class="btn px-3" style='background-color:#0098d7;color: #fff;'>
+                        See More
+                    </a>
+                </div>
+                <div class="col-md-6 align-items-center text-center">
+                    <img style="width:100%" src="../static/assets/ind-redac.png" alt=""
+                        class="row2-classification img-responsive">
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

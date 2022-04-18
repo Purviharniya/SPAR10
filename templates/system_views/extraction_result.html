@@ -4,6 +4,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <!-- add the content here -->
 
+
+
 <div class="container-fluid">
 
     <div class="row">
@@ -51,15 +53,31 @@
                                 id='submitbtn'>
                             <input type="reset" class="btn btn-purple" value="Cancel" name="ext_reset">
                             
-                            <strong><h3 class="pt-3 px-3">
-                              {% for i in options %}
-                              {{i}}
-                              {{data[i][-1]}}
-                              <br>
-                            {% endfor %}
-
-                            </h3></strong>
-                            
+                            <div class="row mt-2">
+                                <div class="col-md-12 grid-margin stretch-card mt-2">
+                                    <div class="card shadow pt-1">
+                                        <div class="card-body">
+                                            <button type="button" onclick="copyToClipboard('orig')"
+                                                    class="btn btn-outline-secondary float-right" data-toggle="tooltip" data-placement="top"
+                                                    title="Copy to clipboard" id="btnoriginal">
+                                                    <i class="fas fa-fw fa-copy"></i>
+                                            </button>
+                                            <button type="button" onclick="onclickdownload('orig')"
+                                                    class="btn btn-outline-secondary float-right" data-toggle="tooltip" data-placement="top"
+                                                    title="Download Text File" id="btnoriginal_download">
+                                                    <i class="fas fa-fw fa-download"></i>
+                                            </button>
+                                            <strong><h1 class="pt-3 px-3" id="original_text">
+                                                    {% for i in options %}
+                                                    {{i}}
+                                                    {{data[i][-1]}}
+                                                    <br>
+                                                {% endfor %}
+                                            </h1></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -122,6 +140,36 @@
             reader.readAsDataURL(file);
         }
     }
+
+
+
+
+    function copyToClipboard(text_type) {
+        var copyText = $('#original_text').text();
+        console.log(copyText)
+        // copyText.text();
+        navigator.clipboard.writeText(copyText);
+    }
+
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+    function onclickdownload(text_type) {
+        var text = $('#original_text').text();;
+        filename = 'extracted.txt'
+        download(filename, text);
+    }
+
 
 </script>
 {% endblock %}
