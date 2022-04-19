@@ -9,7 +9,7 @@ from __init__ import PARASUM_FOLDER
 
 # from summarizer.sbert import SBertSummarizer
 
-system_para_summarization = Blueprint('system_para_summarization', __name__)
+system_para_summarization_demo = Blueprint('system_para_summarization_demo', __name__)
 
 transformer_model_key_dict = {'Albert':'albert-base-v2','XLNet':'xlnet-large-cased','Roberta':'roberta-large',
 'BigBird':'google/bigbird-roberta-base','XLM':'xlm-mlm-en-2048','GPT2':'gpt2-large','Bert':'bert-base-uncased'}
@@ -18,14 +18,13 @@ def allowed_files_for_parasum(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ['doc','docx','pdf','txt']
 
-@system_para_summarization.route("/para-summarization", methods=['GET', 'POST'])
+@system_para_summarization_demo.route("/para-summarization_demo", methods=['GET', 'POST'])
 @login_required
 def parasummarization():
     if request.method == 'POST':
         paraText = request.form.get('paratext')
         option = request.form.get('options')
-        # model_type = request.form.get('model_type')
-        model_type = 'Bert'
+        model_type = request.form.get('model_type')
         # print("option:",option)
         option_value=0  # ratio or num of sentence
         # print(paraText)
@@ -33,15 +32,15 @@ def parasummarization():
 
         if 'file1' not in request.files and paraText == '':
             flash('No file part or paragraph text is empty',"error")
-            return redirect(url_for('system_para_summarization.parasummarization'))
+            return redirect(url_for('system_para_summarization_demo.parasummarization'))
 
         if request.files['file1'].filename !='' and paraText != '':
             flash('Input either a file OR a text para, both won\'t do!',"error")
-            return redirect(url_for('system_para_summarization.parasummarization'))
+            return redirect(url_for('system_para_summarization_demo.parasummarization'))
 
         if option=='0':
             flash('Select an option for summarizing the text!',"error")
-            return redirect(url_for('system_para_summarization.parasummarization'))
+            return redirect(url_for('system_para_summarization_demo.parasummarization'))
 
         elif option=='1':
             ratio = request.form.get('ratio')
@@ -52,7 +51,7 @@ def parasummarization():
             print("RATIO",ratio)
             if ratio<=0.0 or ratio>=1.0:
                 flash('Enter a valid ratio!',"error")
-                return redirect(url_for('system_para_summarization.parasummarization'))
+                return redirect(url_for('system_para_summarization_demo.parasummarization'))
             else:
                 option_value=ratio
 
@@ -63,19 +62,19 @@ def parasummarization():
             sentence = int(sentence)
             if sentence=='' or sentence<=0:
                 flash('Enter a valid sentence count!',"error")
-                return redirect(url_for('system_para_summarization.parasummarization'))
+                return redirect(url_for('system_para_summarization_demo.parasummarization'))
             else:
                 option_value = sentence
 
         else:
             flash('Select an option for summarizing the text!',"error")
-            return redirect(url_for('system_para_summarization.parasummarization'))
+            return redirect(url_for('system_para_summarization_demo.parasummarization'))
 
         file = request.files['file1']
 
         if file.filename == '' and  paraText=='':
             flash('No file selected',"error")
-            return redirect(url_for('system_para_summarization.parasummarization'))
+            return redirect(url_for('system_para_summarization_demo.parasummarization'))
 
         check = allowed_files_for_parasum(file.filename)
         # print("CHECK:",check)
@@ -104,11 +103,11 @@ def parasummarization():
                 # redirect to a new page with original and summarized text
                 print(result)
                 
-                return render_template('system_views/parasummarizationresult.html', para_text=extracted_text,result=result)
+                return render_template('system_views/parasummarizationresult_demo.html', para_text=extracted_text,result=result)
 
             else:
                 flash('Only pdf/doc/docx/txt files are allowed',"error")
-                return redirect(url_for('system_para_summarization.parasummarization'))
+                return redirect(url_for('system_para_summarization_demo.parasummarization'))
 
         if paraText != '':
             # print('paraText is being passed')
@@ -121,7 +120,7 @@ def parasummarization():
             # redirect to a new page with original and summarized text
             # print(result)
             
-            return render_template('system_views/parasummarizationresult.html', para_text=paraText,result=result)
+            return render_template('system_views/parasummarizationresult_demo.html', para_text=paraText,result=result)
     else:
-        return render_template('system_views/parasummarization.html')
+        return render_template('system_views/parasummarization_demo.html')
 
