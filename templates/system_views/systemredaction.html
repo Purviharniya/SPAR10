@@ -31,6 +31,7 @@
                         <form action="/system-redaction" enctype='multipart/form-data' method="POST" name="resum_form">
                             <div class="form-group">
                                 <label for="file1">Upload the file to be redacted: </label>
+                                <h6 style="color:red;">** Allowed file formats: pdf, doc</h6>
                                 <input type="file" class="form-control-file" id="file1" name='file1'
                                     onchange="PreviewDoc();">
                             </div>
@@ -43,14 +44,14 @@
                                     <!-- <option value="ALL">ALL OF THE BELOW</option> -->
                                     <option value="EMAIL">EMAIL</option>
                                     <option value="PERSON">PERSON</option>
-                                    <option value="GPE">COUNTRIES/CITIES/STATES</option>
+                                    <option value="GPE">COUNTRIES, CITIES, STATES</option>
                                    <!-- <option value="LOC">LOC</option> -->
-                                    <option value="ORG">COMPANIES/INSTITUES</option>
+                                    <option value="ORG">COMPANIES, INSTITUTES</option>
                                     <option value="TIME">TIME</option>
                                     <option value="DATE">DATE</option>
                                     <option value="MONEY">MONEY</option>
-                                    <option value="FAC">BUILDING/AIRPORTS/HIGHWAYS</option>
-                                    <option value="QUANITY">QUANITY</option>
+                                    <option value="FAC">BUILDING, AIRPORTS, HIGHWAYS</option>
+                                    <option value="QUANITY">QUANTITY</option>
                                    <!-- <option value="CARDINAL">CARDINAL</option> -->
                                    <!-- <option value="ORDINAL">ORDINAL</option> -->
                                 </select>

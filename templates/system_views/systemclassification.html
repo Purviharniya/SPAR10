@@ -14,7 +14,22 @@
             <div class="card shadow pt-1 pb-5">
                 <div class="card-body">
                     <div class="col-12 mb-3">
-                        <h4 class="font-weight-bold text-purple mb-5">Document Classification:</h4>
+                        <h4 class="font-weight-bold text-purple mb-3">Document Classification:</h4>
+                        <h6 class="mb-3">SPAR10 Document Classification feature classifies the uploaded image into the following categories: </h6>  
+                        <div style="background-color:#f2f2f2;color:black;">
+                         <ol>
+                                <li style="padding-top:2rem !important;">ADVERTISEMENT</li>
+				<li>EMAIL</li>
+                                <li>FORM</li>
+                                <li>LETTER</li>
+                                <li>MEMO</li>
+                                <li>NEWS ARTICLE</li>
+                                <li>NOTE</li>
+                                <li>REPORT</li>
+                                <li>RESUME</li>
+                                <li style="padding-bottom:2rem !important;">SCIENTIFIC PAPER</li>
+                         </ol>
+                         </div>
                         {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for
                         category,message in messages %} {% if category == "success" %}
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -35,6 +50,7 @@
                             name="class_form">
                             <div class="form-group">
                                 <label for="file1">Upload the file for classification: </label>
+                                <h6 style="color:red;">** Allowed file formats: jpg, jpeg, png</h6>
                                 <input type="file" class="form-control-file" id="file1" name='file1' onchange="previewImage();">                              
                             </div>
                             <div class="embedding">

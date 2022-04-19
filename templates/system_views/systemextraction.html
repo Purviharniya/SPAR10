@@ -30,7 +30,8 @@
                         {% endif %} {% endfor %} {% endif %} {% endwith %}
                         <form action="/system-extraction" enctype='multipart/form-data' method="POST" name="ext_form">
                             <div class="form-group">
-                                <label for="file1">Upload the file for extraction: </label>
+                                <label for="file1">Upload the file for extraction:</label>
+                                <h6 style="color:red;">** Allowed file formats: jpg, jpeg, png</h6>
                                 <input type="file" accept="image/*" class="form-control-file" id="file1" name='file1'
                                     onchange="previewImage();">
                             </div>

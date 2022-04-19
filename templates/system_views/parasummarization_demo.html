@@ -42,8 +42,7 @@
                         <form action="/para-summarization" enctype='multipart/form-data' method="POST"
                             name="parasum_form">
                             <div class="form-group">
-                                <label for="file1">Upload the document containing the text: </label>
-                                <h6 style="color:red;">** Allowed file formats: pdf, docx</h6>
+                                <label for="file1">Upload the document/pdf containing the text: </label>
                                 <input type="file" class="form-control-file" id="file1" name='file1'
                                     onchange="PreviewDoc();">
                             </div>
@@ -57,14 +56,13 @@
                                 <label for="paratext">Enter the paragraph to be summarized:</label>
                                 <textarea class="form-control" id="paratext" name='paratext' rows="5"></textarea>
                             </div>
-				<!--
                             <div class="form-group d-flex align-items-center">
                                 <div><label for="select">Select the option for summarizer transformer type:</label>
                                     <br>
                                     <small id="" class="form-text text-muted">Hover over the options for
                                         use-cases</small>
                                 </div>
-                              
+
                                 <select class="form-select ml-3" aria-label="select" name="model_type" id="model_type"
                                     size="7">
                                     <option value="Bert" id="Bert" selected>Bert</option>
@@ -75,7 +73,7 @@
                                     <option value="XLNet" id="XLNet">XLNet</option>
                                     <option value="Albert" id="Albert">Albert</option>
                                 </select>
-                            </div>-->															
+                            </div>
 
                             <div class="form-group">
                                 <label for="select">Choose the option for summarizing the text:</label>
@@ -96,7 +94,7 @@
                                     <input type="number" class="form-control" name="num_sent" placeholder="e.g. 3">
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-purple" value="Summarize" name="resum_submit"
+                            <input type="submit" class="btn btn-purple" value="Upload" name="resum_submit"
                                 id='submitbtn'>
                             <input type="reset" class="btn btn-purple" value="Cancel" name="resum_reset">
                         </form>
