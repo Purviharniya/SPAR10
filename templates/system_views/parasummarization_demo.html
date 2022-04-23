@@ -64,14 +64,10 @@
                                 </div>
 
                                 <select class="form-select ml-3" aria-label="select" name="model_type" id="model_type"
-                                    size="7">
-                                    <option value="Bert" id="Bert" selected>Bert</option>
-                                    <option value="GPT2" id="GPT2">GPT2</option>
+                                    size="3">
                                     <option value="XLM" id="XLM">XLM</option>
-                                    <option value="BigBird" id="BigBird">BigBird</option>
                                     <option value="Roberta" id="Roberta">Roberta</option>
                                     <option value="XLNet" id="XLNet">XLNet</option>
-                                    <option value="Albert" id="Albert">Albert</option>
                                 </select>
                             </div>
 
@@ -163,26 +159,14 @@
     })
 
     $(document).ready(function () {
-        $("#Bert").tooltip({
-            title: "NLP tasks like NER, Sentence Segmentation, Part-Of-Speech tagging."
-        });
-        $("#GPT2").tooltip({
-            title: "Text generation, Language translation, Building question-answering systems."
-        });
         $("#XLM").tooltip({
-            title: "Cross-lingual classification task (sentence entailment in 15 languages), Machine translation."
-        });
-        $("#BigBird").tooltip({
-            title: "Genomics processing, Long Document Summarization \& Question Answering."
+            title: "Cross-lingual classification task (sentence entailment in 15 languages)"
         });
         $("#Roberta").tooltip({
             title: "An optimized version of BERT that can improve the training procedure for multiple NLP tasks."
         });
         $("#XLNet").tooltip({
             title: " Sentiment classification, Language modeling."
-        });
-        $("#Albert").tooltip({
-            title: "An upgraded version of Bert model which can be utilized for Masked Language model in training."
         });
     });
 

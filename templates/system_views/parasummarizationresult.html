@@ -126,11 +126,13 @@
     function onclickdownload(text_type) {
         if (text_type == 'orig') {
             var text = $('#original_text').text();;
+            filename = 'original_text.txt'
         }
         else {
-            var text = $('#original_text').text();;
+            var text = $('#summarized_text').text();;
+            filename = 'summarizedText.txt'
         }
-        filename = 'summarizedText.txt'
+        
         download(filename, text);
     }
 </script>
