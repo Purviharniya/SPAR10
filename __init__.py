@@ -20,7 +20,7 @@ SPAR10_directory = get_SPAR10_dir_path()
 
 filehandling_object = filehandling.FileHandling(SPAR10_directory)
 
-UPLOAD_FOLDER, DOWNLOAD_FOLDER, REDACTION_FOLDER, REVSUM_FOLDER, PARASUM_FOLDER, EXTRACTION_FOLDER, DOCCLASS_FOLDER = filehandling_object.get_all_paths()
+UPLOAD_FOLDER, DOWNLOAD_FOLDER, REDACTION_FOLDER, PARASUM_FOLDER, EXTRACTION_FOLDER, DOCCLASS_FOLDER = filehandling_object.get_all_paths()
 
 
 def create_app():

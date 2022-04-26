@@ -106,9 +106,10 @@ def parasummarization():
                 
                 return render_template('system_views/parasummarizationresult.html', para_text=extracted_text,result=result)
 
-            else:
+            if check == False:
                 flash('Only pdf/doc/docx/txt files are allowed',"error")
                 return redirect(url_for('system_para_summarization.parasummarization'))
+                
 
         if paraText != '':
             # print('paraText is being passed')

@@ -33,7 +33,7 @@ def systemredaction():
             return render_template('system_views/redaction_result.html',original_file=path_to_save.split('static/')[-1],redacted_file=path_to_download.split('static/')[-1],options = ','.join(redaction_options))
 
         if check == False:
-            flash('Only excel files are allowed',"error")
+            flash('Only pdf, doc files are allowed',"error")
             return redirect(url_for('system_redaction.systemredaction'))
     
     else:
