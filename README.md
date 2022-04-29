@@ -31,14 +31,6 @@
 [![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/js/)
 
 </div>
----
-
-For theme-
-http://www.templatemonsterpreview.com/demo/79733.html?_gl=1*3y205s*_ga*MTU5MTE5MTU3OC4xNjM2NDQwMjQ2*_ga_FTPYEGT5LY*MTYzNjQ0MDI0NS4xLjEuMTYzNjQ0MDI5NS4xMA..&_ga=2.178407076.1405984263.1636440246-1591191578.1636440246
-
-http://aventer.themezinho.net/?storefront=envato-elements
-
----
 
 1.  https://www.sqlite.org/2021/sqlite-dll-win64-x64-3370000.zip download this and extract it to anaconda3/dlls
 2.  For virtual env:
@@ -50,10 +42,3 @@ http://aventer.themezinho.net/?storefront=envato-elements
     - venv\Scripts\activate<br>
 
 3.  To run the app: python main.py
-
-
-Fixing -------
-
-1. The document preview is not working for .doc/.docx files 
-2. Saving file names with current timestamp so that files arent overwritten
-3. Implement multithreading for time consuming processes -> para summarization
