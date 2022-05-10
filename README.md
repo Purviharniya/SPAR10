@@ -2,6 +2,8 @@
     
 # SPAR10: AI Enabled Text Processing Framework
 
+<img src="screenshots/spar10.png">
+    
 ## Frameworks and language used
 [![](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/en/2.0.x/)
 [![](https://img.shields.io/badge/Python-02569B?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -33,8 +35,7 @@
 </div>
 
 <div align ="center">
-<img src="screenshots/spar10.png">
-    
+   
 # Introduction
 </div>
 
